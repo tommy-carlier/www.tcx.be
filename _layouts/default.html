@@ -6,19 +6,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=800">
   <link rel="stylesheet" href="{{site.baseUrl}}assets/site.css">
-  <!--[if lt IE 9]><script>(function(){for(var a='abbr,article,aside,footer,header,nav,section,time'.split(','),i=a.length;i-=1;)document.createElement(a[i])}())</script><![endif]-->
+  <!--[if lt IE 9]><script>(function(){for(var a='abbr,article,aside,figure,footer,header,nav,section,time'.split(','),i=a.length;i-=1;)document.createElement(a[i])}())</script><![endif]-->
 </head>
 <body>
   <header>
     <a href="{{site.baseUrl}}">{{site.title}}</a>
     <nav><ul>
-      <li>Blog</li>
-      <li>Articles</li>
-      <li>Projects</li>
-      <li>About</li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">Articles</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">About</a></li>
     </ul></nav>
   </header>
-  <div class="page">{{content}}</div>
+  <div class="content">{{content}}</div>
   <footer>© 2004–{{site.time | date:'%Y'}} Tommy Carlier</footer>
 </body>
 </html>

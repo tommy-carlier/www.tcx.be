@@ -2,19 +2,48 @@
 ---
 @import "style-vars";
 
-body
+html
 {
-  background: $body-background;
-  color: $body-text-color;
+  min-height: 100%;
+  background: $frame-background;
+  color: $frame-text-color;
   
-  &> footer
+  body
   {
-    text-align: right;
+    margin: 0 auto;
+    max-width: 50em;
+    
+    &> header
+    {
+      line-height: 200%;
+
+      nav, ul, li, a
+      {
+        display: inline-block;
+      }
+      
+      ul
+      {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      
+      a
+      {
+        padding: 0 1em 0.7em;
+      }
+    }
+    
+    &> footer
+    {
+      text-align: right;
+    }
   }
 }
 
-.page
+.content
 {
-  background: $page-background;
-  color: $page-text-color;
+  background: $content-background;
+  color: $content-text-color;
 }
