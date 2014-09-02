@@ -7,38 +7,43 @@ html
   min-height: 100%;
   background: $frame-background;
   color: $frame-text-color;
-  
-  body
-  {
-    margin: 0 auto;
-    max-width: 50em;
-    
-    &> header
-    {
-      line-height: 200%;
+}
 
-      nav, ul, li, a
-      {
-        display: inline-block;
-      }
-      
-      ul
-      {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-      
-      a
-      {
-        padding: 0 1em 0.7em;
-      }
+body
+{
+  margin: 0 auto;
+  max-width: 50em;
+
+  &> header
+  {
+    line-height: 200%;
+
+    nav, ul, li, a
+    {
+      display: inline-block;
+    }
+
+    ul
+    {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    a
+    {
+      padding: 0.7em 1em;
     }
     
-    &> footer
+    &> a
     {
-      text-align: right;
+      margin-right: 2em;
     }
+  }
+
+  &> footer
+  {
+    text-align: right;
   }
 }
 
