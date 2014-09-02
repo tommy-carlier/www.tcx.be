@@ -7,11 +7,7 @@ body
   background: $body-background;
   color: $body-text-color;
   
-  > header
-  {
-  }
-  
-  > footer
+  &> footer
   {
     text-align: right;
   }
