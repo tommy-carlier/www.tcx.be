@@ -9,8 +9,16 @@
   <!--[if lt IE 9]><script>(function(){for(var a='abbr,article,aside,footer,header,nav,section,time'.split(','),i=a.length;i-=1;)document.createElement(a[i])}())</script><![endif]-->
 </head>
 <body>
-  <header><h1><a href="{{site.baseUrl}}">{{site.title}}</a></h1></header>
-  {{content}}
-  <footer>© {{site.time | date:'%Y'}} Tommy Carlier</footer>
+  <header>
+    <a href="{{site.baseUrl}}">{{site.title}}</a>
+    <nav><ul>
+      <li>Blog</li>
+      <li>Articles</li>
+      <li>Projects</li>
+      <li>About</li>
+    </ul></nav>
+  </header>
+  <div class="page">{{content}}</div>
+  <footer>© 2004–{{site.time | date:'%Y'}} Tommy Carlier</footer>
 </body>
 </html>
