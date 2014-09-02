@@ -1,4 +1,24 @@
 ---
 ---
+@import "style-vars";
 
-body>footer { text-align: center; }
+body
+{
+  background: $body-background;
+  color: $body-text-color;
+  
+  > header
+  {
+  }
+  
+  > footer
+  {
+    text-align: right;
+  }
+}
+
+.page
+{
+  background: $page-background;
+  color: $page-text-color;
+}
