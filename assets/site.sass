@@ -10,9 +10,9 @@ html
 body
   margin: 0 auto
   max-width: 50em
+  font: $frame-font
 
   &> header
-    line-height: 200%
 
     nav, ul, li, a
       display: inline-block
@@ -24,13 +24,31 @@ body
 
     a
       padding: 0.7em 1em
+      color: $frame-text-color
+      text-shadow: $frame-text-shadow
+      transition: color 0.3s ease, text-shadow 0.3s ease
+    
+    a:hover, a:focus
+      color: $frame-highlight-color
+      text-shadow: $frame-highlight-shadow
+    
+    a:active
+      color: $frame-text-color
     
     &> a
       margin-right: 2em
+      color: $frame-highlight-color
 
   &> footer
     text-align: right
+    text-shadow: $frame-text-shadow
 
 .content
   background: $content-background
   color: $content-text-color
+  font: $content-font
+  box-shadow: $content-box-shadow
+  border-radius: $content-border-radius
+
+a
+  text-decoration: none
