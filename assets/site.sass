@@ -63,3 +63,20 @@ h1
 
 h1:first-child
   margin-top: 0
+
+@media print
+  
+  body > header,
+  body > footer
+    display: none
+  
+  html,
+  .content
+    background: transparent
+    color: #000
+  
+  .content
+    border: none
+    border-radius: 0
+    box-shadow: none
+    padding: 0
