@@ -2,7 +2,7 @@ title: Tommy’s stuff
 url: http://www.tcx.be
 baseUrl: /
 permalink: pretty
-markdown: redcarpet
+
 sass:
   sass_dir: assets/_sass
   style: :compressed
