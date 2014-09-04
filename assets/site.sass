@@ -28,13 +28,13 @@ body
       color: $frame-text-color
       text-shadow: $frame-text-shadow
       transition: color 0.3s ease, text-shadow 0.3s ease
-    
-    a:hover, a:focus
-      color: $frame-highlight-color
-      text-shadow: $frame-highlight-shadow
-    
-    a:active
-      color: $frame-text-color
+
+      &:hover, &:focus
+        color: $frame-highlight-color
+        text-shadow: $frame-highlight-shadow
+
+      &:active
+        color: $frame-text-color
     
     &> a
       margin-right: 2em
@@ -55,6 +55,14 @@ body
   border-top: $page-border
   border-bottom: $page-border
   box-shadow: 0 0.1em 2em #000
+  
+  a
+    color: $hyperlink-color
+    transition: color 0.3s ease
+    
+    &:hover, &:focus
+      color: $hyperlink-highlight-color
+      text-decoration: underline
   
 .content
   margin: 0 auto
