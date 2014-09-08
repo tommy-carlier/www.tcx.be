@@ -4,8 +4,8 @@ title: Blog archive
 ---
 
 <h1>{{page.title}}</h1>
-<ul>
+<table class="no-borders">
 {% for post in site.posts %}
-  <li>{{post.date | date:'%F'}}: <a href="{{post.url}}">{{post.title}}</a></li>
+  <tr><td>{{post.date | date:'%F'}}</td><td><a href="{{post.url}}">{{post.title}}</a></td></tr>
 {% endfor %}
-</ul>
+</table>
