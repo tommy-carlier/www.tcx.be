@@ -13,11 +13,16 @@ title: Blog
 {% endfor %}
 </div>
 
-<nav class="pagination">
+<nav>
   {% if paginator.previous_page %}
-  <a href="{{paginator.previous_page_path | prepend:site.baseUrl | replace:'//','/'}}">Previous</a>
-  {% endif %}
+  <a href="{{paginator.previous_page_path | prepend:site.baseUrl | replace:'//','/'}}">Previous page</a>
+  {% else %}
+  <span class="disabled">Previous page</span>
+  {% endif %} • 
   {% if paginator.next_page %}
-  <a href="{{paginator.next_page_path | prepend:site.baseUrl | replace:'//','/'}}">Next</a>
-  {% endif %}
+  <a href="{{paginator.next_page_path | prepend:site.baseUrl | replace:'//','/'}}">Next page</a>
+  {% else %}
+  <span class="disabled">Next page</span>
+  {% endif %} •
+  <a href="{{site.baseUrl}}blog/archive.html">Archive</a>
 </nav>

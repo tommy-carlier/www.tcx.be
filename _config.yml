@@ -3,7 +3,7 @@ url: http://www.tcx.be
 baseUrl: /
 permalink: /blog/:year/:title/
 paginate: 5
-paginate_path: /blog/:num/
+paginate_path: /blog/:num.html
 
 sass:
   sass_dir: assets/_sass
