@@ -1,9 +1,9 @@
 title: Tommy’s stuff
 url: http://www.tcx.be
 baseUrl: /
-permalink: /blog/:year/:title
+permalink: /blog/:year/:title/
 paginate: 5
-paginate_page: blog/:num
+paginate_page: blog/:num/
 
 sass:
   sass_dir: assets/_sass
