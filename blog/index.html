@@ -14,7 +14,7 @@ title: Blog
 </div>
 
 <footer>
-  {% if paginator.previous_page %}<a href="{{paginator.previous_page_path | prepend:site.baseUrl | replace:'//','/'}}">« Newer posts</a> – {% endif %}
+  {% if paginator.previous_page %}<a href="{{paginator.previous_page_path | prepend:site.baseUrl | replace:'//','/'}}">« Newer posts</a>{% endif %}
   <a href="{{site.baseUrl}}blog/archive.html">Archive</a>
-  {% if paginator.next_page %}<a href="{{paginator.next_page_path | prepend:site.baseUrl | replace:'//','/'}}">Older posts »</a> – {% endif %}
+  {% if paginator.next_page %}<a href="{{paginator.next_page_path | prepend:site.baseUrl | replace:'//','/'}}">Older posts »</a>{% endif %}
 </footer>
