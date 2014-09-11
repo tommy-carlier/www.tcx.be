@@ -4,7 +4,6 @@ baseUrl: /
 permalink: /blog/:year/:title/
 paginate: 5
 paginate_path: /blog/:num.html
-pygments: true
 
 sass:
   sass_dir: assets/_sass
