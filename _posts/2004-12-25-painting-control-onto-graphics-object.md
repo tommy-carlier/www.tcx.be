@@ -21,7 +21,8 @@ public class ControlPainter
     COMBINED_PRINTFLAGS = PRF_CLIENT | PRF_CHILDREN | PRF_NON_CLIENT;
 
   [DllImport("USER32.DLL")]
-  private static extern int SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, int lParam);
+  private static extern int SendMessage(
+    IntPtr hWnd, int Msg, IntPtr wParam, int lParam);
 
   public static void PaintControl(Graphics graphics, Control control)
   {
