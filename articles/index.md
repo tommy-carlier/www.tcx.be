@@ -19,7 +19,7 @@ This page contains a list of all the articles I’ve written and posted on my bl
 ## General C# and .NET
 - Static destructor in C#
 - Rounding a floating point value to a certain precision
-- Fast .NET formatting of values
+- Fast formatting of values in .NET
 - Reading from and writing to a Stream
 - Years, months and days between 2 dates
 - Filtering numbers out of a string
