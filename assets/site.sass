@@ -75,7 +75,11 @@ body
   padding: 2em 1em
   
   &> footer
-    font: $frame-font
+    font: $content-footer-font
+    
+    &> a
+      display: inline-block
+      margin-right: 1.5em
 
 a
   text-decoration: none
@@ -138,6 +142,9 @@ table.no-border
   .content
     max-width: none
     padding: 0
+    
+    &> footer
+      display: none
 
 @media only screen and (max-width: 640px)
   body

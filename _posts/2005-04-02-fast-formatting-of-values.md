@@ -18,7 +18,7 @@ public static string Format(
 
   if (formatProvider == null)
   {
-    formatProvider = System.Globalization.CultureInfo.CurrentCulture;
+    formatProvider = CultureInfo.CurrentCulture;
   }
 
   ICustomFormatter formatter = formatProvider.GetFormat(
