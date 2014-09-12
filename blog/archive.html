@@ -1,13 +1,10 @@
 ---
-layout: default
+layout: post
 title: Blog archive
 ---
 
-<h1>{{page.title}}</h1>
-<article>
-  <table class="no-borders">
-  {% for post in site.posts %}
-    <tr><td>{{post.date | date:'%F'}}</td><td><a href="{{post.url}}">{{post.title}}</a></td></tr>
-  {% endfor %}
-  </table>
-</article>
+<table class="no-borders">
+{% for post in site.posts %}
+  <tr><td>{{post.date | date:'%F'}}</td><td><a href="{{post.url}}">{{post.title}}</a></td></tr>
+{% endfor %}
+</table>
