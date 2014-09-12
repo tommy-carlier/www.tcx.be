@@ -79,13 +79,13 @@ body
     
     &> a
       display: inline-block
-      margin-right: 1.5em
+      margin-left: 1.5em
 
 a
   text-decoration: none
 
 pre
-  overflow: scroll
+  overflow: auto
 
 code
   font: $code-font
@@ -163,6 +163,9 @@ article
   article
     box-shadow: none
     padding: 0
+  
+  pre
+    overflow: visible
 
 @media only screen and (max-width: 640px)
   body
