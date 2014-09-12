@@ -84,6 +84,9 @@ body
 a
   text-decoration: none
 
+pre
+  overflow: scroll
+
 code
   font: $code-font
 
@@ -117,10 +120,14 @@ table.no-border
   border-collapse: collapse
   border: none
 
-.list > article
+article
   margin: 2em 0
-  padding: 0 0 1em
-  border-bottom: $separator-border
+  padding: 1em 2em
+  background: $card-background
+  box-shadow: $card-shadow
+  
+  &:first-child
+    margin-top: 1em
   
   &:last-child
     margin-bottom: 1em
@@ -132,8 +139,7 @@ table.no-border
   nav
     display: none
   
-  html,
-  .content
+  html, .content, article
     background: transparent
     color: #000
   
@@ -154,8 +160,9 @@ table.no-border
     &> footer
       display: none
   
-  .list > article
-    border-color: #000
+  article
+    box-shadow: none
+    padding: 0
 
 @media only screen and (max-width: 640px)
   body
