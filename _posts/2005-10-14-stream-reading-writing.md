@@ -61,6 +61,7 @@ StreamHelper.WriteByteArray(stream, data);
 ```
 
 To read:
+
 ```csharp
 Stream stream = …;
 byte[] data = StreamHelper.ReadByteArray(stream);
