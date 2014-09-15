@@ -10,7 +10,7 @@ title: Projects
 {% for project in site.data.projects %}
   <article id="{{project.id}}">
     <h1>{{project.title}}{% if project.version %} <small>{{project.version}}</small>{% endif %}</h1>
-    <p>{{project.description}}{% if project.download %} <a href="{{project.download}}">Download {{project.title}}{% if project.version %} {{project.version}}{% endif %}</a>{% endif %}</p>
+    <p>{{project.description}}{% if project.download %} <a href="{{project.download}}" class="download">Download</a>{% endif %}</p>
   </article>
 {% endfor %}
 </div>
