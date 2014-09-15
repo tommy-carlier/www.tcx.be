@@ -1,0 +1,8 @@
+---
+layout: default
+title: Calctor
+---
+
+{% assign project = site.data.projects | where:"id","calctor" | first %}
+<h1>{{project.title}}</h1>
+<p>{{project.description}}</p>
