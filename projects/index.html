@@ -7,24 +7,10 @@ title: Projects
 <p>Here you can find some of my projects.</p>
 
 <div class="list">
-  <article id="calctor">
-    <h1>Calctor</h1>
-    <p>Calctor is an advanced calculator with a simple interface. You have an input-region where you enter your calculations, and an output-region where the results of your calculations automatically appear while you’re typing.</p>
+{% for project in site.data.projects %}
+  <article id="{{project.id}}">
+    <h1>{{project.title}}</h1>
+    <p>{{project.description}}</p>
   </article>
-  <article id="screen-capture">
-    <h1>Screen Capture</h1>
-    <p>A tool to capture the screen, a part of the screen, or a window, and copy it to the clipboard, or immediately save it to a file.</p>
-  </article>
-  <article id="base-converter">
-    <h1>Base Converter</h1>
-    <p>A tool for converting numbers between binary, octal, decimal and hexadecimal.</p>
-  </article>
-  <article id="for-i-repeat">
-    <h1>for-i-repeat</h1>
-    <p>A tool to duplicate a text-fragment a number of times using a counter.</p>
-  </article>
-  <article id="visual-dooby">
-    <h1>Visual Dooby</h1>
-    <p>A portable lightweight database client.</p>
-  </article>
+{% endfor %}
 </div>

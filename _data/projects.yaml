@@ -1,0 +1,19 @@
+- id: calctor
+  title: Calctor
+  description: Calctor is an advanced calculator with a simple interface. You have an input-region where you enter your calculations, and an output-region where the results of your calculations automatically appear while you’re typing.
+  
+- id: screen-capture
+  title: Screen Capture
+  description: A tool to capture the screen, a part of the screen, or a window, and copy it to the clipboard, or immediately save it to a file.
+
+- id: base-converter
+  title: Base Converter
+  description: A tool for converting numbers between binary, octal, decimal and hexadecimal.
+
+- id: for-i-repeat
+  title: for-i-repeat
+  description: A tool to duplicate a text-fragment a number of times using a counter.
+
+- id: visual-dooby
+  title: Visual Dooby
+  description: A portable lightweight database client.
