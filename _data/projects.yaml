@@ -12,18 +12,18 @@
 
 - id: base-converter
   title: Base Converter
-  version:
+  version: 1.0
   download:
   description: A tool for converting numbers between binary, octal, decimal and hexadecimal.
 
 - id: for-i-repeat
   title: for-i-repeat
-  version:
-  download:
+  version: 1.1
+  download: https://app.box.com/shared/afyf5kkpsy
   description: A tool to duplicate a text-fragment a number of times using a counter.
 
 - id: visual-dooby
   title: Visual Dooby
-  version:
-  download:
+  version: 0.1
+  download: https://app.box.com/shared/1ief43febt
   description: A portable lightweight database client.
