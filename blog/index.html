@@ -9,7 +9,7 @@ title: Blog
   <article>
     <header>
       <h1><a href="{{post.url}}">{{post.title}}</a></h1>
-      <div class="byline"><time>{{page.date | date:"%F"}}</time></div>
+      <div class="byline"><time>{{post.date | date:"%F"}}</time></div>
     </header>
     {{post.content}}
   </article>
