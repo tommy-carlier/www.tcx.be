@@ -3,7 +3,7 @@ layout: post
 title: Formatting a file size
 ---
 
-Here you can find a method that creates a human-readable string of a file-size:
+Here’s a method that creates a human-readable string of a file-size:
 
 ```csharp
 /// <summary>Returns a file size as a formatted string with a unit.</summary>
