@@ -68,6 +68,11 @@ body
     &:hover, &:focus
       color: $hyperlink-highlight-color
       text-decoration: underline
+    
+  h1 > a
+    &:hover, &:focus
+      text-decoration: none
+      border-bottom: solid 1px
   
 .content
   margin: 0 auto
@@ -87,11 +92,6 @@ a
 h1 small
   font-size: 100%
   opacity: 0.5
-  transition: opacity 0.25s ease
-
-h1 > a:hover > small,
-h1 > a:focus > small
-  opacity: 0.9
 
 pre
   overflow: auto
@@ -182,6 +182,7 @@ article
     a
       color: #000
       transition: none
+      border: none !important
   
   .content
     max-width: none
