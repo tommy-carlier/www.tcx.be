@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Capturing a screen region to the clipboard
+tags: SCREEN_CAPTURE
 ---
 
 While writing a little screen capture tool (which you can [download from Box](https://app.box.com/s/4lwepaw898f5ir3bv1dy)), I used to following code to capture a region on the screen and copy it to the clipboard:

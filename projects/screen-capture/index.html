@@ -1,0 +1,16 @@
+---
+layout: default
+title: Screen Capture
+---
+
+{% assign project = site.data.projects | where:"id","screen-capture" | first %}
+<article>
+  <h1>{{project.title}} <small>{{project.version}}</small></h1>
+  <p>{{project.description}}</p>
+  <h2>Version History</h2>
+  <dl>
+  {% for post in site.tags.SCREEN_CAPTURE %}
+    <dt class="date">{{post.date | date:"%F"}}</dt><dd><a href="{{site.baseUrl}}{{post.url}}">{{post.title}}</a></dd>
+  {% endfor %}
+  </dl>
+</article>
