@@ -85,7 +85,7 @@ a
   text-decoration: none
 
 h1 small
-  font-size: 85%
+  font-size: 100%
   opacity: 0.5
   transition: opacity 0.25s ease
 
@@ -95,6 +95,9 @@ h1 > a:focus > small
 
 pre
   overflow: auto
+  border: $code-border
+  padding: 0.2em 0.5em
+  margin: 1em -0.5em
 
 code
   font: $code-font
@@ -131,7 +134,7 @@ dd + dd
 .dates > dt
   font-size: 90%
 
-p > img:only-child
+img
   max-width: 100%
   
 article
@@ -185,8 +188,19 @@ article
     border: none
     padding: 0
   
+  h1, h2, h3
+    page-break-after: avoid
+  
+  p, h1, h2, h3
+    orphans: 3
+    widows: 3
+  
   pre
     overflow: visible
+    page-break-inside: avoid
+    border: none
+    padding: 0
+    margin: 1em 0
   
   code
     font-size: 11pt
