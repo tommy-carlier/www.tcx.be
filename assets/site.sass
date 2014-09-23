@@ -158,6 +158,10 @@ article
   font: $byline-font
   opacity: 0.6
 
+.download
+  font: $download-font
+  display: inline-block
+
 @media print
   
   body > header,
@@ -214,6 +218,15 @@ article
   
   .byline
     opacity: 1
+  
+  .download
+    b
+      font-weight: normal
+        
+    &:after
+      content: attr(href)
+      display: block
+      font-size: 75%
 
 @media only screen and (max-width: 640px)
   body
