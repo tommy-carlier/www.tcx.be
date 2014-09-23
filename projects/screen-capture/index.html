@@ -7,7 +7,7 @@ title: Screen Capture
 <article>
   <h1>{{project.title}} <small>{{project.version}}</small></h1>
   <p>{{project.description}}</p>
-  <p><a href="{{project.download}}" class="download"><b>Download</b> {{project.title}} {{project.version}}</a></p>
+  <p><a href="{{project.download}}" class="download"><b>Download</b> {{project.title}} {{project.version}}{% if project.size %} ({{project.size}}){% endif %}</a></p>
   <h2>Version History</h2>
   <dl>
   {% for post in site.tags.SCREEN_CAPTURE %}
