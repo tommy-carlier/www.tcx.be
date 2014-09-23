@@ -63,16 +63,12 @@ body
   
   a
     color: $hyperlink-color
-    transition: color 0.3s ease
+    border-bottom: solid 1px $hyperlink-underline-color
+    transition: color 0.3s ease, border-color 0.9s ease
     
     &:hover, &:focus
       color: $hyperlink-highlight-color
-      text-decoration: underline
-    
-  h1 > a
-    &:hover, &:focus
-      text-decoration: none
-      border-bottom: solid 1px
+      border-color: $hyperlink-highlight-underline-color
   
 .content
   margin: 0 auto
