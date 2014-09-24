@@ -70,6 +70,9 @@ body
       color: $hyperlink-highlight-color
       border-color: $hyperlink-highlight-underline-color
   
+  ::selection
+    background: $selection-background
+  
 .content
   margin: 0 auto
   max-width: 40em
@@ -82,6 +85,11 @@ body
       display: inline-block
       margin-left: 1.5em
 
+@media screen
+  .content
+    &> h1, &> h2
+      text-shadow: $content-heading-shadow
+      
 a
   text-decoration: none
 
@@ -161,6 +169,7 @@ article
 .download
   font: $download-font
   display: inline-block
+  +prefixed(user-select, none)
 
 @media screen
   .page .download
