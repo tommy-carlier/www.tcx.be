@@ -176,7 +176,9 @@ article
     text-decoration: none
     text-align: center
     line-height: 200%
-    padding: 0 1em 1px
+    padding: 0 1em
+    position: relative
+    top: 0
     background: $download-background-color
     background-image: $download-background-image
     box-shadow: $download-box-shadow
@@ -184,10 +186,10 @@ article
     border-radius: 5px
     color: $download-text-color
     text-shadow: $download-text-shadow
+    transition: top 0.1s ease
   
     &:active
-      padding-top: 1px
-      padding-bottom: 0
+      top: 2px
       box-shadow: $download-active-box-shadow
     
     &:focus, &:hover
