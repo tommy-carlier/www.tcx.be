@@ -162,16 +162,10 @@ article
   font: $download-font
   display: inline-block
 
-#about-picture
-  float: right
-  width: 200px
-  height: 200px
-  margin: -2em -0.5em 1em 1em
-  border-radius: 100px
-
 @media screen
   .page .download
     text-decoration: none
+    text-align: center
     line-height: 200%
     padding: 0 1em 1px
     background: $download-background-color
@@ -190,6 +184,13 @@ article
     &:focus, &:hover
       color: $download-text-color
       border-color: $download-border-color
+
+#about-picture
+  float: right
+  width: 200px
+  height: 200px
+  margin: -2em -0.5em 1em 1em
+  border-radius: 100px
 
 @media print
   
@@ -284,6 +285,9 @@ article
   
   h2, .list h1
     font-size: 120%
+  
+  .download
+    font-size: 11pt
   
   #about-picture
     width: 100px
