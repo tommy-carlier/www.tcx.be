@@ -163,7 +163,7 @@ article
   display: inline-block
 
 @media screen
-  .download
+  .page .download
     text-decoration: none
     line-height: 200%
     padding: 0 1em 1px
@@ -175,10 +175,14 @@ article
     color: $download-text-color
     text-shadow: $download-text-shadow
   
-  .download:active
-    padding-top: 1px
-    padding-bottom: 0
-    box-shadow: $download-active-box-shadow
+    &:active
+      padding-top: 1px
+      padding-bottom: 0
+      box-shadow: $download-active-box-shadow
+    
+    &:focus, &:hover
+      color: $download-text-color
+      border-color: $download-border-color
 
 @media print
   
