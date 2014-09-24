@@ -4,7 +4,7 @@ title: Screen Capture 2.2
 tags: SCREEN_CAPTURE
 ---
 
-I’ve updated my screen capture tool to version 2.2. I fixed a few bugs, and added these features:
+I’ve updated my [screen capture tool]({{site.baseUrl}}projects/screen-capture/) to version 2.2. I fixed a few bugs, and added these features:
 
 - The size of the captured image is displayed in the statusbar.
 - The captured image is stretched when resizing the window.
