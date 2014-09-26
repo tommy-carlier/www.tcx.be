@@ -17,7 +17,7 @@
   version: 1.0
   download: https://app.box.com/s/ti1vgncsperdh9a89by0
   fileSize: 613 KB
-  description: A tool for converting numbers between binary, octal, decimal and hexadecimal.
+  description: A tool for converting numbers between binary, octal, decimal and hexadecimal notation.
 
 - id: for-i-repeat
   title: for-i-repeat
