@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Rounding a floating point value to a certain precision
+title: "Rounding a floating point value to a certain precision"
 ---
 
 For my work, I needed to round a floating point value (`double` in C#) to a precision of 0.05. Unfortunately, `Math.Round` only lets you round a value to the nearest decimal. That means you can only round to 0.1, 0.01, 0.001, … To round your values to 0.05, or 0.25, or whatever, I created the following function:

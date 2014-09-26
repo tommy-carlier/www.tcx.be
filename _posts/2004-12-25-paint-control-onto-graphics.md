@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Painting a Control onto a Graphics-object
+title: "Painting a Control onto a Graphics-object"
 ---
 
 **Edit 2005-10-29: as of .NET 2.0, the `Control` class has a method to draw itself to a Bitmap: [DrawToBitmap](http://msdn2.microsoft.com/en-us/library/ms158401.aspx), which you should use instead.**

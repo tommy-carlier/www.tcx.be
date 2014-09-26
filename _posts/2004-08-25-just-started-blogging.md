@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Just started blogging
+title: "Just started blogging"
 ---
 
 I just started this blog, unsure of what and how frequent to post.

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Books about productivity
+title: "Books about productivity"
 ---
 
 The last 2 weeks, I’ve read 2.5 books about increasing productivity, at work as well as at home.

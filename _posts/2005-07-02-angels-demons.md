@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Angels & Demons
+title: "Angels & Demons"
 ---
 
 Normally, I’m not a big reader of books. But when I found out that they are making a movie of the best seller “The Da Vinci Code”, I just had to read [the book](http://www.amazon.com/gp/product/0385504209). When I finished reading it, I just had a taste for more. So I searched on eBay for “Het Bernini Mysterie”, the Dutch version of [Dan Brown](http://www.danbrown.com/)’s [“Angels & Demons”](http://www.amazon.com/gp/product/0743275063).

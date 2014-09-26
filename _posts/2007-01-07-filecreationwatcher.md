@@ -1,6 +1,6 @@
 ---
 layout: post
-title: FileCreationWatcher
+title: "FileCreationWatcher"
 ---
 
 A few weeks ago, I received an e-mail from someone who asked me if I could give more details about a class I created at work, that is essentially a wrapper around the [FileSystemWatcher](http://msdn.microsoft.com/en-us/system.io.filesystemwatcher.aspx) class, and that detects the creation of files more reliably. I sent him an e-mail back, with a simplified version of the wrapper class, and because I think this could also be useful for other people, I decided to post it here.

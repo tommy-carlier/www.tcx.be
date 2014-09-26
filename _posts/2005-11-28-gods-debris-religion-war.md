@@ -1,6 +1,6 @@
 ---
 layout: post
-title: God’s Debris & The Religion War
+title: "God’s Debris & The Religion War"
 ---
 
 This weekend, I read [Scott Adams](http://en.wikipedia.org/wiki/Scott_Adams)’ “God’s Debris” and “The Religion War”. Although the second is the sequel to the first, they are both quite different.

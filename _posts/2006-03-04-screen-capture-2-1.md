@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Screen Capture 2.1
+title: "Screen Capture 2.1"
 tags: SCREEN_CAPTURE
 ---
 

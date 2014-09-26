@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Formatting a file size
+title: "Formatting a file size"
 ---
 
 Here’s a method that creates a human-readable string of a file-size:

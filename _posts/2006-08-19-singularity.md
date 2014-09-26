@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Singularity
+title: "Singularity"
 ---
 
 [Channel 9](http://channel9.msdn.com/) has some new videos about [Singularity](http://research.microsoft.com/en-us/projects/singularity/), an experimental research OS that is (almost) entirely written in [Spec#](http://research.microsoft.com/en-us/projects/specsharp/), a superset of C# (only a very small part of the kernel is written in assembly). The technology they’re researching is just awesome. Here are links to the videos:

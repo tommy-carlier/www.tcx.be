@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Free tools
+title: "Free tools"
 ---
 
 The Accessories you get with Windows (Notepad, Calculator, Paint) are small and fast, but sometimes you need more functionality. You have to realize that most of them haven’t changed much since Windows 95 (or even earlier). So here are some FREE tools I use instead:

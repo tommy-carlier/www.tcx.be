@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Reading an image from a file without locking it (GDI+)
+title: "Reading an image from a file without locking it (GDI+)"
 ---
 
 When you use `System.Drawing.Image.FromFile` to read an image from a file, the file is locked. The following method reads an image from a file without locking it:

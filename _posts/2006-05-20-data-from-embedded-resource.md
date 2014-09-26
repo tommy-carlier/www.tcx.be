@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Reading data from an embedded resource
+title: "Reading data from an embedded resource"
 ---
 
 Here’s some code to read data from an embedded resource:

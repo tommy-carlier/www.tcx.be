@@ -1,6 +1,6 @@
 ---
 layout: post
-title: MSN Messenger + .NET 2.0
+title: "MSN Messenger + .NET 2.0"
 ---
 
 I just had this crazy idea: what if the next version of MSN Messenger would be written in .NET 2.0? Wouldn't it be cool if MSN Messenger had:

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Reading from and writing to a Stream
+title: "Reading from and writing to a Stream"
 ---
 
 Here you can find a class I wrote that allows you to easily read and write byte arrays from and to a `Stream`. I created it because I needed such functionality on a `NetworkStream` (where you can’t get the length of the stream).

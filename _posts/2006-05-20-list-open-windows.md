@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Getting a list of all the open windows
+title: "Getting a list of all the open windows"
 ---
 
 Here’s some code you can use to get a list of all the open windows. Actually, you get a dictionary where each item is a `KeyValuePair` where the key is the handle (`hWnd`) of the window and the value is its title.
