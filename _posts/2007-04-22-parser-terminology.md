@@ -3,7 +3,7 @@ layout: post
 title: Writing a parser: basic terminology
 ---
 
-Programming code (or any code that should be parsed) is usually plain text. It’s just a sequence of characters. A *tokenizer* converts this sequence of characters into a sequence of tokens. A token is a group of characters that form a meaningful unit.
+Programming code (or any code that should be parsed) is usually plain text. It's just a sequence of characters. A *tokenizer* converts this sequence of characters into a sequence of tokens. A token is a group of characters that form a meaningful unit.
 
 ![Converting characters to tokens]({{site.url}}/assets/adl/chars-to-tokens.png)
 
