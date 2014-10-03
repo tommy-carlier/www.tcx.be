@@ -11,7 +11,7 @@ ADL only has 4 different tokens:
   E.g.: `1`, `42`, `3141592654`.
 - **String**: A string is a sequence of characters enclosed in quotes.
   E.g.: `"x"`, `"abc"`, `"Quid pro quo."`.
-- **Symbol**: A symbol is one of the following sequences:
+- **Symbol**: A symbol is one of the following sequences:<br>
   `+ - * / ( ) , := == < > <> <= >=`
 
 To identify tokens, we'll use an `enum` named `TokenType`:
