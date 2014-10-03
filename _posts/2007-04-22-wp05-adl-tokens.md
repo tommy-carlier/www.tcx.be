@@ -5,13 +5,13 @@ title: "Writing a parser: ADL tokens"
 
 ADL only has 4 different tokens:
 
-- **Word**: A word starts with a letter, followed by zero or more letters or numbers.<br>
+- **Word**: A word starts with a letter, followed by zero or more letters or numbers.
   Examples: `x`, `abc`, `f2`, `else`.
-- **Integer**: An integer is a sequence of one or more digits.<br>
+- **Integer**: An integer is a sequence of one or more digits.
   Examples: `1`, `42`, `3141592654`.
-- **String**: A string is a sequence of characters enclosed in quotes.<br>
+- **String**: A string is a sequence of characters enclosed in quotes.
   Examples: `"x"`, `"abc"`, `"Quid pro quo."`.
-- **Symbol**: A symbol is one of the following sequences:<br>
+- **Symbol**: A symbol is one of the following sequences:
   `+ - * / ( ) , := == < > <> <= >=`
 
 To identify tokens, we'll use an `enum` named `TokenType`:
@@ -30,7 +30,7 @@ namespace TC.Adl
 }
 ```
 
-<small>(The value None is the default value and should not occur)</small>
+<small>(`None` is the default value and should not occur)</small>
 
 A token has a type (of type `TokenType`) and a value (of type `string`). The value is the sequence of characters that represent the token.
 
