@@ -5,7 +5,7 @@ title: "Writing a post: ADL Tokenizer"
 
 We’ll now start writing the tokenizer.
 
-One thing I haven’t explained yet is how we will deal with white-space. The easiest solution is to just skip the white-space between tokens, and that’s what we’ll do. Usually white-space is defined as one of the following characters: space (`' '`), tab (`'\t'`), new-line (`'\n'`) or carriage-return (`'\r'`). But I’ve noticed that any character below space (`' '`) is never used as text. So we can just consider any character ≤ `' '` to be white-space, which makes it easier to test a character.
+One thing I haven’t explained yet is how we will deal with white-space. The easiest solution is to just skip the white-space between tokens, and that’s what we’ll do. Usually white-space is defined as one of the following characters: space (`' '`), tab (`'\t'`), new-line (`'\n'`) or carriage-return (`'\r'`). But I noticed that any character below space (`' '`) is never used as text. So we can just consider any character ≤ `' '` to be white-space, which makes it easier to test a character.
 
 Because we want our tokenizer to read characters from strings as well as streams, we’ll use a [TextReader](http://msdn.microsoft.com/en-us/library/system.io.textreader.aspx). `TextReader` has 2 derived classes: [StringReader](http://msdn.microsoft.com/en-us/library/system.io.stringreader.aspx) (to read text from a string) and [StreamReader](http://msdn.microsoft.com/en-us/library/system.io.streamreader.aspx) (to read text from a stream). The only method in TextReader we will use is [Read()](http://msdn.microsoft.com/en-us/library/0w3csw16.aspx), which returns the next character or `-1` if the end of the stream or string has been reached.
 
