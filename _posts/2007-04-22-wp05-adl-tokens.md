@@ -6,11 +6,11 @@ title: "Writing a parser: ADL tokens"
 ADL only has 4 different tokens:
 
 - **Word**: A word starts with a letter, followed by zero or more letters or numbers.
-  Examples: `x`, `abc`, `f2`, `else`.
+  E.g.: `x`, `abc`, `f2`, `else`.
 - **Integer**: An integer is a sequence of one or more digits.
-  Examples: `1`, `42`, `3141592654`.
+  E.g.: `1`, `42`, `3141592654`.
 - **String**: A string is a sequence of characters enclosed in quotes.
-  Examples: `"x"`, `"abc"`, `"Quid pro quo."`.
+  E.g.: `"x"`, `"abc"`, `"Quid pro quo."`.
 - **Symbol**: A symbol is one of the following sequences:
   `+ - * / ( ) , := == < > <> <= >=`
 
