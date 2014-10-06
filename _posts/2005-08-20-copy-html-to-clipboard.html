@@ -3,22 +3,21 @@ layout: post
 title: "Copying an HTML-fragment to the clipboard"
 ---
 
-Applications like Word and Excel let you copy some text or tabular data to the clipboard in HTML-format, so that the formatting and visual style doesn’t change when pasted. At work, I had to do something similar: our application uses a lot of grid-controls to display data, and we wanted the users to be able to select data from a grid, and copy it to the clipboard, in a format that would keep the tabular structure of the data. After some research, I found out that you can copy data to the clipboard in HTML-format, and I thought: this is it. Piece of cake. But it wasn’t. Apparently, you have to pass a bit more information than just the HTML-code. Googling around gave me some hints how it should be done, but nothing really specific. So I started experimenting, until it worked correctly.
+<p>Applications like Word and Excel let you copy some text or tabular data to the clipboard in HTML-format, so that the formatting and visual style doesn’t change when pasted. At work, I had to do something similar: our application uses a lot of grid-controls to display data, and we wanted the users to be able to select data from a grid, and copy it to the clipboard, in a format that would keep the tabular structure of the data. After some research, I found out that you can copy data to the clipboard in HTML-format, and I thought: this is it. Piece of cake. But it wasn’t. Apparently, you have to pass a bit more information than just the HTML-code. Googling around gave me some hints how it should be done, but nothing really specific. So I started experimenting, until it worked correctly.
 
-Tip: use a `StringBuilder` to build the HTML-code, instead of concatenating strings. StringBuilders are very efficient for building long strings (hence the name StringBuilder): they are a lot faster than strings, and allocate much less memory.
+<p>Tip: use a <code>StringBuilder</code> to build the HTML-code, instead of concatenating strings. StringBuilders are very efficient for building long strings (hence the name StringBuilder): they are a lot faster than strings, and allocate much less memory.
 
-## Possible applications
+<h2>Possible applications</h2>
+<p>There are a lot of situations where you could use this:
+<ul>
+<li>Copying tabular data (and pasting it in Excel, Word or Outlook).
+<li>Copying formatted, visually styled data.
+<li>…
+</ul>
 
-There are a lot of situations where you could use this:
+<h2>The Code</h2>
 
-- Copying tabular data (and pasting it in Excel, Word or Outlook).
-- Copying formatted, visually styled data.
-- …
-
-## The Code
-
-```csharp
-using System;
+<pre><code>using System;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
@@ -61,13 +60,11 @@ internal static class Test
       
     Clipboard.SetDataObject(obj, true);
   }
-}
-```
+}</code></pre>
 
-## Example: copying a DataTable
+<h2>Example: copying a DataTable</h2>
 
-```csharp
-StringBuilder html = new StringBuilder();
+<pre><code>StringBuilder html = new StringBuilder();
 html.Append("<table>");
 
 foreach(DataRow row in table.Rows)
@@ -82,5 +79,4 @@ foreach(DataRow row in table.Rows)
 }
 
 html.Append("</table>");
-Test.CopyHtmlToClipboard(html.ToString());
-```
+Test.CopyHtmlToClipboard(html.ToString());</code></pre>
