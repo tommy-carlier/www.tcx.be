@@ -3,10 +3,9 @@ layout: post
 title: "Reading from and writing to a Stream"
 ---
 
-Here you can find a class I wrote that allows you to easily read and write byte arrays from and to a `Stream`. I created it because I needed such functionality on a `NetworkStream` (where you can’t get the length of the stream).
+<p>Here you can find a class I wrote that allows you to easily read and write byte arrays from and to a <code>Stream</code>. I created it because I needed such functionality on a <code>NetworkStream</code> (where you can’t get the length of the stream).
 
-```csharp
-using System;
+<pre><code>using System;
 using System.IO;
 
 namespace TC.Utils
@@ -49,20 +48,15 @@ namespace TC.Utils
       return ReadByteArray(stream, ReadInt32(stream));
     }
   }
-}
-```
+}</code></pre>
 
-To write:
+<p>To write:
 
-```csharp
-Stream stream = …;
+<pre><code>Stream stream = …;
 byte[] data = …;
-StreamHelper.WriteByteArray(stream, data);
-```
+StreamHelper.WriteByteArray(stream, data);</code></pre>
 
-To read:
+<p>To read:
 
-```csharp
-Stream stream = …;
-byte[] data = StreamHelper.ReadByteArray(stream);
-```
+<pre><code>Stream stream = …;
+byte[] data = StreamHelper.ReadByteArray(stream);</code></pre>
