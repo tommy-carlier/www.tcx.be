@@ -31,13 +31,13 @@ internal static class Test
     string begin = "Version:0.9\r\nStartHTML:{0:000000}\r\nEndHTML:{1:000000}"
       + "\r\nStartFragment:{2:000000}\r\nEndFragment:{3:000000}\r\n";
 
-    string html_begin = "<html>\r\n<head>\r\n"
-      + "<meta http-equiv=\"Content-Type\""
+    string html_begin = "&lt;html>\r\n&lt;head>\r\n"
+      + "&lt;meta http-equiv=\"Content-Type\""
       + " content=\"text/html; charset=" + enc.WebName + "\">\r\n"
-      + "<title>HTML clipboard</title>\r\n</head>\r\n<body>\r\n"
-      + "<!--StartFragment-->";
+      + "&lt;title>HTML clipboard&lt;/title>\r\n&lt;/head>\r\n&lt;body>\r\n"
+      + "&lt;!--StartFragment-->";
 
-    string html_end = "<!--EndFragment-->\r\n</body>\r\n</html>\r\n";
+    string html_end = "&lt;!--EndFragment-->\r\n&lt;/body>\r\n&lt;/html>\r\n";
 
     string begin_sample = String.Format(begin, 0, 0, 0, 0);
 
@@ -65,18 +65,18 @@ internal static class Test
 <h2>Example: copying a DataTable</h2>
 
 <pre><code>StringBuilder html = new StringBuilder();
-html.Append("<table>");
+html.Append("&lt;table>");
 
 foreach(DataRow row in table.Rows)
 {
-  html.Append("<tr>");
+  html.Append("&lt;tr>");
   foreach(object o in row)
   {
-    html.AppendFormat("<td>{0}</td>", o);
+    html.AppendFormat("&lt;td>{0}&lt;/td>", o);
   }
     
-  html.Append("</tr>");
+  html.Append("&lt;/tr>");
 }
 
-html.Append("</table>");
+html.Append("&lt;/table>");
 Test.CopyHtmlToClipboard(html.ToString());</code></pre>
