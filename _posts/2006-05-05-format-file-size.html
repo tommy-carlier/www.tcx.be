@@ -3,15 +3,14 @@ layout: post
 title: "Formatting a file size"
 ---
 
-Here’s a method that creates a human-readable string of a file-size:
+<p>Here’s a method that creates a human-readable string of a file-size:
 
-```csharp
-/// <summary>Returns a file size as a formatted string with a unit.</summary>
-/// <param name="fileSize">The file size to format.</param>
-/// <returns>The formatted string.</returns>
+<pre><code>/// &lt;summary>Returns a file size as a formatted string with a unit.&lt;/summary>
+/// &lt;param name="fileSize">The file size to format.&lt;/param>
+/// &lt;returns>The formatted string.&lt;/returns>
 public static string FormatFileSize(long fileSize)
 {
-  if (fileSize < 0) throw new ArgumentOutOfRangeException("fileSize");
+  if (fileSize &lt; 0) throw new ArgumentOutOfRangeException("fileSize");
 
   if (fileSize >= 1024 * 1024 * 1024)
   {
@@ -29,5 +28,4 @@ public static string FormatFileSize(long fileSize)
   {
     return string.Format("{0} bytes", fileSize);
   }
-}
-```
+}</code></pre>
