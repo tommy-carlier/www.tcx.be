@@ -5,16 +5,16 @@ title: "Writing a parser: ADL tokens"
 
 <p>ADL only has 4 different tokens:
 <dl>
-<dt>Word</dt>
+<dt><b>Word</b>:</dt>
   <dd>A word starts with a letter, followed by 0 or more letters or numbers.</dd>
   <dd>E.g.: <var>x</var>, <var>abc</var>, <var>f2</var>, <var>else</var>.</dd>
-<dt>Integer</dt>
+<dt><b>Integer</b>:</dt>
   <dd>An integer is a sequence of 1 or more digits.</dd>
   <dd>E.g.: <code>1</code>, <code>42</code>, <code>3141592654</code>.</dd>
-<dt>String</dt>
+<dt><b>String</b>:</dt>
   <dd>A string is a sequence of characters enclosed in quotes.</dd>
   <dd>E.g.: <code>"x"</code>, <code>"abc"</code>, <code>"Quid pro quo."</code>.</dd>
-<dt>Symbol</dt>
+<dt><b>Symbol</b>:</dt>
   <dd>A symbol is one of the following sequences:</dd>
   <dd><code>+ - * / ( ) , := == &lt; &gt; &lt;&gt; &lt;= &gt;=</code></dd>
 </dl>
