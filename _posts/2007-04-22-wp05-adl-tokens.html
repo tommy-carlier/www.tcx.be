@@ -1,0 +1,69 @@
+---
+layout: post
+title: "Writing a parser: ADL tokens"
+---
+
+<p>ADL only has 4 different tokens:
+<dl>
+<dt>Word</dt>
+  <dd>A word starts with a letter, followed by 0 or more letters or numbers.</dd>
+  <dd>E.g.: <var>x</var>, <var>abc</var>, <var>f2</var>, <var>else</var>.</dd>
+<dt>Integer</dt>
+  <dd>An integer is a sequence of 1 or more digits.</dd>
+  <dd>E.g.: <code>1</code>, <code>42</code>, <code>3141592654</code>.</dd>
+<dt>String</dt>
+  <dd>A string is a sequence of characters enclosed in quotes.</dd>
+  <dd>E.g.: <code>"x"</code>, <code>"abc"</code>, <code>"Quid pro quo."</code>.</dd>
+<dt>Symbol</dt>
+  <dd>A symbol is one of the following sequences:</dd>
+  <dd><code>+ - * / ( ) , := == &lt; &gt; &lt;&gt; &lt;= &gt;=</code></dd>
+</dl>
+  
+<p>To identify tokens, we'll use an <var>enum</var> named <var>TokenType</var>:
+
+<pre><code>namespace TC.Adl
+{
+  public enum TokenType
+  {
+    None = 0,
+    Word,
+    Integer,
+    String,
+    Symbol,
+  }
+}</code></pre>
+
+<p><small>(<var>None</var> is the default value and should not occur)</small>
+
+<p>A token has a type (of type <var>TokenType</var>) and a value (of type <var>string</var>). The value is the sequence of characters that represent the token.
+
+<pre><code>using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace TC.Adl
+{
+  public class Token
+  {
+    public Token(TokenType type, string value)
+    {
+      _type = type;
+      _value = value;
+    }
+
+    private readonly TokenType _type;
+    public TokenType Type { get { return _type; } }
+
+    private readonly string _value;
+    public string Value { get { return _value; } }
+
+    public bool Equals(TokenType type, string value)
+    {
+      return _type == type &amp;&amp; _value == value;
+    }
+  }
+}</code></pre>
+
+<p>You may have noticed that there are no comments or argument validation code. This is just to make the code simpler and easier to understand at first sight. The code I’m writing in Visual Studio is fully commented and has all the necessary argument validation code. I’ll release the entire library afterwards.
+
+<p>Next time, we’ll write the tokenizer.
