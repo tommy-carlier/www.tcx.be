@@ -3,20 +3,19 @@ layout: post
 title: "Getting a list of all the open windows"
 ---
 
-Here’s some code you can use to get a list of all the open windows. Actually, you get a dictionary where each item is a `KeyValuePair` where the key is the handle (`hWnd`) of the window and the value is its title.
+<p>Here’s some code you can use to get a list of all the open windows. Actually, you get a dictionary where each item is a <code>KeyValuePair</code> where the key is the handle (<code>hWnd</code>) of the window and the value is its title.
 
-```csharp
-using HWND = IntPtr;
+<pre><code>using HWND = IntPtr;
 
-/// <summary>Contains functionality to get all the open windows.</summary>
+/// &lt;summary>Contains functionality to get all the open windows.&lt;/summary>
 public static class OpenWindowGetter
 {
-  /// <summary>Returns a dictionary that contains the handle and title of all the open windows.</summary>
-  /// <returns>A dictionary that contains the handle and title of all the open windows.</returns>
-  public static IDictionary<HWND, string> GetOpenWindows()
+  /// &lt;summary>Returns a dictionary that contains the handle and title of all the open windows.&lt;/summary>
+  /// &lt;returns>A dictionary that contains the handle and title of all the open windows.&lt;/returns>
+  public static IDictionary&lt;HWND, string> GetOpenWindows()
   {
     HWND shellWindow = GetShellWindow();
-    Dictionary<HWND, string> windows = new Dictionary<HWND, string>();
+    Dictionary&lt;HWND, string> windows = new Dictionary&lt;HWND, string>();
 
     EnumWindows(delegate(HWND hWnd, int lParam)
     {
@@ -53,17 +52,14 @@ public static class OpenWindowGetter
 
   [DllImport("USER32.DLL")]
   static extern IntPtr GetShellWindow();
-}
-```
+}</code></pre>
 
-And here’s some code that uses it:
+<p>And here’s some code that uses it:
 
-```csharp
-foreach(KeyValuePair<IntPtr, string> window in OpenWindowGetter.GetOpenWindows())
+<pre><code>foreach(KeyValuePair&lt;IntPtr, string> window in OpenWindowGetter.GetOpenWindows())
 {
   IntPtr handle = window.Key;
   string title = window.Value;
 
   Console.WriteLine("{0}: {1}", handle, title);
-}
-```
+}</code></pre>
