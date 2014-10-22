@@ -1,0 +1,102 @@
+---
+layout: post
+title: "Writing a parser: introduction to ADL"
+---
+
+<p>This post will introduce ADL (*Acronymic Demonstrational Language*), a language I designed to demonstrate how to write a parser.
+
+<h2>Statements</h2>
+<p>ADL has 5 different types of statements:
+<ul>
+<li>if-statement
+<li>while-loop
+<li>for-loop
+<li>assignment
+<li>function call
+</ul>
+
+<p>An if-statement looks like this:
+
+<pre><code>
+<b>if</b> <i>expression</i> <b>then</b>
+    <i>statements</i>
+<b>end if</b></code></pre>
+
+<p>An if-statement can also have an else-clause:
+
+<pre><code><b>if</b> <i>expression</i> <b>then</b>
+    <i>statements</i>
+<b>else</b>
+    <i>statements</i>
+<b>end if</b></code></pre>
+
+<p>A while-loop looks like this:
+
+<pre><code><b>while</b> <i>expression</i> <b>do</b>
+    <i>statements</i>
+<b>end while</b></code></pre>
+
+<p>A for-loop looks like this:
+
+<pre><code><b>for</b> <i>variable</i> <b>:=</b> <i>expression</i> <b>to</b> <i>expression</i> <b>do</b>
+    <i>statements</i>
+<b>end for</b></code></pre>
+
+<p>A for-loop can also have a by-clause that defines the number to add to the variable on each iteration:
+
+<pre><code><b>for</b> <i>variable</i> <b>:=</b> <i>expression</i> <b>to</b> <i>expression</i> <b>by</b> <i>expression</i> <b>do</b>
+    <i>statements</i>
+<b>end for</b></code></pre>
+
+<p>An assignment looks like this:
+
+<pre><code><i>variable</i> <b>:=</b> <i>expression</i></code></pre>
+
+<p>A function call looks like this:
+
+<pre><code><i>function</i><b>()</b></code></pre>
+
+<p>It can also have one or more arguments separated by commas:
+
+<pre><code><i>function</i><b>(</b><i>expression</i><b>,</b> <i>expression</i><b>,</b> <i>expression</i><b>)</b></code></pre>
+
+<h2>Expressions</h2>
+
+<p>Expressions in ADL consist of variables, constants, function calls, unary expressions, binary expressions and groups.
+
+<p>Variable names start with a letter, followed by zero or more letters or numbers.
+
+<p>ADL has 2 types of constants: strings and integer numbers. A string is a sequence of characters, enclosed between 2 quotes. An integer is a sequence of 1 or more digits.
+
+<p>Unary expressions are expressions with an operator that has only 1 operand:
+<ul>
+<li>positive operator: <code><b>+</b><i>expression</i></code>
+<li>negative operator: <b>-</b><i>expression</i>
+<li>logical NOT-operator: <b>not</b> <i>expression</i>
+</ul>
+
+<p>Binary expressions are expressions with an operator that has 2 operands:
+<ul>
+<li>logical AND-operator: <i>expression</i> <b>and</b> <i>expression</i>
+<li>logical OR-operator: <i>expression</i> <b>or</b> <i>expression</i>
+  <li>comparison: <i>expression comparator expression</i> (<i>comparator</i> is one of the following: <b>==</b>, <b>&lt;&gt;</b>, <b>&lt;</b>, <b>&gt;</b>, <b>&lt;=</b>, <b>&gt;=</b>)
+<li>addition: <i>expression</i> <b>+</b> <i>expression</i>
+<li>subtraction: <i>expression</i> <b>-</b> <i>expression</i>
+<li>multiplication: <i>expression</i> <b>*</b> <i>expression</i>
+<li>division: <i>expression</i> <b>/</b> <i>expression</i>
+</ul>
+
+<p>A group is an expression between parentheses: <b>(</b> <i>expression</i> <b>)</b>
+
+<h2>Precedence</h2>
+
+<p>When an expression is built from multiple operators, the expression is evaluated in the following order:
+<ul>
+<li>Grouping: <code>( )</code>
+<li>Unary expression: <code>+ - not</code>
+<li>Multiplicative expression: <code>* /</code>
+<li>Additive expression: <code>+ -</code>
+<li>Comparison: <code>== &lt;&gt; &lt; &gt; &lt;= &gt;=</code>
+<li>Logical OR: <code>or</code>
+<li>Logical AND: <code>and</code>
+</ul>
