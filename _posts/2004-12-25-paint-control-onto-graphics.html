@@ -3,7 +3,7 @@ layout: post
 title: "Painting a Control onto a Graphics-object"
 ---
 
-<p><b>Edit 2005-10-29: as of .NET 2.0, the <code>Control</code> class has a method to draw itself to a Bitmap: <a href="http://msdn.microsoft.com/en-us/library/ms158401.aspx">DrawToBitmap</a>, which you should use instead.</b>
+<p><b>Edit 2005-10-29: as of .NET 2.0, the <var>Control</var> class has a method to draw itself to a Bitmap: <a href="http://msdn.microsoft.com/en-us/library/ms158401.aspx">DrawToBitmap</a>, which you should use instead.</b>
 
 <p>Here’s a little class in C#, that allows you to paint an existing Control onto a Graphics object. Nothing special, but useful if you need it.
 
@@ -34,4 +34,4 @@ public class ControlPainter
   }
 }</code></pre>
 
-<p>Using it is very easy: if you need to paint the Control <i>myControl</i> onto Graphics <i>myGraphics</i>, you just call <code>ControlPainter.PaintControl(myGraphics, myControl)</code>
+<p>Using it is very easy: if you need to paint the Control <var>myControl</var> onto Graphics <var>myGraphics</var>, you just call <code>ControlPainter.PaintControl(myGraphics, myControl);</code>

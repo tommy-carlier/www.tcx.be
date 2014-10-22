@@ -40,7 +40,7 @@ public static class EmbeddedResourceReader
   }
 }</code></pre>
 
-<p>Basically, you can read any kind of data from an embedded resource, using the method <code>GetManifestResourceStream</code>. The resource name you have to pass as an argument should be the default namespace of the assembly, appended with the filename. Here’s an example how to use it:
+<p>Basically, you can read any kind of data from an embedded resource, using the method <var>GetManifestResourceStream</var>. The resource name you have to pass as an argument should be the default namespace of the assembly, appended with the filename. Here’s an example how to use it:
 
 <pre><code>Assembly assembly = this.GetType().Assembly;
 string resourceName = "MyCompany.MyApplication.file.txt";
