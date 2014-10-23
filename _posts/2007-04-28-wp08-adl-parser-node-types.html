@@ -8,37 +8,37 @@ title: "Writing a parser: ADL parser node types"
 <p><a href="{{site.url}}/assets/adl/parser-nodes.png"><img src="{{site.url}}/assets/adl/parser-nodes.png" alt="The different types of parser tree nodes"></a>
 
 <ul>
-<li><i>ParserNode</i>
+  <li><i><var>ParserNode</var></i>
   <ul>
-  <li><i>Statement</i>
+  <li><i><var>Statement</var></i>
     <ul>
-    <li>Assignment: <code>x := …</code>
-    <li>IfStatement: <code>if … then … else … end if</code>
-    <li>WhileStatement: <code>while … do … end while</code>
-    <li>ForStatement: <code>for i := … to … by … do … end for</code>
-    <li>FunctionCallStatement: <code>f(…)</code></li>
+    <li><var>Assignment</var>: <code>x := …</code>
+    <li><var>IfStatement</var>: <code>if … then … else … end if</code>
+    <li><var>WhileStatement</var>: <code>while … do … end while</code>
+    <li><var>ForStatement</var>: <code>for i := … to … by … do … end for</code>
+    <li><var>FunctionCallStatement</var>: <code>f(…)</code></li>
     </ul>
-  <li><i>Expression</i>
+  <li><i><var>Expression</var></i>
     <ul>
-    <li><i>UnaryExpression</i>
+    <li><i><var>UnaryExpression</var></i>
       <ul>
-      <li>Negation: <code>-x</code>
-      <li>NotExpression: <code>not x</code>
+      <li><var>Negation</var>: <code>-x</code>
+      <li><var>NotExpression</var>: <code>not x</code>
       </ul>
-    <li><i>BinaryExpression</i>
+    <li><i><var>BinaryExpression</var></i>
       <ul>
-      <li>Addition: <code>x + y</code>
-      <li>Subtraction: <code>x - y</code>
-      <li>Multiplication: <code>x * y</code>
-      <li>Division: <code>x / y</code>
-      <li>AndExpression: <code>x and y</code>
-      <li>OrExpression: <code>x or y</code>
-      <li>Comparison: <code>x &lt; y</code> or <code>x &gt; y</code> or <code>x == y</code> or …</li>
+      <li><var>Addition</var>: <code>x + y</code>
+      <li><var>Subtraction</var>: <code>x - y</code>
+      <li><var>Multiplication</var>: <code>x * y</code>
+      <li><var>Division</var>: <code>x / y</code>
+      <li><var>AndExpression</var>: <code>x and y</code>
+      <li><var>OrExpression</var>: <code>x or y</code>
+      <li><var>Comparison</var>: <code>x &lt; y</code> or <code>x &gt; y</code> or <code>x == y</code> or …</li>
       </ul>
-    <li>Variable: <code>x</code>
-    <li>IntegerConstant: <code>123</code>
-    <li>StringConstant: <code>"abc"</code>
-    <li>FunctionCall: <code>f(…)</code>
+    <li><var>Variable</var>: <code>x</code>
+    <li><var>IntegerConstant</var>: <code>123</code>
+    <li><var>StringConstant</var>: <code>"abc"</code>
+    <li><var>FunctionCall</var>: <code>f(…)</code>
     </ul>
   </ul>
 </ul>
