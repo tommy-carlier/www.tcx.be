@@ -27,11 +27,11 @@ namespace TC.Adl
 }</code></pre>
 
 <p>Our Tokenizer class has only 3 fields:
-<dl>
-  <dt><var>_source</var>:<dd>the <var>TextReader</var> to read characters from.</dd>
-  <dt><var>_currentChar</var>:<dd>the current character (most recently read).</dd>
-  <dt><var>_tokenValueBuffer</var>:<dd>the <var>StringBuilder</var> to store the characters of the current token.</dd>
-</dl>
+<ul>
+<li><var>_source</var>: the <var>TextReader</var> to read characters from.
+<li><var>_currentChar</var>: the current character (most recently read).
+<li><var>_tokenValueBuffer</var>: the <var>StringBuilder</var> to store the characters of the current token.
+</ul>
 
 <p>The constructor of the <var>Tokenizer</var> class will accept a <var>TextReader</var> argument, store it in <var>_source</var>, initialize <var>_tokenValueBuffer</var> and read the first character:
 
