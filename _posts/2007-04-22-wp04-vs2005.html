@@ -5,6 +5,6 @@ title: "Writing a parser: Base VS2005 solution"
 
 <p>I’ve created an (almost) empty <i>Visual Studio 2005</i> solution that will be the base solution to build our parser from. It contains 2 projects: <var>TC.Adl</var> (the ADL Class Library that will contain the parser) and <var>TC.Adl.Test</var> (the WinForms application for testing the library).
 
-<p>The test application has a main form (<var>FormMain</var>) that displays a list of test cases to run. This list is automatically filled with all the classes in <var>TC.Adl.Test</var> that derive from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx">System.Windows.Forms.Form</a>. That way, we can add test cases without having to modify <var>FormMain</var> each time.
+<p>The test application has a main form (<var>FormMain</var>) that displays a list of test cases to run. This list is automatically filled with all the classes in <var>TC.Adl.Test</var> that derive from <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.form.aspx"><var>System.Windows.Forms.Form</var></a>. That way, we can add test cases without having to modify <var>FormMain</var> each time.
 
 <p>You can <a href="https://app.box.com/s/9kidi2a2knibx1zs9ek2">download it from Box</a>.
