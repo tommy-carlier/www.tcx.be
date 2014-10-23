@@ -1,0 +1,321 @@
+---
+layout: post
+title: "Writing a post: ADL Tokenizer"
+---
+
+<p>We’ll now start writing the tokenizer.
+
+<p>One thing I haven’t explained yet is how we will deal with white-space. The easiest solution is to just skip the white-space between tokens, and that’s what we’ll do. Usually white-space is defined as one of the following characters: space (<code>' '</code>), tab (<code>'\t'</code>), new-line (<code>'\n'</code>) or carriage-return (<code>'\r'</code>). But I noticed that any character below space (<code>' '</code>) is never used as text. So we can just consider any character ≤ <code>' '</code> to be white-space, which makes it easier to test a character.
+
+<p>Because we want our tokenizer to read characters from strings as well as streams, we’ll use a <a href="http://msdn.microsoft.com/en-us/library/system.io.textreader.aspx">TextReader</a>. <var>TextReader</var> has 2 derived classes: <a href="http://msdn.microsoft.com/en-us/library/system.io.stringreader.aspx">StringReader</a> (to read text from a string) and <a href="http://msdn.microsoft.com/en-us/library/system.io.streamreader.aspx">StreamReader</a> (to read text from a stream). The only method in TextReader we will use is <a href="http://msdn.microsoft.com/en-us/library/0w3csw16.aspx">Read()</a>, which returns the next character or <code>-1</code> if the end of the stream or string has been reached.
+
+<p>To extract a token, we read the first character and decide what type of token it will be. For each token, we will have to store the characters it contains. We’ll use a <a href="http://msdn.microsoft.com/en-us/library/system.text.stringbuilder.aspx">StringBuilder</a> for this.
+
+<pre><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using System.IO;
+
+namespace TC.Adl
+{
+  public class Tokenizer
+  {
+    private readonly TextReader _source;
+    private char _currentChar;
+    private readonly StringBuilder _tokenValueBuffer;
+  }
+}</code></pre>
+
+<p>Our Tokenizer class has only 3 fields:
+<dl>
+  <dt><var>_source</var>:<dd>the <var>TextReader</var> to read characters from.</dd>
+  <dt><var>_currentChar</var>:<dd>the current character (most recently read).</dd>
+  <dt><var>_tokenValueBuffer</var>:<dd>the <var>StringBuilder</var> to store the characters of the current token.</dd>
+</dl>
+
+<p>The constructor of the <var>Tokenizer</var> class will accept a <var>TextReader</var> argument, store it in <var>_source</var>, initialize <var>_tokenValueBuffer</var> and read the first character:
+
+<pre><code>public Tokenizer(TextReader source)
+{
+  if (source == null) throw new ArgumentNullException("source");
+
+  _source = source;
+  _tokenValueBuffer = new StringBuilder();
+  ReadNextChar();
+}</code></pre>
+
+<p>Now we’ll add some private helper methods.
+
+<p>Reading a character is simple. Just call <code>TextReader.Read()</code>, which returns an <var>int</var>. Because a <var>char</var> cannot be <code>-1</code> (which is returned by <code>TextReader.Read()</code> at the end of the text), we will use character <code>'\0'</code> as the <i>end-of-stream</i> character.
+
+<pre><code>private void ReadNextChar()
+{
+  int c = _source.Read();
+
+  if (c &gt; 0)
+  {
+    _currentChar = (char)c;
+  }
+  else
+  {
+    _currentChar = '\0';
+  }
+}</code></pre>
+
+<p>Skipping white-space is also easy: just keep reading characters until we get a character that is not white-space:
+
+<pre><code>private void SkipWhitespace()
+{
+  while (_currentChar &gt; '\0' &amp;&amp; _currentChar &lt;= ' ')
+  {
+    ReadNextChar();
+  }
+}</code></pre>
+
+<p>To determine if we’re at the end of the source, we just have to check the current character for <code>'\0'</code>:
+
+<pre><code>private bool AtEndOfSource
+{
+  get { return _currentChar == '\0'; }
+}</code></pre>
+
+<p>We’ll also write a simple method to store the current character and read the next:
+
+<pre><code>private void StoreCurrentCharAndReadNext()
+{
+  _tokenValueBuffer.Append(_currentChar);
+  ReadNextChar();
+}</code></pre>
+
+<p>And a method to extract the stored characters and clear the buffer:
+
+<pre><code>private string ExtractStoredChars()
+{
+  string value = _tokenValueBuffer.ToString();
+  _tokenValueBuffer.Length = 0;
+  return value;
+}</code></pre>
+
+<p>Because the source code can have errors, we’ll need some methods that throw exceptions:
+
+<pre><code>private void CheckForUnexpectedEndOfSource()
+{
+  if (AtEndOfSource)
+  {
+    throw new ParserException("Unexpected end of source.");
+  }
+}
+
+private void ThrowInvalidCharException()
+{
+  if (_tokenValueBuffer.Length == 0)
+  {
+    throw new ParserException("Invalid character '" + _currentChar.ToString() + "'.");
+  }
+  else
+  {
+    throw new ParserException(
+      "Invalid character '" + _currentChar.ToString() 
+      + "' after '" + _tokenValueBuffer.ToString() + "'.");
+  }
+}</code></pre>
+
+<p>Which introduces our <var>ParserException</var> class (a standard <var>Exception</var> sub-class):
+
+<pre><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Runtime.Serialization;
+
+namespace TC.Adl
+{
+  [Serializable]
+  public class ParserException : Exception
+  {
+    public ParserException() { }
+    public ParserException(string message) : base(message) { }
+    public ParserException(string message, Exception innerException) : base(message, innerException) { }
+    protected ParserException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+  }
+}</code></pre>
+
+<p>Now that we’ve written the private helper methods, we can write the only public method: the <var>ReadNextToken</var> method. This method reads a token and returns it. First we skip the initial white-space. If we reach the end of the source, we return <var>null</var>; else we check the first character to determine the type of token:
+<ul>
+<li>if the token starts with a letter, it’s a word
+<li>if the token starts with a digit, it’s an integer constant
+<li>if the token starts with a double quote, it’s a string constant
+<li>if it’s any other character, we assume it’s a symbol
+</ul>
+
+<pre><code>public Token ReadNextToken()
+{
+  SkipWhitespace();
+
+  if (AtEndOfSource)
+  {
+    return null;
+  }
+
+  if (char.IsLetter(_currentChar))
+  {
+    return ReadWord();
+  }
+
+  if (char.IsDigit(_currentChar))
+  {
+    return ReadIntegerConstant();
+  }
+
+  if (_currentChar == '"')
+  {
+    return ReadStringConstant();
+  }
+
+  return ReadSymbol();
+}</code></pre>
+
+<p>A word starts with a letter (already tested in <var>ReadNextToken</var>), followed by 0 or more letters or digits. So all we have to do is keep reading until we reach a character that is not a letter or digit:
+
+<pre><code>private Token ReadWord()
+{
+  do
+  {
+    StoreCurrentCharAndReadNext();
+  }
+  while (char.IsLetterOrDigit(_currentChar));
+
+  return new Token(TokenType.Word, ExtractStoredChars());
+}</code></pre>
+
+<p>An integer constant just contains digits:
+
+<pre><code>private Token ReadIntegerConstant()
+{
+  do
+  {
+    StoreCurrentCharAndReadNext();
+  }
+  while (char.IsDigit(_currentChar));
+
+  return new Token(TokenType.Integer, ExtractStoredChars());
+}</code></pre>
+
+<p>A string constant contains a sequence of characters, enclosed in quotes. Because the quote character is used as a delimiter, the characters in between cannot be quotes. But all other characters are allowed. If the end of the source is reached before the closing quote, we throw an exception. We don’t want the quotes to be included in the value of the token, so we skip them with <var>ReadNextChar</var>.
+
+<pre><code>private Token ReadStringConstant()
+{
+  ReadNextChar();
+  while (!AtEndOfSource &amp;&amp; _currentChar != '"')
+  {
+    StoreCurrentCharAndReadNext();
+  }
+
+  CheckForUnexpectedEndOfSource();
+  ReadNextChar();
+
+  return new Token(TokenType.String, ExtractStoredChars());
+}</code></pre>
+
+<p>Reading a symbol is more complicated. A symbol can be one or two characters, so we have to treat each case individually:
+
+<pre><code>private Token ReadSymbol()
+{
+  switch (_currentChar)
+  {
+    case '+':
+    case '-':
+    case '*':
+    case '/':
+    case '(':
+    case ')':
+    case ',':
+      // the symbols + - * / ( ) ,
+      StoreCurrentCharAndReadNext();
+      return new Token(TokenType.Symbol, ExtractStoredChars());
+
+    case ':':
+    case '=':
+      // the symbols := ==
+      StoreCurrentCharAndReadNext();
+      if (_currentChar == '=')
+      {
+        StoreCurrentCharAndReadNext();
+        return new Token(TokenType.Symbol, ExtractStoredChars());
+      }
+
+      CheckForUnexpectedEndOfSource();
+      ThrowInvalidCharException();
+      break;
+      
+    case '&lt;':
+      // the symbols &lt; &lt;&gt; &lt;=
+      StoreCurrentCharAndReadNext();
+      if (_currentChar == '&gt;' || _currentChar == '=')
+      {
+        StoreCurrentCharAndReadNext();
+      }
+      return new Token(TokenType.Symbol, ExtractStoredChars());
+      
+    case '&gt;':
+      // the symbols &gt; &gt;=
+      StoreCurrentCharAndReadNext();
+      if (_currentChar == '=')
+      {
+        StoreCurrentCharAndReadNext();
+      }
+      return new Token(TokenType.Symbol, ExtractStoredChars());
+      
+    default:
+      CheckForUnexpectedEndOfSource();
+      ThrowInvalidCharException();
+      break;
+  }
+
+  return null;
+}</code></pre>
+
+<p>That’s it, our <var>Tokenizer</var> class is done. To test it, we’ll write a small application. Add a new <var>Form</var> to the project <var>TC.Adl.Test</var>, named <var>TokenizerTest</var>. It will have a multiline <var>TextBox</var> where we can type in source code (<var>TextBoxSource</var>), a <var>Button</var> to tokenize the source code (<var>ButtonTokenize</var>), and a <var>ListBox</var> that will display the tokens (<var>ListBoxTokens</var>). It should look like this:
+
+<p><img src="{{site.url}}/assets/adl/tokenizer-test.png" alt="TokenizerTest designer screenshot">
+
+<p>The <var>Click</var> event handler of the button creates a new <var>Tokenizer</var>, reads all the tokens, and adds them to the <var>ListBox</var>:
+
+<pre><code>private void ButtonTokenize_Click(object sender, EventArgs e)
+{
+  ListBoxTokens.Items.Clear();
+  ListBoxTokens.BeginUpdate();
+  try
+  {
+    using (StringReader source = new StringReader(TextBoxSource.Text))
+    {
+      Tokenizer tokenizer = new Tokenizer(lSource);
+
+      Token token = tokenizer.ReadNextToken();
+      while (token != null)
+      {
+        ListBoxTokens.Items.Add(token.Type.ToString() + ":\t" + token.Value);
+        token = tokenizer.ReadNextToken();
+      }
+    }
+  }
+  catch (ParserException exception)
+  {
+    MessageBox.Show(this, exception.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+  }
+  finally
+  {
+    ListBoxTokens.EndUpdate();
+  }
+}</code></pre>
+
+<p>Now you can start the application, run the TokenizerTest and try out some code to see what tokens are generated. Try out this sample:
+
+<pre><code>for i := 1 to 100 do
+    if i &lt; 50 then
+        print(i, " &lt; 50")
+    else
+        print(i, " &gt;= 50")
+    end if
+end for</code></pre>
+
+<p>As you can see, converting characters to tokens is not very complicated. You just have to get used to it.
