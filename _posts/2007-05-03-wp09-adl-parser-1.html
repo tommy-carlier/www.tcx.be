@@ -1,0 +1,285 @@
+---
+layout: post
+title: "Writing a parser: ADL Parser – part 1"
+---
+
+<p>We’ll now write the Parser class:
+
+<pre><code>using System;
+using System.Collections.Generic;
+using System.Text;
+using System.IO;
+using TC.Adl.ParserNodes;
+
+namespace TC.Adl
+{
+  public class Parser
+  {
+    Tokenizer _tokenizer;
+    Token _currentToken;
+  }
+}</code></pre>
+
+<p>Our Parser class has only 2 fields: 
+<ul>
+<li><var>_tokenizer</var>: the <var>Tokenizer</var> to read tokens from.
+<li><var>_currentToken</var>: the current token (most recently read).
+</ul>
+
+<p>The constructor of the <var>Parser</var> class will accept a <var>TextReader</var> argument, create a <var>Tokenizer</var> that uses that <var>TextReader</var>, store it in <var>_tokenizer</var> and read the first token:
+
+<pre><code>public Parser(TextReader source)
+{
+  if (source == null) throw new ArgumentNullException("source");
+
+  _tokenizer = new Tokenizer(source);
+  ReadNextToken();
+}</code></pre>
+
+<p>Now we’ll add some private helper methods.
+
+<p>Reading a token is simple: just call <code>Tokenizer.ReadNextToken()</code>, which returns a <var>Token</var> or <var>null</var> at the end of the source code.
+
+<pre><code>private void ReadNextToken()
+{
+  _currentToken = _tokenizer.ReadNextToken();
+}</code></pre>
+
+<p>To determine if we’re at the end of the source, we just have to check the current token for <var>null</var>:
+
+<pre><code>private bool AtEndOfSource 
+{
+  get { return _currentToken == null; }
+}</code></pre>
+
+<p>We’ll need a method that throws an exception when the end of the source has been reached unexpectedly:
+
+<pre><code>private void CheckForUnexpectedEndOfSource()
+{
+  if (AtEndOfSource)
+  {
+    throw new ParserException("Unexpected end of source.");
+  }
+}</code></pre>
+
+<p>We’ll also need a method that verifies the current token and skips it:
+
+<pre><code>private void SkipExpected(TokenType type, string value)
+{
+  CheckForUnexpectedEndOfSource();
+
+  if (!_currentToken.Equals(type, value))
+  {
+    throw new ParserException("Expected '" + value + "'.");
+  }
+
+  ReadNextToken();
+}</code></pre>
+
+<p>Now that we’ve written the private helper methods, we can write the only public method: the <var>ReadNextStatement</var> method. This methods reads a statement and returns it. If we reach the end of the source, we return <var>null</var>, else we check the first token to determine the <a href="{% post_url 2007-04-28-wp08-adl-parser-node-types %}">type of statement</a>: 
+<ul>
+<li>If the current token is the word <var>if</var>, it’s an if-statement. 
+</li><li>If the current token is the word <var>while</var>, it’s a while-statement. 
+</li><li>If the current token is the word <var>for</var>, it’s a for-statement. 
+</li><li>If it’s any other word, we assume it’s an assignment or a function call.
+</ul>
+
+<pre><code>public Statement ReadNextStatement()
+{
+  if (AtEndOfSource)
+  {
+    return null;
+  }
+
+  // all the statements start with a word
+  if (_currentToken.Type != TokenType.Word)
+  {
+    throw new ParserException("Expected a statement.");
+  }
+
+  if (_currentToken.Value == "if")
+  {
+    return ParseIfStatement();
+  }
+
+  if (_currentToken.Value == "while")
+  {
+    return ParseWhileStatement();
+  }
+
+  if (_currentToken.Value == "for")
+  {
+    return ParseForStatement();
+  }
+
+  return ParseAssignmentOrFunctionCallStatement();
+}</code></pre>
+
+<p>An if-statement starts with the word <var>if</var>, followed by a condition, the word <var>then</var>, a block of statements, an optional block of statements prefixed with the word <var>else</var> and the words <var>end if</var>:
+
+<pre><code>IfStatement ParseIfStatement()
+{
+  ReadNextToken(); // skip 'if'
+
+  Expression condition = ParseExpression();
+
+  SkipExpected(TokenType.Word, "then"); // skip 'then'
+
+  List&lt;Statement&gt; trueStatements = new List&lt;Statement&gt;();
+  List&lt;Statement&gt; falseStatements = new List&lt;Statement&gt;();
+  List&lt;Statement&gt; statements = trueStatements;
+  Statement statement;
+
+  CheckForUnexpectedEndOfSource();
+  while (!_currentToken.Equals(TokenType.Word, "end"))
+  {
+    if (_currentToken.Equals(TokenType.Word, "else"))
+    {
+      ReadNextToken(); // skip 'else'
+      CheckForUnexpectedEndOfSource();
+      statements = falseStatements;
+    }
+
+    statement = ReadNextStatement();
+    if (statement != null)
+    {
+      statements.Add(statement);
+    }
+    else
+    {
+      throw new ParserException("Unexpected end of source.");
+    }
+  }
+
+  ReadNextToken(); // skip 'end'
+  SkipExpected(TokenType.Word, "if"); // skip 'if'
+
+  return new IfStatement(
+    condition,
+    new StatementCollection(trueStatements)
+    new StatementCollection(falseStatements));
+}</code></pre>
+
+<p>A while-statement starts with the word <var>while</var>, followed by a condition, the word <var>do</var>, a block of statements and the words <var>end while</var>:
+
+<pre><code>WhileStatement ParseWhileStatement()
+{
+  ReadNextToken(); // skip 'while'
+
+  Expression condition = ParseExpression();
+
+  SkipExpected(TokenType.Word, "do"); // skip 'do'
+
+  List&lt;Statement&gt; statements = new List&lt;Statement&gt;();
+  Statement statement;
+
+  CheckForUnexpectedEndOfSource();
+  while (!_currentToken.Equals(TokenType.Word, "end"))
+  {
+    statement = ReadNextStatement();
+    if (statement != null)
+    {
+      statements.Add(statement);
+    }
+    else
+    {
+      throw new ParserException("Unexpected end of source.");
+    }
+  }
+
+  ReadNextToken(); // skip 'end'
+  SkipExpected(TokenType.Word, "while"); // skip 'while'
+
+  return new WhileStatement(condition, new StatementCollection(statements));
+}</code></pre>
+
+<p>A for-statement starts with the word <var>for</var>, followed by a variable, the symbol <code>:=</code>, a start-value, the word <var>to</var>, an end-value, optionally the word <var>by</var> with a step-size, the word <var>do</var>, a block of statements and the words <var>end for</var>:
+
+<pre><code>ForStatement ParseForStatement()
+{
+  ReadNextToken(); // skip 'for'
+  CheckForUnexpectedEndOfSource();
+
+  if (_currentToken.Type != TokenType.Word)
+  {
+    throw new ParserException("Expected a variable.");
+  }
+
+  Variable variable = new Variable(_currentToken.Value);
+  ReadNextToken();
+
+  SkipExpected(TokenType.Symbol, ":="); // skip ':='
+  Expression startValue = ParseExpression();
+
+  SkipExpected(TokenType.Word, "to"); // skip 'to'
+  Expression endValue = ParseExpression();
+  CheckForUnexpectedEndOfSource();
+
+  Expression stepSize;
+  if (_currentToken.Equals(TokenType.Word, "by"))
+  {
+    ReadNextToken(); // skip 'by'
+    stepSize = ParseExpression();
+  }
+  else
+  {
+    stepSize = new IntegerConstant(1);
+  }
+
+  SkipExpected(TokenType.Word, "do");
+  
+  List&lt;Statement&gt; statements = new List&lt;Statement&gt;();
+  Statement statement;
+  
+  CheckForUnexpectedEndOfSource();
+  while (!_currentToken.Equals(TokenType.Word, "end"))
+  {
+    statement = ReadNextStatement();
+    if (statement != null)
+    {
+      statements.Add(statement);
+    }
+    else
+    {
+      throw new ParserException("Unexpected end of source.");
+    }
+  }
+
+  ReadNextToken(); // skip 'end'
+  SkipExpected(TokenType.Word, "for"); // skip 'for'
+
+  return new ForStatement(
+    variable, startValue, endValue, stepSize,
+    new StatementCollection(statements));
+}</code></pre>
+
+<p>An assignment and a function call statement both start with an identifier, so we’ll have to read the next token to determine if it’s an assignment or a function call statement:
+
+<pre><code>Statement ParseAssignmentOrFunctionCallStatement()
+{
+  Token token = _currentToken;
+  ReadNextToken();
+  CheckForUnexpectedEndOfSource();
+
+  if (_currentToken.Equals(TokenType.Symbol, ":="))
+  {
+    return ParseAssignment(new Variable(token.Value));
+  }
+
+  if (_currentToken.Equals(TokenType.Symbol, "("))
+  {
+    return new FunctionCallStatement(ParseFunctionCall(token.Value));
+  }
+
+  throw new ParserException("Expected a statement.");
+}</code></pre>
+
+<p>An assignment just has an expression after the <code>:=</code>:
+
+<pre><code>Assignment ParseAssignment(Variable variable)
+{
+    ReadNextToken(); // skip ':='
+    return new Assignment(variable, ParseExpression());
+}</code></pre>
+
+<p>In the next post, we’ll write the methods for parsing expression. 
