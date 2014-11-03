@@ -1,0 +1,9 @@
+---
+layout: post
+title: "PowerShell + Speech API"
+---
+
+<p>I just read <a href="http://blogs.msdn.com/b/marcelolr/archive/2008/01/31/say-you-say-me-say-task-complete.aspx">a blog post about using the Speech API in command-line scripts</a>. So I had to try it but instead of using JScript, I wrote it in <a href="http://technet.microsoft.com/en-us/scriptcenter/powershell.aspx">PowerShell</a>. It’s so easy and fun:
+  
+<pre><code>$v = New-Object -ComObject SAPI.SpVoice
+$v.Speak("Who let the dogs out?")</code></pre>
