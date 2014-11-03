@@ -1,0 +1,228 @@
+---
+layout: post
+title: "Writing a parser: ADL Parser – part 2"
+---
+
+<p>In <a title="Writing a parser: ADL Parser – part 1" href="{% post_url 2007-05-03-wp09-adl-parser-1 %}">the previous part</a> we wrote the first Parser methods, now we’ll write the methods for parsing expressions. In the <a href="{% post_url 2007-04-21-wp03-adl %}">introduction to ADL</a>, I showed the order in which expressions are evaluated. To parse expressions, we’ll reverse the order and assume that everything is an AND-expression (lowest precedence):
+
+<pre><code>Expression ParseExpression()
+{
+  return ParseAndExpression();
+}</code></pre>
+
+<p>An AND-expression consists of one or more OR-expressions, separated by <var>and</var> operators: <pre><code>Expression ParseAndExpression()
+{
+  Expression node = ParseOrExpression();
+
+  while (!AtEndOfSource &amp;&amp; _currentToken.Equals(TokenType.Word, "and"))
+  {
+    ReadNextToken(); // skip 'and'
+    node = new AndExpression(node, ParseOrExpression());
+  }
+
+  return node;
+}</code></pre>
+
+<p>An OR-expression consists of one or more comparisons, separated by <var>or</var> operators:
+
+<pre><code>Expression ParseOrExpression()
+{
+  Expression node = ParseComparison();
+
+  while (!AtEndOfSource &amp;&amp; _currentToken.Equals(TokenType.Word, "or"))
+  {
+    ReadNextToken(); // skip 'or'
+    node = new OrExpression(node, ParseComparison());
+  }
+
+  return node;
+}</code></pre>
+
+<p>A comparison is an additive expression, or 2 additive expressions separated by a comparison operator:
+<pre><code>Expression ParseComparison()
+{
+  Expression node = ParseAdditiveExpression();
+
+  if (!AtEndOfSource &amp;&amp; _currentToken.Type == TokenType.Symbol)
+  {
+    ComparisonOperator operator;
+    switch (_currentToken.Value)
+    {
+      case "==": operator = ComparisonOperator.Equal; break;
+      case "&lt;&gt;": operator = ComparisonOperator.NotEquals; break;
+      case "&lt;":  operator = ComparisonOperator.LessThan; break;
+      case "&gt;":  operator = ComparisonOperator.GreaterThan; break;
+      case "&lt;=": operator = ComparisonOperator.LessThanOrEqual; break;
+      case "&gt;=": operator = ComparisonOperator.GreaterThanOrEqual; break;
+      default: return node;
+    }
+    
+    ReadNextToken(); // skip comparison operator
+    return new Comparison(operator, node, ParseAdditiveExpression());
+  }
+  
+  return node;
+}</code></pre>
+
+<p>An additive expression consists of one or more multiplicative expressions, separated by <code>+</code> or <code>-</code> operators:
+<pre><code>Expression ParseAdditiveExpression()
+{
+  Expression node = ParseMultiplicativeExpression();
+
+  while (!AtEndOfSource)
+  {
+    if (_currentToken.Equals(TokenType.Symbol, "+"))
+    {
+      ReadNextToken(); // skip '+'
+      node = new Addition(node, ParseMultiplicativeExpression());
+    }
+    else if (_currentToken.Equals(TokenType.Symbol, "-"))
+    {
+      ReadNextToken(); // skip '-'
+      node = new Subtraction(node, ParseMultiplicativeExpression());
+    }
+    else break;
+  }
+
+  return node;
+}</code></pre>
+
+<p>A multiplicative expression consists of one or more unary expressions, separated by <code>*</code> or <code>/</code> operators:
+<pre><code>Expression ParseMultiplicativeExpression()
+{
+  Expression node = ParseUnaryExpression();
+
+  while (!AtEndOfSource)
+  {
+    if (_currentToken.Equals(TokenType.Symbol, "*"))
+    {
+      ReadNextToken(); // skip '*'
+      node = new Multiplication(node, ParseUnaryExpression());
+    }
+    else if (_currentToken.Equals(TokenType.Symbol, "/"))
+    {
+      ReadNextToken(); // skip '/'
+      node = new Division(node, ParseUnaryExpression());
+    }
+    else break;
+  }
+
+  return node;
+}</code></pre>
+
+<p>A unary expression is a base expression, optionally prefixed by a <code>-</code>, <code>+</code> or <var>not</var> operator:
+<pre><code>Expression ParseUnaryExpression()
+{
+  CheckForUnexpectedEndOfSource();
+
+  if (_currentToken.Equals(TokenType.Symbol, "-"))
+  {
+    ReadNextToken(); // skip '-'
+    return new Negation(ParseBaseExpression());
+  }
+  else if (_currentToken.Equals(TokenType.Word, "not"))
+  {
+    ReadNextToken(); // skip 'not'
+    return new NotExpression(ParseBaseExpression());
+  }
+  else if (_currentToken.Equals(TokenType.Symbol, "+"))
+  {
+    ReadNextToken(); // skip '+'
+  }
+
+  return ParseBaseExpression();
+}</code></pre>
+
+<p>A base expression is either an integer constant, a string constant, a variable, a function call or a group expression:
+<pre><code>Expression ParseBaseExpression()
+{
+  CheckForUnexpectedEndOfSource();
+
+  switch(_currentToken.Type)
+  {
+    case TokenType.Integer: return ParseIntegerConstant();
+    case TokenType.String: return ParseStringConstant();
+    case TokenType.Word: return ParseVariableOrFunctionCall();
+    default: // TokenType.Symbol
+      if (_currentToken.Value == "(")
+      {
+        return ParseGroupExpression();
+      }
+      else throw new ParserException("Expected an expression.");
+  }
+}</code></pre>
+
+<p>A group expression is an expression between parenthesis:
+<pre><code>Expression ParseGroupExpression()
+{
+  ReadNextToken(); // skip '('
+  Expression expression = ParseExpression();
+  SkipExpected(TokenType.Symbol, ")"); // skip ')'
+  return expression;
+}</code></pre>
+
+<p>A variable and a function call both start with an identifier. To disambiguate, we have to read the next token:
+<pre><code>Expression ParseVariableOrFunctionCall()
+{
+  string name = _currentToken.Value;
+  ReadNextToken();
+  if (!AtEndOfSource &amp;&amp; _currentToken.Equals(TokenType.Symbol, "("))
+  {
+    return ParseFunctionCall(name);
+  }
+  else
+  {
+    return new Variable(name);
+  }
+}</code></pre>
+
+<p>A string constant is just the read string token:
+<pre><code>Expression ParseStringConstant()
+{
+  string value = _currentToken.Value;
+  ReadNextToken(); // skip string constant
+  return new StringConstant(value);
+}</code></pre>
+
+<p>An integer constant has to be parsed from the string value:
+<pre><code>Expression ParseIntegerConstant()
+{
+  int value;
+  if (int.TryParse(_currentToken.Value, out value))
+  {
+    ReadNextToken(); // skip integer constant
+    return new IntegerConstant(value);
+  }
+  else throw new ParserException("Invalid integer constant " + _currentToken.Value);
+}</code></pre>
+
+<p>A function call consists of an identifier, followed by zero or more arguments between parentheses:
+<pre><code>FunctionCall ParseFunctionCall(string name)
+{
+  ReadNextToken(); // skip '('
+  CheckForUnexpectedEndOfSource();
+
+  List&lt;Expression&gt; arguments = new List&lt;Expression&gt;();
+  if (!_currentToken.Equals(TokenType.Symbol, ")")
+  {
+    arguments.Add(ParseExpression());
+    CheckForUnexpectedEndOfSource();
+
+    while (_currentToken.Equals(TokenType.Symbol, ","))
+    {
+      ReadNextToken(); // skip ','
+      arguments.Add(ParseExpression());
+      CheckForUnexpectedEndOfSource();
+    }
+
+    if (!_currentToken.Equals(TokenType.Symbol, ")")
+    {
+      throw new ParserException("Expected ')'.");
+    }
+  }
+
+  ReadNextToken(); // skip ')'
+  return new FunctionCall(name, arguments.ToArray());
+}</code></pre>
+
+<p>Now our parser is ready. To test the parser, I’ve created a test application that reads code from a TextBox, parses it and shows the parse tree in a TreeView. I’m not going to show the source code of the test application in this post, but you can download the complete Visual Studio 2005 solution with both projects (<var>TC.Adl</var> and <var>TC.Adl.Test</var>) <a href="https://app.box.com/s/9kidi2a2knibx1zs9ek2">here</a>. 
