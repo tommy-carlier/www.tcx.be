@@ -1,0 +1,10 @@
+---
+layout: post
+title: "TC Animation Library"
+---
+
+<p>I just released the source code of a Windows Forms animation library I wrote last weekend. I first didn’t want to release the source code because the animations looked terrible.
+
+<p>I knew the code I wrote was good and should work, but it ran horribly. The UI would just freeze when 1 animation ran; running multiple animations simultaneously was impossible. This morning I woke up and had a mad idea: to slow down the animation. The reason the UI would freeze was because all the animation steps were performed on the UI-thread and apparently the animation system flooded the UI-thread with work to do, so the normal UI-activities (painting controls, handling input, …) were severely delayed. By adding 1 line of code (<code>Thread.Sleep(5);</code>) to the animation loop, I managed to make the animations run fluently while keeping the UI responsive.
+
+<p>You can find the source code in the Channel 9 Sandbox, <a href="http://channel9.msdn.com/forums/sandbox/258660-TC-Animation-Library">here</a>.
