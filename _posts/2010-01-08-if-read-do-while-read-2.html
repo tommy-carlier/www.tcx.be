@@ -1,0 +1,53 @@
+---
+layout: post
+title: "if-read-do-while-read, part 2"
+---
+
+<p>I just received a comment on <a href="{% post_url 2009-12-29-if-read-do-while-read %}">my previous post about the <i>if-read-do-while-read</i> construction</a>. Tanton suggests that I could create a method that encapsulates this construction, using delegates for the <i>before</i>, <i>during</i> and <i>after</i> steps. Here’s a quick version of an extension method on <var>IDataReader</var> that does this:
+
+<pre><code>public static class DataReaderExtensions
+{
+  public static void ReadAll(
+    this IDataReader reader,
+    Action before,
+    Action&lt;IDataRecord&gt; during,
+    Action after)
+  {
+    if (reader == null) throw new ArgumentNullException("reader");
+
+    if (reader.Read())
+    {
+      if (before != null)
+      {
+        before();
+      }
+      
+      do
+      {
+        if (during != null)
+        {
+          during(reader);
+        }
+      }
+      while (reader.Read());
+      
+      if (after != null)
+      {
+        after();
+      }
+    }
+  }
+}</code></pre>
+
+<p>And here’s a rewrite of the HTML-example, using this extension method:
+
+<pre><code>StringBuilder html = new StringBuilder();
+using (IDataReader reader = command.ExecuteReader())
+{
+  reader.ReadAll(
+    () => html.Append("&lt;ul&gt;"),
+    record => html.AppendFormat("&lt;li&gt;{0}", record.GetValue(0)),
+    () => html.Append("&lt;/ul&gt;"));
+}</code></pre>
+
+<p>It’s surely shorter, but I’m not entirely convinced it’s cleaner.

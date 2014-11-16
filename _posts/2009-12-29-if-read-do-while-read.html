@@ -1,0 +1,83 @@
+---
+layout: post
+title: "if-read-do-while-read"
+---
+
+<p>Here’s a construction I occasionally need when reading items from a <a href="http://msdn.microsoft.com/en-us/library/system.data.idatareader.aspx"><var>IDataReader</var></a>: to execute some code before and after reading through the <var>IDataReader</var>, but only if there are rows in the <var>IDataReader</var>.
+
+<p>One option is to use a boolean variable that determines whether the collection has items, like this:
+<pre><code>using (IDataReader reader = command.ExecuteReader())
+{
+  bool hasRows = false;
+  while (reader.Read())
+  {
+    if (!hasRows)
+    {
+      hasRows = true;
+      Before();
+    }
+
+    During();
+  }
+
+  if (hasRows)
+  {
+    After();
+  }
+}</code></pre>
+
+<p>But the following construction (which I call the <i>if-read-do-while-read</i> construction) does not need the boolean variable and is cleaner:
+
+<pre><code>using (IDataReader reader = command.ExecuteReader())
+{
+  if (reader.Read())
+  {
+    Before();
+
+    do
+    {
+      During();
+    }
+    while (reader.Read());
+
+    After();
+  }
+}</code></pre>
+
+<p>Here’s a practical example: creating HTML-code with a UL-list for the data, but only if there are items:
+<pre><code>StringBuilder html = new StringBuilder();
+using (IDataReader reader = command.ExecuteReader())
+{
+  if (reader.Read())
+  {
+    html.Append("&lt;ul&gt;");
+
+    do
+    {
+      html.AppendFormat(
+        "&lt;li&gt;{0}",
+        reader.GetValue(0));
+    }
+    while (reader.Read());
+
+    html.Append("&lt;/ul&gt;");
+  }
+}</code></pre>
+
+<p>You could use the same technique on an <var>IEnumerable&lt;T&gt;</var>, but you wouldn’t be able to use <var>foreach</var> anymore:
+<pre><code>using (var enumerator = collection.GetEnumerator())
+{
+  if (enumerator.MoveNext())
+  {
+    Before();
+
+    do
+    {
+      var item = enumerator.Current;
+      During();
+    }
+    while (enumerator.MoveNext());
+
+    After();
+  }
+}</code></pre>
