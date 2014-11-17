@@ -52,7 +52,8 @@ body
     font-size: 80%
     padding: 0.5em 1em
 
-.page
+tc-page
+  display: block
   min-height: 65%
   background: $page-background
   color: $page-text-color
@@ -182,7 +183,7 @@ tc-byline
   +prefixed(user-select, none)
 
 @media screen
-  .page .download
+  tc-page .download
     text-decoration: none
     text-align: center
     line-height: 200%
@@ -225,7 +226,7 @@ tc-byline
     background: transparent
     color: #000
   
-  .page
+  tc-page
     min-height: none
     border: none
     box-shadow: none
