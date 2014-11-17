@@ -74,7 +74,8 @@ tc-page
   ::selection
     background: $selection-background
   
-.content
+tc-content
+  display: block
   margin: 0 auto
   max-width: 40em
   padding: 2em 1em
@@ -87,7 +88,7 @@ tc-page
       margin-left: 1.5em
 
 @media screen
-  .content
+  tc-content
     &> h1, &> h2
       text-shadow: $content-heading-shadow
       
@@ -222,7 +223,7 @@ tc-byline
   nav
     display: none
   
-  html, .content, article
+  html, tc-content, article
     background: transparent
     color: #000
   
@@ -237,7 +238,7 @@ tc-byline
       transition: none
       border: none !important
   
-  .content
+  tc-content
     max-width: none
     padding: 0
     
@@ -292,7 +293,7 @@ tc-byline
     &> footer
       font-size: 100%
       
-  .content
+  tc-content
     font-size: 12pt
     line-height: 150%
     padding: 1em 0.7em
