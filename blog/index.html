@@ -4,7 +4,7 @@ title: "Blog"
 ---
 
 <h1>{{page.title}}</h1>
-<div class="list">
+<tc-list>
 {% for post in paginator.posts %}
   <article>
     <header>
@@ -14,7 +14,7 @@ title: "Blog"
     {{post.content}}
   </article>
 {% endfor %}
-</div>
+</tc-list>
 
 <footer>
   {% if paginator.previous_page %}<a href="{{paginator.previous_page_path | prepend:site.baseUrl | replace:'//','/' | replace:'/index.html','/'}}">« Newer posts</a>{% endif %}

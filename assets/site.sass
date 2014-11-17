@@ -86,6 +86,9 @@ tc-content
     &> a
       display: inline-block
       margin-left: 1.5em
+      
+tc-list
+  display: block
 
 @media screen
   tc-content
@@ -131,10 +134,10 @@ h1, h2
 h1:first-child
   margin-top: 0
 
-h2, .list h1
+h2, tc-list h1
   font-size: 150%
 
-.list h2
+tc-list h2
   font-size: 130%
 
 h1 + h2,
@@ -307,7 +310,7 @@ tc-byline
   h1
     font-size: 150%
   
-  h2, .list h1
+  h2, tc-list h1
     font-size: 120%
   
   .download
