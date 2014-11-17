@@ -4,7 +4,7 @@ title: "for-i-repeat"
 tags: FOR_I_REPEAT
 ---
 
-<p>I just finished developing a small tool called <i>for-i-repeat</i> that can duplicate a text-fragment a number of times using a counter. The reason I needed this is for the following scenario: at work we have a machine that has 50 databases that all have the same schema, but different data. If I want to modify the schema of all 50 databases, I create a SQL script that applies the modifications to 1 database, put USE Database01 in front of it, and run it 50 times, each time modifying the USE-statement with the next database number. <i>for-i-repeat</i> allows me to convert this input:
+<p>I just finished developing a small tool called <a href="{{site.url}}/projects/for-i-repeat/">for-i-repeat</a> that can duplicate a text-fragment a number of times using a counter. The reason I needed this is for the following scenario: at work we have a machine that has 50 databases that all have the same schema, but different data. If I want to modify the schema of all 50 databases, I create a SQL script that applies the modifications to 1 database, put USE Database01 in front of it, and run it 50 times, each time modifying the USE-statement with the next database number. <i>for-i-repeat</i> allows me to convert this input:
 
 <pre><code>USE Database{0:00}
 ALTER TABLE …</code></pre>
