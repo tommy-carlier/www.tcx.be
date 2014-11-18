@@ -5,6 +5,9 @@ permalink: /blog/:year/:title/
 paginate: 5
 paginate_path: /blog/:num.html
 
+statcounter_project: 10140999
+statcounter_security: c0a61708
+
 sass:
   sass_dir: assets/_sass
   style: :compressed
