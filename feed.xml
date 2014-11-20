@@ -3,7 +3,8 @@
 <?xml version="1.0"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>{{site.title | xml_escape}}</title>
+    <title>{{site.title | xml_escape}}: Blog</title>
+    <description>Tommy Carlier’s blog</description>
     <link>{{site.url}}</link>
     <atom:link href="{{site.url}}/feed.xml" rel="self" type="application/rss+xml" />
     {% for post in site.posts limit:20 %}
