@@ -10,6 +10,7 @@ layout: default
   <main itemprop="articleBody">{{content}}</main>
 </article>
 <footer>
-  {% if page.next %}<div><a href="{{page.next.url}}">« {{page.next.date | date:"%F"}}: {{page.next.title}}</a></div>{% endif %}
-  {% if page.previous %}<div><a href="{{page.previous.url}}">» {{page.previous.date | date:"%F"}}: {{page.previous.title}}</a></div>{% endif %}
+  {% if page.next %}<a href="{{page.next.url}}">« {{page.next.date | date:"%F"}}: {{page.next.title}}</a>{% endif %}
+  {% if page.next or page.previous %}<br>{% endif %}
+  {% if page.previous %}<a href="{{page.previous.url}}">» {{page.previous.date | date:"%F"}}: {{page.previous.title}}</a>{% endif %}
 </footer>
