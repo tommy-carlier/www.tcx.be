@@ -5,10 +5,10 @@
   "use strict";
   
   // set target to _blank for all external hyperlinks
-  var hn = location.hostname;
+  var h = location.host;
   for (var xs = d.links, i = xs.length; i--; ){
     var x = xs[i];
-    if (x.hostname != hn){
+    if (x.host != h){
       x.target = '_blank';
     }
   }
