@@ -17,7 +17,7 @@ title: "Blog"
 </tc-list>
 
 <footer>
-  {% if paginator.previous_page %}<a href="{{paginator.previous_page_path | prepend:site.baseUrl | replace:'//','/' | replace:'/index.html','/'}}">« Newer posts</a>{% endif %}
+  {% if paginator.previous_page %}<a href="{{paginator.previous_page_path | prepend:site.baseUrl | replace:'//','/' | replace:'/index.html','/'}}" rel=prev>« Newer posts</a>{% endif %}
   <a href="{{site.baseUrl}}blog/archive.html">Archive</a>
-  {% if paginator.next_page %}<a href="{{paginator.next_page_path | prepend:site.baseUrl | replace:'//','/' | replace:'/index.html','/'}}">Older posts »</a>{% endif %}
+  {% if paginator.next_page %}<a href="{{paginator.next_page_path | prepend:site.baseUrl | replace:'//','/' | replace:'/index.html','/'}}" rel=prev>Older posts »</a>{% endif %}
 </footer>
