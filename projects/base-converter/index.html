@@ -10,9 +10,9 @@ title: "Base Converter"
   <p><a href="{{project.download}}" class="download"><b>Download</b> <nobr>{{project.title}} {{project.version}}</nobr>{% if project.fileSize %} <nobr>({{project.fileSize}})</nobr>{% endif %}</a></p>
   <p><img src="{{site.baseUrl}}projects/base-converter/base-converter-screenshot.png" alt="Base Converter screenshot"></p>
   <h2>Version History</h2>
-  <dl>
+  <dl class=dates>
   {% for post in site.tags.BASE_CONVERTER %}
-    <dt class="date">{{post.date | date:"%F"}}</dt><dd><a href="{{post.url}}">{{post.title}}</a></dd>
+    <dt>{{post.date | date:"%F"}}</dt><dd><a href="{{post.url}}">{{post.title}}</a></dd>
   {% endfor %}
   </dl>
 </article>
