@@ -1,11 +1,11 @@
-<pre><code>using System;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
  
 namespace TC.WinForms
 {
-  /// &lt;summary&gt;Represents a text box control for entering passwords.&lt;/summary&gt;
+  /// <summary>Represents a text box control for entering passwords.</summary>
   [ToolboxItem(true), ToolboxBitmap(typeof(TextBox))]
   public class PasswordTextBox : TextBox
   {
@@ -16,14 +16,14 @@ namespace TC.WinForms
     
     private bool _accessText;
     
-    /// &lt;summary&gt;Initializes a new instance of the &lt;see cref="T:PasswordTextBox" /&gt; class.&lt;/summary&gt;
+    /// <summary>Initializes a new instance of the <see cref="T:PasswordTextBox" /> class.</summary>
     public PasswordTextBox()
     {
       UseSystemPasswordChar = true;
     }
  
-    /// &lt;summary&gt;Gets or sets the current text in the &lt;see cref="T:TextBox"/&gt;.&lt;/summary&gt;
-    /// &lt;returns&gt;The text displayed in the control.&lt;/returns&gt;
+    /// <summary>Gets or sets the current text in the <see cref="T:TextBox"/>.</summary>
+    /// <returns>The text displayed in the control.</returns>
     public override string Text
     {
       get
@@ -40,8 +40,8 @@ namespace TC.WinForms
       }
     }
  
-    /// &lt;summary&gt;Gets the length of text in the control.&lt;/summary&gt;
-    /// &lt;returns&gt;The number of characters contained in the text of the control.&lt;/returns&gt;
+    /// <summary>Gets the length of text in the control.</summary>
+    /// <returns>The number of characters contained in the text of the control.</returns>
     public override int TextLength
     {
       get
@@ -52,8 +52,8 @@ namespace TC.WinForms
       }
     }
  
-    /// &lt;summary&gt;Processes Windows message.&lt;/summary&gt;
-    /// &lt;param name="m"&gt;The Windows &lt;see cref="T:Message" /&gt; to process.&lt;/param&gt;
+    /// <summary>Processes Windows message.</summary>
+    /// <param name="m">The Windows <see cref="T:Message" /> to process.</param>
     protected override void WndProc(ref Message m)
     {
       switch (m.Msg)
@@ -72,4 +72,4 @@ namespace TC.WinForms
       base.WndProc(ref m);
     }
   }
-}</code></pre>
+}
