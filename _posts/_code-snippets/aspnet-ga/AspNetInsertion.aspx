@@ -1,0 +1,1 @@
+<%= MyNamespace.SiteUtilities.RenderGoogleAnalyticsScript() %>

@@ -1,4 +1,4 @@
-<pre><code>using System;
+using System;
 using System.Web;
  
 namespace TC
@@ -9,7 +9,7 @@ namespace TC
     {
       return string.IsNullOrEmpty(googleAnalyticsID)
         ? ""
-        : "&lt;script&gt;"
+        : "<script>"
         + "var _gaq=_gaq||[];"
         + "_gaq.push(['_setAccount','" + googleAnalyticsID + "']);"
         + "_gaq.push(['_trackPageview']);"
@@ -21,7 +21,7 @@ namespace TC
         + (HttpContext.Current.Request.IsSecureConnection
             ? "https://ssl" : "http://www")
         + ".google-analytics.com/ga.js';"
-        + "e.parentNode.insertBefore(x,e)}(document,'script'))&lt;/script&gt;";
+        + "e.parentNode.insertBefore(x,e)}(document,'script'))</script>";
     }
   }
-}</code></pre>
+}

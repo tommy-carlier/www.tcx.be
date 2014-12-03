@@ -3,15 +3,8 @@ layout: post
 title: "Google Analytics in ASP.NET"
 ---
 
-<p>Here’s a little C# function I occasionally use to insert a <a href="http://www.google.com/analytics/">Google Analytics</a>-snippet in an ASP.NET website. It takes a Google Analytics-ID as an argument, which you can leave blank in debug-mode (to not render the snippet). It uses the recently introduced asynchronous loading method (which doesn’t block the rendering of your website). It’s not literally the same snippet you can find on the Google Analytics site, but it does the same thing (only with a slightly smaller dynamically built JavaScript-snippet). {% include code-snippets/GoogleAnalyticsAspNet.cs.html %}
+<p>Here’s a little C# function I occasionally use to insert a <a href="http://www.google.com/analytics/">Google Analytics</a>-snippet in an ASP.NET website. It takes a Google Analytics-ID as an argument, which you can leave blank in debug-mode (to not render the snippet). It uses the recently introduced asynchronous loading method (which doesn’t block the rendering of your website). It’s not literally the same snippet you can find on the Google Analytics site, but it does the same thing (only with a slightly smaller dynamically built JavaScript-snippet). {% include code-snippet-csharp.html file="aspnet-ga/RenderScript.cs" %}
 
-<p>I usually keep the Google Analytics-ID in my application settings (<var>web.config</var>), which allows me to use a different one for different deployments (or an empty one for debugging). So I have a second function (in a <var>SiteUtilities</var>-class) that doesn’t take an argument, but takes the Google Analytics-ID from the settings:
+<p>I usually keep the Google Analytics-ID in my application settings (<var>web.config</var>), which allows me to use a different one for different deployments (or an empty one for debugging). So I have a second function (in a <var>SiteUtilities</var>-class) that doesn’t take an argument, but takes the Google Analytics-ID from the settings: {% include code-snippet-csharp.html file="aspnet-ga/RenderScriptFromSettings.cs" %}
   
-<pre><code>public static string RenderGoogleAnalyticsScript()
-{
-  return TC.GoogleAnalytics.RenderScript(Settings.Default.GoogleAnalyticsID);
-}</code></pre>
-
-<p>In my master-page, I then use the following snippet to insert it into the body of the page (note that you have to use the fully qualified type name, including namespace):
-  
-<pre><code>&lt;%= MyNamespace.SiteUtilities.RenderGoogleAnalyticsScript() %&gt;</code></pre>
+<p>In my master-page, I then use the following snippet to insert it into the body of the page (note that you have to use the fully qualified type name, including namespace): {% include code-snippet-csharp.html file="aspnet-ga/AspNetInsertion.aspx" %}
