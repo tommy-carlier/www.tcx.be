@@ -1,4 +1,4 @@
-<pre><code>public class MyDerivedDisposableType : MyDisposableType
+public class MyDerivedDisposableType : MyDisposableType
 {
   protected override void Dispose(bool disposing)
   {
@@ -18,4 +18,4 @@
       base.Dispose(disposing);
     }
   }
-}</code></pre>
+}

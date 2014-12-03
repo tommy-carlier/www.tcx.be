@@ -1,4 +1,4 @@
-<pre><code>using (var stream = new FileStream(fileName, FileMode.Create, FileAccess.Write))
+using (var stream = new FileStream(fileName, FileMode.Create, FileAccess.Write))
 {
   using (var writer = new StreamWriter(stream, Encoding.UTF8))
   {
@@ -7,4 +7,4 @@
       writer.WriteLine(line);
     }
   }
-}</code></pre>
+}

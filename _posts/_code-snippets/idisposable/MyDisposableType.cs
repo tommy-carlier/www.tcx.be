@@ -1,4 +1,4 @@
-<pre><code>public class MyDisposableType : IDisposable
+public class MyDisposableType : IDisposable
 {
   ~MyDisposableType()
   {
@@ -25,4 +25,4 @@
  
     // clean up unmanaged resources
   }
-}</code></pre>
+}

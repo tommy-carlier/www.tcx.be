@@ -1,4 +1,4 @@
-<pre><code>public sealed class MySealedDisposableType : IDisposable
+public sealed class MySealedDisposableType : IDisposable
 {
   ~MySealedDisposableType()
   {
@@ -25,4 +25,4 @@
  
     // clean up unmanaged resources
   }
-}</code></pre>
+}

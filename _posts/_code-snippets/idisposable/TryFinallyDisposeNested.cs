@@ -1,4 +1,4 @@
-<pre><code>var stream = new FileStream(fileName, FileMode.Create, FileAccess.Write);
+var stream = new FileStream(fileName, FileMode.Create, FileAccess.Write);
 try
 {
   var writer = new StreamWriter(stream, Encoding.UTF8);
@@ -17,4 +17,4 @@ try
 finally
 {
   stream.Dispose();
-}</code></pre>
+}
