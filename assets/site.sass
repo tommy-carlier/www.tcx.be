@@ -52,8 +52,7 @@ body
     font-size: 80%
     padding: 0.5em 1em
 
-tc-page
-  display: block
+.page
   min-height: 65%
   background: $page-background
   color: $page-text-color
@@ -74,8 +73,7 @@ tc-page
   ::selection
     background: $selection-background
   
-tc-content
-  display: block
+.content
   margin: 0 auto
   max-width: 40em
   padding: 2em 1em
@@ -91,11 +89,8 @@ tc-content
       overflow: hidden
       text-overflow: ellipsis
       
-tc-list
-  display: block
-
 @media screen
-  tc-content
+  .content
     &> h1, &> h2
       text-shadow: $content-heading-shadow
 
@@ -138,10 +133,10 @@ h1, h2
 h1:first-child
   margin-top: 0
 
-h2, tc-list h1
+h2, .list h1
   font-size: 150%
 
-tc-list h2
+.list h2
   font-size: 130%
 
 h1 + h2,
@@ -180,8 +175,7 @@ article
   &:last-child
     margin-bottom: 1em
 
-tc-byline
-  display: block
+.byline
   font: $byline-font
   opacity: 0.6
 
@@ -191,7 +185,7 @@ tc-byline
   +prefixed(user-select, none)
 
 @media screen
-  tc-page .download
+  .page .download
     text-decoration: none
     text-align: center
     line-height: 200%
@@ -230,11 +224,11 @@ tc-byline
   nav
     display: none
   
-  html, tc-content, article
+  html, .content, article
     background: transparent
     color: #000
   
-  tc-page
+  .page
     min-height: none
     border: none
     box-shadow: none
@@ -245,7 +239,7 @@ tc-byline
       transition: none
       border: none !important
   
-  tc-content
+  .content
     max-width: none
     padding: 0
     
@@ -257,7 +251,7 @@ tc-byline
     border: none
     padding: 0
   
-  h1, h2, h3, tc-byline
+  h1, h2, h3, .byline
     page-break-after: avoid
   
   p + pre
@@ -277,7 +271,7 @@ tc-byline
   code, kbd, var
     font-size: 11pt
   
-  tc-byline
+  .byline
     opacity: 1
   
   .download
@@ -300,7 +294,7 @@ tc-byline
     &> footer
       font-size: 100%
       
-  tc-content
+  .content
     font-size: 12pt
     line-height: 150%
     padding: 1em 0.7em
@@ -314,7 +308,7 @@ tc-byline
   h1
     font-size: 150%
   
-  h2, tc-list h1
+  h2, .list h1
     font-size: 120%
   
   .download

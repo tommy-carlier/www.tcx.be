@@ -8,7 +8,7 @@
   <link rel=stylesheet href="{{site.baseUrl}}assets/site.css">
   <link rel=canonical href="{{site.url}}{{page.url | replace:'index.html',''}}">
   <link rel=alternate type="application/rss+xml" href="{{site.baseUrl}}feed.xml">
-  <!--[if lt IE 9]><script>(function(){for(var a='abbr,article,aside,figure,footer,header,main,nav,section,time,tc-page,tc-content,tc-byline,tc-list'.split(','),i=a.length;i-=1;)document.createElement(a[i])}())</script><![endif]-->
+  <!--[if lt IE 9]><script>(function(){for(var a='abbr,article,aside,figure,footer,header,main,nav,section,time'.split(','),i=a.length;i-=1;)document.createElement(a[i])}())</script><![endif]-->
 </head>
 <body>
   <header>
@@ -20,9 +20,9 @@
       <li><a href="{{site.baseUrl}}about/" rel=author>About</a>
     </ul></nav>
   </header>
-  <tc-page>
-    <tc-content>{{content}}</tc-content>
-  </tc-page>
+  <div class=page>
+    <div class=content>{{content}}</div>
+  </div>
   <footer>© 2004–{{site.time | date:'%Y'}} Tommy Carlier</footer>
   <script src="{{site.baseUrl}}assets/site.js"></script>
 {% include statcounter.html %}
