@@ -4,10 +4,11 @@ title: "Visual Dooby"
 ---
 
 {% assign project = site.data.projects | where:"id","visual-dooby" | first %}
-<article>
-  <h1>{{project.title}} <small>{{project.version}}</small></h1>
-  <p>{{project.description}}</p>
-  <p><a href="{{project.download}}" class=download><b>Download</b> <nobr>{{project.title}} {{project.version}}</nobr>{% if project.fileSize %} <nobr>({{project.fileSize}})</nobr>{% endif %}</a></p>
+<article itemscope itemtype="http://schema.org/SoftwareApplication">
+  <h1 itemprop=name>{{project.title}}</h1>
+  <div class=byline>Version <span itemprop=softwareVersion>{{project.version}}</span> – <span itemprop=operatingSystem>{{project.os}}</span></div>
+  <p itemprop=description>{{project.description}}</p>
+  <p><a href="{{project.download}}" class=download itemprop=downloadUrl><b>Download</b> <nobr>{{project.title}} {{project.version}}</nobr>{% if project.fileSize %} <nobr>(<span  itemprop=fileSize>{{project.fileSize}}</span>)</nobr>{% endif %}</a></p>
   <h2>Version History</h2>
   <dl class=dates>
   {% for post in site.tags.VISUAL_DOOBY %}
