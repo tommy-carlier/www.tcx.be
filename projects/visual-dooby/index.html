@@ -1,7 +1,6 @@
 ---
 layout: default
 title: "Visual Dooby"
-projectTags: VISUAL_DOOBY
 ---
 
 {% assign project = site.data.projects | where:"id","visual-dooby" | first %}
@@ -12,7 +11,7 @@ projectTags: VISUAL_DOOBY
   <p><a href="{{project.download}}" class=download itemprop=downloadUrl><b>Download</b> <nobr>{{project.title}} {{project.version}}</nobr>{% if project.fileSize %} <nobr>(<span  itemprop=fileSize>{{project.fileSize}}</span>)</nobr>{% endif %}</a></p>
   <h2>Version History</h2>
   <dl class=dates>
-  {% for post in site.tags.{{page.projectTags}} %}
+  {% for post in site.tags.VISUAL_DOOBY %}
     <dt>{{post.date | date:"%F"}}</dt><dd><a href="{{post.url}}">{{post.title}}</a></dd>
   {% endfor %}
   </dl>
