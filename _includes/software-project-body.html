@@ -1,7 +1,6 @@
 {% assign project = site.data.projects | where:"id",{{include.projectID}} | first %}
-<article itemscope itemtype="http://schema.org/SoftwareApplication">
-  <h1 itemprop=name>{{project.title}}</h1>
-  <div class=byline>Version <span itemprop=softwareVersion>{{project.version}}</span> – <span itemprop=operatingSystem>{{project.os}}</span></div>
-  <p itemprop=description>{{project.description}}</p>
-  <p><a href="{{project.download}}" class=download itemprop=downloadUrl><b>Download</b> <nobr>{{project.title}} {{project.version}}</nobr>{% if project.fileSize %} <nobr>(<span  itemprop=fileSize>{{project.fileSize}}</span>)</nobr>{% endif %}</a></p>
-  {% if project.screenshot %}<p><img src="{{site.baseUrl}}projects/{{project.id}}/{{project.screenshot}}" alt="{{project.title}} screenshot" itemprop=screenshot></p>{% endif %}
+<h1 itemprop=name>{{project.title}}</h1>
+<div class=byline>Version <span itemprop=softwareVersion>{{project.version}}</span> – <span itemprop=operatingSystem>{{project.os}}</span></div>
+<p itemprop=description>{{project.description}}</p>
+<p><a href="{{project.download}}" class=download itemprop=downloadUrl><b>Download</b> <nobr>{{project.title}} {{project.version}}</nobr>{% if project.fileSize %} <nobr>(<span  itemprop=fileSize>{{project.fileSize}}</span>)</nobr>{% endif %}</a></p>
+{% if project.screenshot %}<p><img src="{{site.baseUrl}}projects/{{project.id}}/{{project.screenshot}}" alt="{{project.title}} screenshot" itemprop=screenshot></p>{% endif %}
