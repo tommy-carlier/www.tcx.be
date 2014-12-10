@@ -3,14 +3,16 @@ layout: card-page
 title: "About"
 ---
 
-<img src="{{site.baseUrl}}assets/tommy.jpg" alt="Tommy Carlier" id=about-picture>
-<p>My name is Tommy Carlier, I’m a Belgian software developer.</p>
+<div itemscope itemtype="http://schema.org/Person">
+<img src="{{site.baseUrl}}assets/tommy.jpg" alt="Tommy Carlier" id=about-picture itemprop=image>
+  <p>My name is <span itemprop=name>Tommy Carlier</span>, I’m a Belgian <span itemprop=jobTitle>software developer</span>.</p>
 <dl>
   <dt>Website</dt><dd><a href="{{site.baseUrl}}">www.tcx.be</a></dd>
   <dt>RSS</dt><dd><a href="{{site.baseUrl}}feed.xml">{{site.baseUrl}}feed.xml</a></dd>
   <dt>Location</dt><dd>Diksmuide, Belgium</dd>
   <dt>Profiles</dt>
-  <dd><a href="https://twitter.com/tommycarlier">Twitter @tommycarlier</a></dd>
-  <dd><a href="https://github.com/tommy-carlier">GitHub</a></dd>
-  <dd><a href="https://stackexchange.com/users/20500/tommy-carlier">Stack Exchange</a></dd>
+  <dd><a href="https://twitter.com/tommycarlier" itemprop=sameAs>Twitter @tommycarlier</a></dd>
+  <dd><a href="https://github.com/tommy-carlier" itemprop=sameAs>GitHub</a></dd>
+  <dd><a href="https://stackexchange.com/users/20500/tommy-carlier" itemprop=sameAs>Stack Exchange</a></dd>
 </dl>
+</div>

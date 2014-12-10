@@ -8,7 +8,7 @@ title: "Calctor"
   <h1 itemprop=name>{{project.title}}</h1>
   <div class=byline>Version <span itemprop=softwareVersion>{{project.version}}</span> – <span itemprop=operatingSystem>{{project.os}}</span></div>
   <p itemprop=description>{{project.description}}</p>
-  <p><a href="{{project.download}}" class=download itemprop=downloadUrl><b>Download</b> <nobr>{{project.title}} {{project.version}}</nobr>{% if project.fileSize %} <nobr itemprop=fileSize>({{project.fileSize}})</nobr>{% endif %}</a></p>
+  <p><a href="{{project.download}}" class=download itemprop=downloadUrl><b>Download</b> <nobr>{{project.title}} {{project.version}}</nobr>{% if project.fileSize %} <nobr>(<span  itemprop=fileSize>{{project.fileSize}}</span>)</nobr>{% endif %}</a></p>
   <p><img src="{{site.baseUrl}}projects/calctor/calctor-screenshot.png" alt="Calctor screenshot" itemprop=screenshot></p>
   <h2>Version History</h2>
   <dl class=dates>
