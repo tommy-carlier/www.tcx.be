@@ -11,9 +11,9 @@
   <!--[if lt IE 9]><script>(function(){for(var a='abbr,article,aside,figure,footer,header,main,nav,section,time'.split(','),i=a.length;i-=1;)document.createElement(a[i])}())</script><![endif]-->
 </head>
 <body>
-  <header>
+  <header role=banner>
     <a href="{{site.baseUrl}}" rel=home>{{site.title}}</a>
-    <nav><ul>
+    <nav role=navigation><ul>
       <li><a href="{{site.baseUrl}}blog/">Blog</a>
       <li><a href="{{site.baseUrl}}how-to/">How to…</a>
       <li><a href="{{site.baseUrl}}projects/">Projects</a>
@@ -21,7 +21,7 @@
     </ul></nav>
   </header>
   <div class=page>
-    <div class=content>{{content}}</div>
+    <div role=main class=content>{{content}}</div>
   </div>
   <footer>© 2004–{{site.time | date:'%Y'}} Tommy Carlier</footer>
   <script src="{{site.baseUrl}}assets/site.js"></script>
