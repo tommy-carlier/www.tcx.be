@@ -12,9 +12,8 @@
   }
   
   // set current year in copyright footer
-  var q = d.querySelector;
-  if (q){
-    x = q('body>footer>time');
+  if (d.querySelector){
+    x = d.querySelector('body>footer>time');
     if (x){
       x.innerHTML = (new Date()).getFullYear();
     }
