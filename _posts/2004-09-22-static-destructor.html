@@ -3,7 +3,7 @@ layout: post
 title: "Static destructor in C#"
 ---
 
-<p>C# (and .NET in general) offers static constructors for classes, but why are there no <b>static destructors</b>? I needed such a static destructor for a class that had to clean up resources. So I created a little helper-class that adds <i>static destructor</i>-functionality to a class:
+<p>C# (and .NET in general) offers static constructors for classes, but why are there no <i>static destructors</i>? I needed such a static destructor for a class that had to clean up resources. So I created a little helper-class that adds <i>static destructor</i>-functionality to a class:
 <pre><code>public delegate void DestructorDelegate();
 
 public sealed class Destructor
