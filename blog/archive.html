@@ -3,8 +3,8 @@ layout: card-page
 title: "Blog archive"
 ---
 
-<dl class=dates>
+<table class=dates>
 {% for post in site.posts %}
-  <dt>{{post.date | date:'%F'}}</dt><dd><a href="{{post.url}}">{{post.title}}</a></dd>
+<tr><th>{{post.date | date:'%F'}}<td><a href="{{post.url}}">{{post.title}}</a></tr>
 {% endfor %}
-</dl>
+</table>
