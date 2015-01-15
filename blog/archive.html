@@ -6,7 +6,7 @@ title: "Blog archive"
 <table>
 {% for post in site.posts %}
 {% capture currentYear %}{{post.date | date:'%Y'}}{% endcapture %}
-{% if currentYear != prevYear %}<thead><tr><th colspan=2>{{currentYear}}<tbody>{% capture prevYear %}{{currentYear}}{% endcapture %}{% endif %}
+{% if currentYear != prevYear %}<thead><tr><th colspan=2><h2>{{currentYear}}</h2><tbody>{% capture prevYear %}{{currentYear}}{% endcapture %}{% endif %}
 <tr><th>{{post.date | date:'%F'}}<td><a href="{{post.url}}">{{post.title}}</a></tr>
 {% endfor %}
 </table>
