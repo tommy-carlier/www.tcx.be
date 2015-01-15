@@ -6,9 +6,9 @@ title: "Calctor"
 <article itemscope itemtype="http://schema.org/SoftwareApplication">
   {% include software-project-body.html projectID="calctor" %}
   <h2>Version History</h2>
-  <dl class=dates>
+  <table>
   {% for post in site.tags.CALCTOR %}
-    <dt>{{post.date | date:"%F"}}</dt><dd><a href="{{post.url}}">{{post.title}}</a></dd>
+    <tr><th>{{post.date | date:"%F"}}<td><a href="{{post.url}}">{{post.title}}</a></tr>
   {% endfor %}
-  </dl>
+  </table>
 </article>
