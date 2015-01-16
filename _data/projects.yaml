@@ -4,6 +4,7 @@
   download: https://app.box.com/s/hd1fulwrkasfnm2qxeev
   fileSize: 643 KB
   os: Windows
+  category: UtilitiesApplication
   screenshot: calctor-screenshot.png
   description: Calctor is an advanced calculator with a simple interface. You have an input-region where you enter your calculations, and an output-region where the results of your calculations automatically appear while you’re typing.
   
@@ -13,6 +14,7 @@
   download: https://app.box.com/s/4lwepaw898f5ir3bv1dy
   fileSize: 364 KB
   os: Windows
+  category: UtilitiesApplication
   description: A tool to capture the screen, a part of the screen, or a window, and copy it to the clipboard, or immediately save it to a file.
 
 - id: base-converter
@@ -21,6 +23,7 @@
   download: https://app.box.com/s/ti1vgncsperdh9a89by0
   fileSize: 613 KB
   os: Windows
+  category: UtilitiesApplication
   screenshot: base-converter-screenshot.png
   description: A tool for converting numbers between binary, octal, decimal and hexadecimal notation.
 
@@ -29,6 +32,7 @@
   version: 1.1
   download: https://app.box.com/shared/afyf5kkpsy
   os: Windows
+  category: DeveloperApplication
   description: A tool to duplicate a text-fragment a number of times using a counter.
 
 - id: visual-dooby
@@ -36,4 +40,5 @@
   version: 0.1
   download: https://app.box.com/shared/1ief43febt
   os: Windows
+  category: DeveloperApplication
   description: A portable lightweight database client.
