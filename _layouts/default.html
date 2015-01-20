@@ -11,13 +11,13 @@
   <!--[if lt IE 9]><script>(function(){for(var a='abbr,article,aside,figure,footer,header,main,nav,section,time'.split(','),i=a.length;i-=1;)document.createElement(a[i])}())</script><![endif]-->
 </head>
 <body>
-  <header role=banner><nav role=navigation><ul>
-    <li><a href="{{site.baseUrl}}" rel=home>{{site.title}}</a></li>
-    <li><a href="{{site.baseUrl}}blog/">Blog</a></li>
-    <li><a href="{{site.baseUrl}}how-to/">How to…</a></li>
-    <li><a href="{{site.baseUrl}}projects/">Projects</a></li>
-    <li><a href="{{site.baseUrl}}about/" rel=author>About</a></li>
-  </ul></nav></header>
+  <header role=banner><nav role=navigation>
+    <a href="{{site.baseUrl}}" rel=home>{{site.title}}</a>
+    <a href="{{site.baseUrl}}blog/">Blog</a>
+    <a href="{{site.baseUrl}}how-to/">How to…</a>
+    <a href="{{site.baseUrl}}projects/">Projects</a>
+    <a href="{{site.baseUrl}}about/" rel=author>About</a>
+  </nav></header>
   <div class=page><div role=main class=content>{{content}}</div></div>
   <footer>© 2004–<time>{{site.time | date:'%Y'}}</time> Tommy Carlier</footer>
   <script src="{{site.baseUrl}}assets/site.js"></script>

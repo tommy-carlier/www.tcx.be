@@ -18,19 +18,18 @@ body
     max-width: 47em
     +prefixed(user-select, none)
 
-    nav, ul, li, a
+    nav, a
       display: inline-block
-
-    ul
-      list-style: none
-      margin: 0
-      padding: 0
 
     a
       padding: 0.7em 1em
       color: $frame-text-color
       text-shadow: $frame-text-shadow
       transition: color 0.3s ease, text-shadow 0.3s ease
+    
+      &:first-child
+        margin-right: 2em
+        color: $frame-highlight-color
 
       &:hover, &:focus
         color: $frame-highlight-color
@@ -38,10 +37,6 @@ body
 
       &:active
         color: $frame-text-color
-    
-    li:first-child > a
-      margin-right: 2em
-      color: $frame-highlight-color
 
   &> footer
     margin: 0 auto
@@ -301,7 +296,7 @@ article
   body
     font-size: 10pt
       
-    &> header > a
+    &> header a:first-child
       font-size: 150%
       padding: 0.5em 0 0 0.5em
     
