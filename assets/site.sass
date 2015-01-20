@@ -13,11 +13,13 @@ body
   height: 100%
   font: $frame-font
 
-  &> header
+  &> header, &> footer
     margin: 0 auto
     max-width: 47em
+    text-align: center
     +prefixed(user-select, none)
-
+  
+  &> header
     nav, a
       display: inline-block
 
@@ -39,10 +41,6 @@ body
         color: $frame-text-color
 
   &> footer
-    margin: 0 auto
-    max-width: 57em
-    +prefixed(user-select, none)
-    text-align: right
     text-shadow: $frame-text-shadow
     font-size: 80%
     padding: 0.5em 1em
@@ -299,7 +297,7 @@ article
     &> header a:first-child
       display: block
       font-size: 150%
-      padding: 0.5em 0 0 0.5em
+      padding: 0.5em 0 0
     
     &> footer
       font-size: 100%
