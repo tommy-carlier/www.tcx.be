@@ -5,4 +5,4 @@
 </header>
 <p itemprop=description>{{project.description}}</p>
 <p><a href="{{project.download}}" class=download itemprop=downloadUrl><b>Download</b> <nobr>{{project.title}} {{project.version}}</nobr>{% if project.fileSize %} <nobr>(<span  itemprop=fileSize>{{project.fileSize}}</span>)</nobr>{% endif %}</a></p>
-{% if project.screenshot %}<p><img src="{{site.baseUrl}}projects/{{project.id}}/{{project.screenshot}}" alt="{{project.title}} screenshot" itemprop=screenshot></p>{% endif %}
+{% if project.screenshot %}<p><img src="{{site.baseUrl}}projects/{{project.id}}/{{project.screenshot}}" alt="{{project.title}} screenshot" itemprop=image></p>{% endif %}
