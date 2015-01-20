@@ -1,7 +1,7 @@
 {% assign project = site.data.projects | where:"id",{{include.projectID}} | first %}
 <header>
 <h1 itemprop=name>{{project.title}}</h1>
-  <div class=byline>Version <span itemprop=softwareVersion>{{project.version}}</span> – <span itemprop=operatingSystem>{{project.os}}</span><meta itemprop=applicationCategory content="http://schema.org/{{project.category}}"><span itemprop=offers itemscope itemtype="http://schema.org/Offer"><meta itemprop=price content=0></span></div>
+  <div class=byline>Version <span itemprop=softwareVersion>{{project.version}}</span> – <span itemprop=operatingSystem>{{project.os}}</span><meta itemprop=softwareApplicationCategory content="http://schema.org/{{project.category}}"><span itemprop=offers itemscope itemtype="http://schema.org/Offer"><meta itemprop=price content=0></span></div>
 </header>
 <p itemprop=description>{{project.description}}</p>
 <p><a href="{{project.download}}" class=download itemprop=downloadUrl><b>Download</b> <nobr>{{project.title}} {{project.version}}</nobr>{% if project.fileSize %} <nobr>(<span  itemprop=fileSize>{{project.fileSize}}</span>)</nobr>{% endif %}</a></p>
