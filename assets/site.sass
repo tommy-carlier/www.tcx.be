@@ -20,10 +20,10 @@ body
     +prefixed(user-select, none)
   
   &> header
-    nav, a
+    &> nav, a
       display: inline-block
     
-    nav
+    &> nav
       font-size: 0
 
     a
@@ -302,13 +302,21 @@ article
     font-size: 10pt
       
     &> header
+      &> nav
+        display: block
+        background: $nav-background
+        
       a
         font-size: 10pt
+        line-height: 100%
           
         &:first-child
           display: block
           font-size: 15pt
           padding: 0.5em 0 0
+          border-radius: 0
+        &:last-child
+          border-radius: 0
     
     &> footer
       font-size: 100%
