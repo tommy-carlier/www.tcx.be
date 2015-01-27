@@ -25,14 +25,21 @@ body
     
     nav
       background: $nav-background
+      border-radius: 0 0 20px 20px
+      font-size: 0
 
     a
+      font-size: $ui-font-size
       padding: 0.7em 1em
       color: $nav-text-color
       transition: color 0.3s ease
     
       &:first-child
+        padding-left: 2em
         color: $nav-highlight-color
+      
+      &:last-child
+        padding-right: 2em
 
       &:hover, &:focus
         color: $nav-highlight-color
