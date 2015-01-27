@@ -5,13 +5,13 @@
 
 html
   height: 100%
-  background: $frame-background
-  color: $frame-text-color
+  background: $page-background
+  color: $page-text-color
 
 body
   margin: 0
   height: 100%
-  font: $frame-font
+  font: $ui-font
 
   &> header, &> footer
     margin: 0 auto
@@ -22,36 +22,31 @@ body
   &> header
     nav, a
       display: inline-block
+    
+    nav
+      background: $nav-background
 
     a
       padding: 0.7em 1em
-      color: $frame-text-color
-      text-shadow: $frame-text-shadow
-      transition: color 0.3s ease, text-shadow 0.3s ease
+      color: $nav-text-color
+      transition: color 0.3s ease
     
       &:first-child
-        color: $frame-highlight-color
+        color: $nav-highlight-color
 
       &:hover, &:focus
-        color: $frame-highlight-color
-        text-shadow: $frame-highlight-shadow
+        color: $nav-highlight-color
 
       &:active
-        color: $frame-text-color
+        color: $nav-text-color
 
   &> footer
-    text-shadow: $frame-text-shadow
     font-size: 80%
     padding: 0.5em 1em
 
 .page
   min-height: 65%
-  background: $page-background
-  color: $page-text-color
-  font: $page-font
-  border-top: $white-border
-  border-bottom: $white-border
-  box-shadow: 0 0.1em 2em #000
+  font: $content-font
   
   a
     color: $hyperlink-color
