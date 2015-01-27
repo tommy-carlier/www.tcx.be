@@ -24,25 +24,27 @@ body
       display: inline-block
     
     nav
-      background: $nav-background
-      border-radius: 0 0 20px 20px
       font-size: 0
 
     a
       font-size: 14pt
       padding: 0.7em 1em
       color: $nav-text-color
-      transition: color 0.3s ease
+      background: $nav-background
+      transition: color 0.3s ease, background 0.2s ease
     
       &:first-child
-        padding-left: 2em
+        padding-left: 1.5em
+        border-radius: 0 0 0 1.5em
         color: $nav-highlight-color
       
       &:last-child
-        padding-right: 2em
+        padding-right: 1.5em
+        border-radius: 0 0 1.5em 0
 
       &:hover, &:focus
         color: $nav-highlight-color
+        backgorund: $nav-highlight-background
 
       &:active
         color: $nav-text-color
