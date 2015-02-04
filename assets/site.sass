@@ -71,7 +71,6 @@ body
 .content
   margin: 0 auto
   max-width: 40em
-  padding: 2em 1em
   
   &> footer
     font: $content-footer-font
@@ -129,14 +128,8 @@ h1, h2
   font: $heading-font
   margin-bottom: 0
 
-h1:first-child
-  margin-top: 0
-
-h2, .list h1
+h2
   font-size: 150%
-
-.list h2
-  font-size: 130%
 
 h1 + h2,
 h2 + p
@@ -239,9 +232,6 @@ article
     color: #000
   
   .page
-    min-height: none
-    border: none
-    box-shadow: none
     font-size: 12pt
 
     a
@@ -251,7 +241,6 @@ article
   
   .content
     max-width: none
-    padding: 0
     
     &> footer
       display: none
@@ -318,7 +307,6 @@ article
   .content
     font-size: 12pt
     line-height: 150%
-    padding: 1em 0.7em
   
   code, kbd, var
     font-size: 11pt
