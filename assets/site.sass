@@ -169,18 +169,15 @@ img, iframe
   max-width: 100%
   
 article
-  margin: 2em 0
-  padding: 1em 2em
-  background: $card-background
-  border-top: $white-border
-  border-bottom: $white-border
-  box-shadow: $card-shadow
+  padding: 1em 0
+  border-top: $article-top-border
+  border-bottom: $article-bottom-border
   
   &:first-child
-    margin-top: 1em
+    border-top: none
   
   &:last-child
-    margin-bottom: 1em
+    border-bottom: none
   
   &> header
     text-align: center
@@ -260,7 +257,6 @@ article
       display: none
   
   article
-    box-shadow: none
     border: none
     padding: 0
   
