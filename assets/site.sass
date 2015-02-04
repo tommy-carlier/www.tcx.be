@@ -108,7 +108,7 @@ h1 small
 
 pre
   overflow: auto
-  border: $code-border
+  background: $code-background
   padding: 0.2em 0.5em
   margin: 1em -0.5em
   line-height: 100%
@@ -273,7 +273,7 @@ article
   pre
     overflow: visible
     page-break-inside: avoid
-    border: none
+    background: transparent
     padding: 0
     margin: 1em 0
   
@@ -319,16 +319,6 @@ article
     font-size: 12pt
     line-height: 150%
     padding: 1em 0.7em
-  
-  article
-    padding: 1em
-    margin: 1.2em 0
-    
-    &:first-child
-      margin-top: 0.7em
-    
-    &:last-child
-      margin-bottom: 0.7em
   
   code, kbd, var
     font-size: 11pt
