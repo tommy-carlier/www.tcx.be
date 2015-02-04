@@ -51,7 +51,6 @@ body
 
   &> footer
     font-size: 80%
-    padding: 0.5em 1em
 
 .page
   font: $content-font
@@ -69,7 +68,7 @@ body
     background: $selection-background
   
 .content
-  margin: 0 auto
+  margin: 1em auto
   max-width: 40em
   
   &> footer
@@ -89,7 +88,7 @@ body
       text-shadow: $page-footer-shadow
       
   .content
-    &> h1, &> h2
+    h1, h2
       text-shadow: $content-heading-shadow
 
 a
@@ -127,6 +126,9 @@ strong code, b code
 h1, h2
   font: $heading-font
   margin-bottom: 0
+  
+h1:first-child
+  margin-top: 0
 
 h2
   font-size: 150%
