@@ -169,14 +169,6 @@ img, iframe
   
 article
   padding: 1em 0
-  border-top: $article-top-border
-  border-bottom: $article-bottom-border
-  
-  &:first-child
-    border-top: none
-  
-  &:last-child
-    border-bottom: none
   
   &> header
     text-align: center
@@ -215,6 +207,13 @@ article
     &:focus, &:hover
       color: $download-text-color
       border-color: $download-border-color
+
+  article
+    &:not(:first-of-type)
+      border-top: $article-top-border
+
+    &:not(:last-of-type)
+      border-bottom: $article-bottom-border
   
   tbody th:first-child
     opacity: 0.8
