@@ -15,8 +15,8 @@ title: "Blog"
 {% endfor %}
 </div>
 
-<footer>
-  {% if paginator.previous_page %}<a href="{{paginator.previous_page_path | prepend:site.baseUrl | replace:'//','/' | replace:'/index.html','/'}}" rel=prev>« Newer</a>{% endif %}
-  <a href="{{site.baseUrl}}blog/archive.html" rel=index>Archive</a>
-  {% if paginator.next_page %}<a href="{{paginator.next_page_path | prepend:site.baseUrl | replace:'//','/' | replace:'/index.html','/'}}" rel=next>Older »</a>{% endif %}
-</footer>
+<nav>
+{% if paginator.previous_page %}<a href="{{paginator.previous_page_path | prepend:site.baseUrl | replace:'//','/' | replace:'/index.html','/'}}" rel=prev>« Newer</a>{% endif %}
+<a href="{{site.baseUrl}}blog/archive.html" rel=index>Archive</a>
+{% if paginator.next_page %}<a href="{{paginator.next_page_path | prepend:site.baseUrl | replace:'//','/' | replace:'/index.html','/'}}" rel=next>Older »</a>{% endif %}
+</nav>
