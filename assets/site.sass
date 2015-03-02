@@ -71,7 +71,8 @@ body
   ::selection
     background: $selection-background
   
-.content
+main
+  display: block
   margin: 1em auto
   padding: 0 1em
   max-width: 40em
@@ -92,7 +93,7 @@ body
     &> footer
       text-shadow: $page-footer-shadow
       
-  .content
+  main
     h1, h2
       text-shadow: $content-heading-shadow
 
@@ -236,7 +237,7 @@ article
   nav
     display: none
   
-  html, .content, article
+  html, main, article
     background: transparent
     color: #000
   
@@ -248,7 +249,7 @@ article
       transition: none
       border: none !important
   
-  .content
+  main
     max-width: none
     
     &> footer
@@ -313,7 +314,7 @@ article
     &> footer
       font-size: 100%
       
-  .content
+  main
     font-size: 12pt
     line-height: 150%
   

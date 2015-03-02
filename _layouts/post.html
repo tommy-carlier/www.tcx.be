@@ -7,7 +7,7 @@ layout: default
     <h1 itemprop=name>{{page.title}}</h1>
     <div class=byline><time pubdate itemprop=datePublished>{{page.date | date:"%F"}}</time></div>
   </header>
-  <main itemprop=articleBody>{{content}}</main>
+  <div itemprop=articleBody>{{content}}</div>
 </article>
 <footer>
   {% if page.next %}<a href="{{page.next.url}}">« {{page.next.date | date:"%F"}}: {{page.next.title}}</a>{% endif %}
