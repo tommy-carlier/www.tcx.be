@@ -3,11 +3,11 @@ layout: default
 ---
 
 <article role=article itemscope itemtype="http://schema.org/Article">
-  <header>
-    <h1 itemprop=name>{{page.title}}</h1>
-    <div class=byline><time pubdate itemprop=datePublished>{{page.date | date:"%F"}}</time></div>
-  </header>
-  <div itemprop=articleBody>{{content}}</div>
+<header>
+<h1 itemprop=name>{{page.title}}</h1>
+<div class=byline><time pubdate itemprop=datePublished>{{page.date | date:"%F"}}</time></div>
+</header>
+<div itemprop=articleBody>{{content}}</div>
 </article>
 <nav>
 {% if page.next %}<a href="{{page.next.url}}">« {{page.next.date | date:"%F"}}: {{page.next.title}}</a>{% endif %}
