@@ -2,14 +2,8 @@
 <html lang=en-US>
 <meta charset=utf-8>
 <title>{% if page.title %}{{page.title}}{% if paginator.total_pages and paginator.page > 1 %} (page {{paginator.page}}/{{paginator.total_pages}}){% endif %} • {% endif %}{{site.title}}</title>
-<meta http-equiv=X-UA-Compatible content="IE=edge">
-<meta name=viewport content="width=device-width,initial-scale=1">
-<link rel=stylesheet href="{{site.baseUrl}}assets/site.css">
+{% include page-meta.html %}
 <link rel=canonical href="{{site.url}}{{page.url | replace:'index.html',''}}">
-<link rel=alternate type="application/rss+xml" href="{{site.baseUrl}}feed.xml">
-<!--[if lt IE 9]><script>(function(){for(var a='abbr,article,aside,figure,footer,header,main,nav,section,time'.split(','),i=a.length;i-=1;)document.createElement(a[i])}())</script><![endif]-->
 {% include page-header.html %}
 <div class=page><main role=main>{{content}}</main></div>
-<footer role=contentinfo>© 2004–<time>{{site.time | date:'%Y'}}</time> Tommy Carlier</footer>
-<script src="{{site.baseUrl}}assets/site.js"></script>
-{% include statcounter.html %}
+{% include page-footer.html %}

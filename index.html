@@ -2,21 +2,10 @@
 ---
 <!DOCTYPE html>
 <html lang=en-US>
-<head>
-  <meta charset=utf-8>
-  <title>{{site.title}}</title>
-  <meta http-equiv=refresh content="0;url=http://www.tcx.be/blog/">
-  <meta http-equiv=X-UA-Compatible content="IE=edge">
-  <meta name=viewport content="width=device-width,initial-scale=1">
-  <link rel=stylesheet href="{{site.baseUrl}}assets/site.css">
-  <link rel=alternate type="application/rss+xml" href="{{site.baseUrl}}feed.xml">
-  <!--[if lt IE 9]><script>(function(){for(var a='abbr,article,aside,figure,footer,header,main,nav,section,time'.split(','),i=a.length;i-=1;)document.createElement(a[i])}())</script><![endif]-->
-</head>
-<body>
+<meta charset=utf-8>
+<title>{{site.title}}</title>
+<meta http-equiv=refresh content="0;url=http://www.tcx.be/blog/">
+{% include page-meta.html %}
 {% include page-header.html %}
-  <div class=page><div role=main class=content>Redirecting to <a href="/blog/">blog</a>…</div></div>
-  <footer>© 2004–<time>{{site.time | date:'%Y'}}</time> Tommy Carlier</footer>
-  <script src="{{site.baseUrl}}assets/site.js"></script>
-{% include statcounter.html %}
-</body>
-</html>
+<div class=page><main role=main>Redirecting to <a href="/blog/">blog</a>…</main></div>
+{% include page-footer.html %}
