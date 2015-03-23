@@ -7,15 +7,15 @@ html
   height: 100%
   background: $page-background
   color: $page-text-color
+  font: $content-font
 
 body
-  margin: 0
+  margin: 0 auto
+  max-width: 50em
   height: 100%
-  font: $ui-font
 
   &> header, &> footer
-    margin: 0 auto
-    max-width: 47em
+    font: $ui-font
     text-align: center
     +prefixed(user-select, none)
   
@@ -55,8 +55,9 @@ body
   > footer
     font-size: 80%
 
-.page
-  font: $content-font
+main
+  display: block
+  padding: 2em
   
   a
     color: $hyperlink-color
@@ -69,12 +70,6 @@ body
   
   ::selection
     background: $selection-background
-  
-main
-  display: block
-  margin: 2em auto
-  padding: 0 2em
-  max-width: 47em
   
   > nav
     font: $content-nav-font
@@ -211,7 +206,7 @@ article
     height: 100%
 
 @media screen
-  .page .download
+  .download
     text-decoration: none
     text-align: center
     line-height: 200%
@@ -265,16 +260,14 @@ article
     background: transparent
     color: #000
   
-  .page
+  main
     font-size: 12pt
-
+    max-width: none
+  
     a
       color: #000
       transition: none
       border: none !important
-  
-  main
-    max-width: none
   
   article
     border: none
