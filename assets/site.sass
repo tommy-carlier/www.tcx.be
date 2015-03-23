@@ -12,12 +12,11 @@ html
 a
   text-decoration: none
   color: $hyperlink-color
-  border-bottom: solid 1px $hyperlink-underline-color
-  transition: color 0.3s ease, background 0.2s ease, border-color 0.9s ease
+  transition: color 0.3s ease, background 0.2s ease
 
   &:hover, &:focus
     color: $hyperlink-highlight-color
-    border-color: $hyperlink-highlight-underline-color
+    text-decoration: underline
 
 body
   margin: 0 auto
@@ -41,7 +40,7 @@ body
         display: inline-block
         color: $nav-text-color
         background: $nav-background
-        border: none
+        text-decoration: none
 
         &:hover, &:focus
           color: $nav-highlight-color
