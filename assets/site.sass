@@ -8,6 +8,16 @@ html
   background: $page-background
   color: $page-text-color
   font: $content-font
+      
+a
+  text-decoration: none
+  color: $hyperlink-color
+  border-bottom: solid 1px $hyperlink-underline-color
+  transition: color 0.3s ease, background 0.2s ease, border-color 0.9s ease
+
+  &:hover, &:focus
+    color: $hyperlink-highlight-color
+    border-color: $hyperlink-highlight-underline-color
 
 body
   margin: 0 auto
@@ -31,7 +41,7 @@ body
         display: inline-block
         color: $nav-text-color
         background: $nav-background
-        transition: color 0.3s ease, background 0.2s ease
+        border: none
 
         &:hover, &:focus
           color: $nav-highlight-color
@@ -58,15 +68,6 @@ main
   display: block
   padding: 2em
   
-  a
-    color: $hyperlink-color
-    border-bottom: solid 1px $hyperlink-underline-color
-    transition: color 0.3s ease, border-color 0.9s ease
-    
-    &:hover, &:focus
-      color: $hyperlink-highlight-color
-      border-color: $hyperlink-highlight-underline-color
-  
   ::selection
     background: $selection-background
   
@@ -80,9 +81,6 @@ main
       max-width: 99%
       overflow: hidden
       text-overflow: ellipsis
-      
-a
-  text-decoration: none
 
 small
   font-size: 80%
