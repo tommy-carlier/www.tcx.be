@@ -5,8 +5,6 @@
 
 html
   height: 100%
-  background: $page-background
-  color: $page-text-color
   font: $content-font
       
 a
@@ -66,9 +64,6 @@ body
 main
   display: block
   padding: 2em
-  
-  ::selection
-    background: $selection-background
   
   > nav
     font: $content-nav-font
@@ -197,6 +192,13 @@ article
     height: 100%
 
 @media screen
+  html
+    background: $page-background
+    color: $page-text-color
+  
+  ::selection
+    background: $selection-background
+  
   body
     > footer
       text-shadow: $page-footer-shadow
@@ -254,16 +256,56 @@ article
   margin: -2em -0.5em 1em 1em
   border-radius: 100px
 
-@media print
+@media only screen and (max-width: 640px)
+  body
+    font-size: 10pt
+      
+    > header
+      > nav
+        display: block
+        background: $nav-background
+        
+      a
+        font-size: 10pt
+        line-height: 100%
+          
+        &:first-child
+          display: block
+          font-size: 15pt
+          border-radius: 0
+        &:last-child
+          border-radius: 0
+    
+    > footer
+      font-size: 100%
+      
+  main
+    font-size: 12pt
+    line-height: 150%
   
+  code, kbd, var
+    font-size: 11pt
+  
+  h1
+    font-size: 150%
+  
+  h2
+    font-size: 120%
+  
+  .download
+    font-size: 11pt
+  
+  #about-picture
+    width: 100px
+    height: 100px
+    border-radius: 50px
+    margin: -1.5em 0 1em 1em
+
+@media print
   body > header,
   body > footer,
   nav
     display: none
-  
-  html, main, article
-    background: transparent
-    color: #000
   
   main
     font-size: 12pt
@@ -322,48 +364,3 @@ article
   .print-href a[href]:only-child:after
     content: attr(href)
     display: block
-
-@media only screen and (max-width: 640px)
-  body
-    font-size: 10pt
-      
-    > header
-      > nav
-        display: block
-        background: $nav-background
-        
-      a
-        font-size: 10pt
-        line-height: 100%
-          
-        &:first-child
-          display: block
-          font-size: 15pt
-          border-radius: 0
-        &:last-child
-          border-radius: 0
-    
-    > footer
-      font-size: 100%
-      
-  main
-    font-size: 12pt
-    line-height: 150%
-  
-  code, kbd, var
-    font-size: 11pt
-  
-  h1
-    font-size: 150%
-  
-  h2
-    font-size: 120%
-  
-  .download
-    font-size: 11pt
-  
-  #about-picture
-    width: 100px
-    height: 100px
-    border-radius: 50px
-    margin: -1.5em 0 1em 1em
