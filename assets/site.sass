@@ -20,37 +20,36 @@ body
     +prefixed(user-select, none)
   
   > header
-    > nav, a
-      display: inline-block
-    
     > nav
       font-size: 0
+      display: inline-block
       background: $nav-background
 
-    a
-      font-size: 12pt
-      padding: 0.7em 1em
-      color: $nav-text-color
-      background: $nav-background
-      transition: color 0.3s ease, background 0.2s ease
-
-      &:hover, &:focus
-        color: $nav-highlight-color
-        background: $nav-highlight-background
-
-      &:active
+      > a
+        font-size: 12pt
+        padding: 0.7em 1em
+        display: inline-block
         color: $nav-text-color
-    
-      &:first-child
-        padding-left: 1.5em
-        color: $nav-highlight-color
-        cursor: default
-        
+        background: $nav-background
+        transition: color 0.3s ease, background 0.2s ease
+
         &:hover, &:focus
-          background: $nav-background
-      
-      &:last-child
-        padding-right: 1.5em
+          color: $nav-highlight-color
+          background: $nav-highlight-background
+
+        &:active
+          color: $nav-text-color
+
+        &:first-child
+          padding-left: 1.5em
+          color: $nav-highlight-color
+          cursor: default
+
+          &:hover, &:focus
+            background: $nav-background
+
+        &:last-child
+          padding-right: 1.5em
 
   > footer
     font-size: 80%
