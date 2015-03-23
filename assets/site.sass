@@ -19,11 +19,11 @@ body
     text-align: center
     +prefixed(user-select, none)
   
-  &> header
-    &> nav, a
+  > header
+    > nav, a
       display: inline-block
     
-    &> nav
+    > nav
       font-size: 0
       background: $nav-background
 
@@ -52,7 +52,7 @@ body
       &:last-child
         padding-right: 1.5em
 
-  &> footer
+  > footer
     font-size: 80%
 
 .page
@@ -76,10 +76,10 @@ main
   padding: 0 2em
   max-width: 47em
   
-  &> nav
+  > nav
     font: $content-nav-font
     
-    &> a
+    > a
       display: inline-block
       margin-right: 1.2em
       white-space: nowrap
@@ -89,7 +89,7 @@ main
       
 @media screen
   body
-    &> footer
+    > footer
       text-shadow: $page-footer-shadow
       
   main
@@ -119,7 +119,7 @@ pre
   margin: 1em -0.5em
   line-height: 100%
   
-  &> code
+  > code
     font-size: 75%
 
 code, kbd, var
@@ -185,7 +185,7 @@ article
   &:last-child
     padding-bottom: 0
   
-  &> header
+  > header
     text-align: center
 
 .byline
@@ -329,8 +329,8 @@ article
   body
     font-size: 10pt
       
-    &> header
-      &> nav
+    > header
+      > nav
         display: block
         background: $nav-background
         
@@ -345,7 +345,7 @@ article
         &:last-child
           border-radius: 0
     
-    &> footer
+    > footer
       font-size: 100%
       
   main
