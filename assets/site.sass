@@ -320,6 +320,13 @@ article
     border: none
     padding: 0
   
+    > header > h1 > a[href]:after
+      content: '<' attr(href) '>'
+      display: block
+      font-size: 70%
+      font-weight: normal
+      word-wrap: nowrap
+  
   h1, h2, h3, .byline
     page-break-after: avoid
   
