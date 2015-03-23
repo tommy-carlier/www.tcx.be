@@ -82,18 +82,6 @@ main
       overflow: hidden
       text-overflow: ellipsis
       
-@media screen
-  body
-    > footer
-      text-shadow: $page-footer-shadow
-      
-  main
-    h1, h2
-      text-shadow: $content-heading-shadow
-  
-  abbr
-    border-bottom: $abbr-bottom-border
-
 a
   text-decoration: none
 
@@ -209,6 +197,17 @@ article
     height: 100%
 
 @media screen
+  body
+    > footer
+      text-shadow: $page-footer-shadow
+      
+  main
+    h1, h2
+      text-shadow: $content-heading-shadow
+  
+  abbr
+    border-bottom: $abbr-bottom-border
+
   .download
     text-decoration: none
     text-align: center
