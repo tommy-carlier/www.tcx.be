@@ -61,20 +61,20 @@ body
   > footer
     font-size: 80%
 
-main
-  display: block
-  padding: 2em
-  
-  > nav
-    font: $content-nav-font
-    
-    > a
-      display: inline-block
-      margin-right: 1.2em
-      white-space: nowrap
-      max-width: 99%
-      overflow: hidden
-      text-overflow: ellipsis
+  > main
+    display: block
+    padding: 2em
+
+    > nav
+      font: $content-nav-font
+
+      > a
+        display: inline-block
+        margin-right: 1.2em
+        white-space: nowrap
+        max-width: 99%
+        overflow: hidden
+        text-overflow: ellipsis
 
 small
   font-size: 80%
@@ -200,12 +200,12 @@ article
     background: $selection-background
   
   body
+    > main
+      h1, h2
+        text-shadow: $content-heading-shadow
+
     > footer
       text-shadow: $page-footer-shadow
-      
-  main
-    h1, h2
-      text-shadow: $content-heading-shadow
   
   abbr
     border-bottom: $abbr-bottom-border
@@ -275,14 +275,14 @@ article
           border-radius: 0
         &:last-child
           border-radius: 0
+      
+    > main
+      font-size: 12pt
+      line-height: 18pt
+      padding: 1.6em
     
     > footer
       font-size: 100%
-      
-  main
-    font-size: 12pt
-    line-height: 18pt
-    padding: 1.6em
   
   code, kbd, var
     font-size: 11pt
@@ -309,7 +309,7 @@ article
   .no-print
     display: none
   
-  main
+  body > main
     font-size: 11pt
     line-height: 16pt
     max-width: none
