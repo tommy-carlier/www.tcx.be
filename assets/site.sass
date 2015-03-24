@@ -173,7 +173,6 @@ article
 .byline
   display: block
   font: $byline-font
-  opacity: 0.6
 
 .download
   font: $download-font
@@ -211,6 +210,10 @@ article
   abbr
     border-bottom: $abbr-bottom-border
 
+  .byline
+    opacity: 0.6
+    text-shadow: $content-text-shadow
+    
   .download
     text-align: center
     line-height: 200%
@@ -355,9 +358,6 @@ article
   abbr[title]:after
     content: ' (' attr(title) ')'
     font-variant: small-caps
-  
-  .byline
-    opacity: 1
   
   .download
     b
