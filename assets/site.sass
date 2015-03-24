@@ -67,6 +67,7 @@ body
 
     > nav
       font: $content-nav-font
+      +prefixed(user-select, none)
 
       > a
         display: inline-block
@@ -201,11 +202,11 @@ article
   
   body
     > main
-      h1, h2
-        text-shadow: $content-heading-shadow
+      h1, h2, &> nav
+        text-shadow: $content-text-shadow
 
     > footer
-      text-shadow: $page-footer-shadow
+      text-shadow: $content-text-shadow
   
   abbr
     border-bottom: $abbr-bottom-border
