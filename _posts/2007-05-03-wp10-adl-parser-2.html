@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Writing a parser: ADL Parser – part 2"
+title: "Writing a parser: ADL Parser – part 2"
 ---
 
 <p>In <a title="Writing a parser: ADL Parser – part 1" href="{% post_url 2007-05-03-wp09-adl-parser-1 %}">the previous part</a> we wrote the first Parser methods, now we’ll write the methods for parsing expressions. In the <a href="{% post_url 2007-04-21-wp03-adl %}">introduction to ADL</a>, I showed the order in which expressions are evaluated. To parse expressions, we’ll reverse the order and assume that everything is an AND-expression (lowest precedence):
