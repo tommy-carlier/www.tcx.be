@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang=en-US>
+<html lang={% if page.language %}{{page.language}}{% else %}en-US{% endif %}>
 <meta charset=utf-8>
 <title>{% if page.title %}{{page.title}}{% if paginator.total_pages and paginator.page > 1 %} (page {{paginator.page}}/{{paginator.total_pages}}){% endif %} • {% endif %}{{site.title}}</title>
 {% include page-meta.html %}
