@@ -4,6 +4,6 @@
 <title>{% if page.title %}{{page.title}}{% if paginator.total_pages and paginator.page > 1 %} (page {{paginator.page}}/{{paginator.total_pages}}){% endif %} • {% endif %}{{site.title}}</title>
 {% include page-meta.html %}
 <link rel=canonical href="{{site.url}}{{page.url | replace:'index.html',''}}">
-{% include page-header.html %}
+{% if page.disablePageHeader %}{% else %}{% include page-header.html %}{% endif %}
 <main role=main>{{content}}</main>
 {% include page-footer.html %}
