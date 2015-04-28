@@ -1,3 +1,4 @@
 <footer role=contentinfo>© 2004–<time>{{site.time | date:'%Y'}}</time> Tommy Carlier</footer>
 <script src="{{site.baseUrl}}assets/site.js"></script>
 {% include statcounter.html %}
+{% for s in page.scripts %}<script src="{{site.baseUrl}}assets/{{s}}.js"></script>{% endfor %}
