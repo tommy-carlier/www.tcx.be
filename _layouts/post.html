@@ -8,7 +8,6 @@ layout: default
 <time pubdate itemprop=datePublished class=byline>{{page.date | date:"%F"}}</time>
 </header>
 <main itemprop=articleBody>{{content}}</main>
-{% if page.disableArticleLinks %}{% else %}<aside id=article-links></aside>{% endif %}
 </article>
 <nav>
 {% if page.next %}<a href="{{page.next.url}}">« {{page.next.date | date:"%F"}}: {{page.next.title}}</a>{% endif %}
