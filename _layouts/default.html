@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang={% if page.language %}{{page.language}}{% else %}en-US{% endif %}>
 <meta charset=utf-8>
-<title>{% if page.isStandalonePage %}{{page.title}}{% else %}{% if page.title %}{{page.title}}{% if paginator.total_pages and paginator.page > 1 %} (page {{paginator.page}}/{{paginator.total_pages}}){% endif %} • {% endif %}{{site.title}}{% endif %}</title>
+<title>{% if page.isStandalonePage %}{{page.title}}{% else %}{% if page.title %}{{page.title}} • {% endif %}{{site.title}}{% endif %}</title>
 {% include page-meta.html %}
 <link rel=canonical href="{{site.url}}{{page.url | replace:'index.html',''}}">
 {% if page.isStandalonePage %}{% else %}{% include page-header.html %}{% endif %}
