@@ -8,7 +8,7 @@ title: "Visual Dooby"
   <h2>Version History</h2>
   <table>
   {% for post in site.tags.VISUAL_DOOBY %}
-    <tr><th>{{post.date | date:"%F"}}<td><a href="{{post.url}}">{{post.title}}</a></tr>
+    <tr><th>{{post.date | date:"%Y, %m %-d"}}<td><a href="{{post.url}}">{{post.title}}</a></tr>
   {% endfor %}
   </table>
 </article>
