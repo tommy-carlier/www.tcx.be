@@ -7,8 +7,6 @@ title: "Calctor"
   {% include software-project-body.html projectID="calctor" %}
   <h2>Version History</h2>
   <table>
-  {% for post in site.tags.CALCTOR %}
-    <tr><th>{{post.date | date:"%Y, %b %-d"}}<td><a href="{{post.url}}">{{post.title}}</a></tr>
-  {% endfor %}
+  {% for post in site.tags.CALCTOR %}{% capture currentYear %}{{post.date | date:'%Y'}}{% endcapture %}<tr><th class=b>{% if currentYear != prevYear %}{{currentYear}}{% capture prevYear %}{{currentYear}}{% endcapture %}{% endif %}<th class=r>{{post.date | date:'%b %-d'}}<td><a href="{{post.url}}">{{post.title}}</a></tr>{% endfor %}
   </table>
 </article>
