@@ -4,6 +4,7 @@
 <title>{% if page.isStandalonePage %}{{page.title}}{% else %}{% if page.title %}{{page.title}} • {% endif %}{{site.title}}{% endif %}</title>
 {% include page-meta.html %}
 <link rel=canonical href="{{site.url}}{{page.url | replace:'index.html',''}}">
+<link rel="shortcut icon" href="{{site.baseUrl}}favicon.ico">
 {% if page.isStandalonePage %}{% else %}{% include page-header.html %}{% endif %}
 <main role=main>{{content}}</main>
 {% include page-footer.html %}
