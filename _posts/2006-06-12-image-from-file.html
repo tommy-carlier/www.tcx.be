@@ -5,24 +5,7 @@ hasCSharpCode: true
 ---
 
 <p>When you use <var>System.Drawing.Image.FromFile</var> to read an image from a file, the file is locked. The following method reads an image from a file without locking it:
-
-<pre><code>public static class Utils
-{
-  public static Image ImageFromFile(string filePath)
-  {
-    if (filePath == null) throw new ArgumentNullException("filePath");
-
-    using(FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
-    {
-      return Image.FromStream(stream);
-    }
-  }
-}</code></pre>
-
+{% include code-snippet-csharp.html file="image-from-file/ImageFromFile.cs" %}
+  
 <p>Here’s an example how to use it:
-
-<pre><code>// old method that locks the file:
-Image img = Image.FromFile("picture.jpg");
-
-// new method that does not lock the file:
-Image img = Utils.ImageFromFile("picture.jpg");</code></pre>
+{% include code-snippet-csharp.html file="image-from-file/Example.cs" %}

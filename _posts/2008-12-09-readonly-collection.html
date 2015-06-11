@@ -11,36 +11,4 @@ hasCSharpCode: true
 <p>My proposal is to add 2 additional interfaces <code>IReadableCollection&lt;T&gt;</code> and <code>IReadableList&lt;T&gt;</code> that contain a subset of the members of <code>ICollection&lt;T&gt;</code> and <code>IList&lt;T&gt;</code> that can be performed on read-only collections. <code>ICollection&lt;T&gt;</code> could then implement <code>IReadableCollection&lt;T&gt;</code> and <code>IList&lt;T&gt;</code> could implement <code>IReadableList&lt;T&gt;</code> (and also <code>ICollection&lt;T&gt;</code>, like it does now). Adding these interfaces would not break existing code, they would be fully backward compatible and would not even require changes to the classes that implement <code>ICollection&lt;T&gt;</code> and <code>IList&lt;T&gt;</code>: they would automatically also implement the new interfaces (because <code>ICollection&lt;T&gt;</code> and <code>IList&lt;T&gt;</code> implement <code>IReadableCollection&lt;T&gt;</code> and <code>IReadableList&lt;T&gt;</code>).
 
 <p>Here’s what the interface hierarchy would look like:
-
-<pre><code>public interface IEnumerable&lt;T&gt; : IEnumerable
-{
-  IEnumerator&lt;T&gt; GetEnumerator();
-}
-
-public interface IReadableCollection&lt;T&gt; : IEnumerable&lt;T&gt;
-{
-  int Count { get; }
-  bool Contains(T item);
-  void CopyTo(T[] array, int arrayIndex);
-}
-
-public interface IReadableList&lt;T&gt; : IReadableCollection&lt;T&gt;
-{
-  T this[int index] { get; }
-  int IndexOf(T item);
-}
-
-public interface ICollection&lt;T&gt; : IReadableCollection&lt;T&gt;
-{
-  void Clear();
-  void Add(T item);
-  bool Remove(T item);
-  bool IsReadOnly { get; }
-}
-
-public interface IList&lt;T&gt; : ICollection&lt;T&gt;, IReadableList&lt;T&gt;
-{
-  T this[int index] { get; set; }
-  void Insert(int index, T item);
-  void RemoveAt(int index);
-}</code></pre>
+{% include code-snippet-csharp.html file="ReadOnlyCollectionContracts.cs" %}

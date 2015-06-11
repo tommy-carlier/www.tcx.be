@@ -5,44 +5,7 @@ hasCSharpCode: true
 ---
 
 <p>Here’s some code to read data from an embedded resource:
-
-<pre><code>/// &lt;summary>Contains some methods to read data from an embedded resource.&lt;/summary>
-public static class EmbeddedResourceReader
-{
-  /// &lt;summary>Returns an embedded resource of the specified assembly as a string.&lt;/summary>
-  /// &lt;param name="assembly">The assembly to read the resource from.&lt;/param>
-  /// &lt;param name="resourceName">The name of the resource.&lt;/param>
-  /// &lt;returns>A string read from an embedded resource.&lt;/returns>
-  public static string ReadString(Assembly assembly, string resourceName)
-  {
-    if (assembly == null) throw new ArgumentNullException("assembly");
-    if (resourceName == null) throw new ArgumentNullException("resourceName");
-
-    using(Stream stream = assembly.GetManifestResourceStream(resourceName))
-    using(StreamReader reader = new StreamReader(stream))
-    {
-      return reader.ReadToEnd();
-    }
-  }
-
-  /// &lt;summary>Returns an embedded resource of the specified assembly as an icon.&lt;/summary>
-  /// &lt;param name="assembly">The assembly to read the resource from.&lt;/param>
-  /// &lt;param name="resourceName">The name of the resource.&lt;/param>
-  /// &lt;returns>An icon read from an embedded resource.&lt;/returns>
-  public static Icon ReadIcon(Assembly assembly, string resourceName)
-  {
-    if (assembly == null) throw new ArgumentNullException("assembly");
-    if (resourceName == null) throw new ArgumentNullException("resourceName");
-
-    using(Stream stream = assembly.GetManifestResourceStream(resourceName))
-    {
-      return new Icon(stream);
-    }
-  }
-}</code></pre>
+{% include code-snippet-csharp.html file="embedded-resources/EmbeddedResourceReader.cs" %}
 
 <p>Basically, you can read any kind of data from an embedded resource, using the method <var>GetManifestResourceStream</var>. The resource name you have to pass as an argument should be the default namespace of the assembly, appended with the filename. Here’s an example how to use it:
-
-<pre><code>Assembly assembly = this.GetType().Assembly;
-string resourceName = "MyCompany.MyApplication.file.txt";
-string content = EmbeddedResourceReader.ReadString(assembly, resourceName);</code></pre>
+{% include code-snippet-csharp.html file="embedded-resources/Example.cs" %}

@@ -5,22 +5,4 @@ hasCSharpCode: true
 ---
 
 <p>Here’s a method that filters the numbers out of a string:
-
-<pre><code>public static string FilterNumbers(string mightContainNumbers)
-{
-  if (mightContainNumbers == null || mightContainNumbers.Length == 0)
-  {
-    return "";
-  }
-
-  StringBuilder builder = new StringBuilder(mightContainNumbers.Length);
-  foreach (char c in mightContainNumbers)
-  {
-    if (Char.IsNumber(c))
-    {
-      builder.Append(c);
-    }
-  }
-
-  return builder.ToString();
-}</code></pre>
+{% include code-snippet-csharp.html file="FilterNumbers.cs" %}
