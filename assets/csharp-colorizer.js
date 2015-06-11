@@ -4,12 +4,15 @@
   
   var d = document;
   
+  function colorize(html){
+    return html;
+  }
+  
   function initPage(){
     if (d.querySelectorAll){
       for (var xs = d.querySelectorAll('pre.csharp'), i = xs.length; i--; ){
         var x = xs[i];
-        x.innerHTML = x.innerHTML
-          .replace(/(\/\/+)(.*)/g, '<span class=c-cm>$1<span class=c-t>$2</span></span>');
+        x.innerHTML = colorize(x.innerHTML);
       }
     }
   }
