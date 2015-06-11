@@ -9,7 +9,7 @@
       for (var xs = d.querySelectorAll('pre.csharp'), i = xs.length; i--; ){
         var x = xs[i];
         x.innerHTML = x.innerHTML
-          .replace(/(\/\/\s*)(.*)/, '<span class=c-cm>$1<span class=c-t>$2</span></span>');
+          .replace(/(\/\/\s*)(.*)/g, '<span class=c-cm>$1<span class=c-t>$2</span></span>');
       }
     }
   }
