@@ -1,43 +1,9 @@
 ---
 layout: post
 title: "Static destructor in C#"
+hasCSharpCode: true
 ---
 
-<p>C# (and .NET in general) offers static constructors for classes, but why are there no <i>static destructors</i>? I needed such a static destructor for a class that had to clean up resources. So I created a little helper-class that adds <i>static destructor</i>-functionality to a class:
-<pre><code>public delegate void DestructorDelegate();
+<p>C# (and .NET in general) offers static constructors for classes, but why are there no <i>static destructors</i>? I needed such a static destructor for a class that had to clean up resources. So I created a little helper-class that adds <i>static destructor</i>-functionality to a class: {% include code-snippet-csharp.html file="static-destructor/Destructor.cs" %}
 
-public sealed class Destructor
-{
-  private readonly DestructorDelegate _destructorMethod;
-  
-  public Destructor(DestructorDelegate method)
-  {
-    _destructorMethod = method;
-  }
-
-  ~Destructor()
-  {
-    if (_destructorMethod != null)
-    {
-      _destructorMethod();
-    }
-  }
-}</code></pre>
-
-<p>Here’s an example that shows how to use it:
-<pre><code>public class MyClass
-{
-  private static readonly Destructor _destructor;
-
-  static MyClass()
-  {
-    DestructorDelegate destructorMethod;
-    destructorMethod = new DestructorDelegate(Destroy);
-    _destructor = new Destructor(destructorMethod);
-  }
-
-  private static void Destroy()
-  {
-    // this is the static destructor-method
-  }
-}</code></pre>
+<p>Here’s an example that shows how to use it: {% include code-snippet-csharp.html file="static-destructor/Usage.cs" %}
