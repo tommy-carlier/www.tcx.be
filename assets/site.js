@@ -2,9 +2,11 @@
   
   "use strict";
   
-  var d = document;
+  var d = document, w = window, inits = [];
+  w.initializers = inits;
   
-  function initPage(){
+  // initializer to manipulate all hyperlinks
+  inits.push(function(){
     var x, h = location.host;
     for (var xs = d.links, i = xs.length; i--; ){
       var x = xs[i], m = x.getAttribute('data-m');
@@ -20,13 +22,23 @@
         x.target = '_blank';
       }
     }
+  });
 
-    // set current year in copyright footer
+  // initializer to set current year in copyright footer
+  inits.push(function(){
     if (d.querySelector){
-      x = d.querySelector('body>footer>time');
+      var x = d.querySelector('body>footer>time');
       if (x){
         x.innerHTML = (new Date()).getFullYear();
       }
+    }
+  });
+  
+  
+  function initPage(){
+    // call all initializers
+    for(var i = 0, n = inits.length; i < n; i++){
+      inits[i]();
     }
   }
   
