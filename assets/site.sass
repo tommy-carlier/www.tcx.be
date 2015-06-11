@@ -214,6 +214,9 @@ article
     left: 0
     width: 100%
     height: 100%
+    
+.c-cm > .c-t
+  font: $code-comment-font
 
 @media screen
   html
@@ -274,6 +277,12 @@ article
   tbody th
     font-family: $sans-serif
     opacity: 0.8
+
+.c-cm
+  color: $code-delimiter-color
+  
+  &> .c-t
+    color: $code-comment-color
 
 #about-picture
   float: right
