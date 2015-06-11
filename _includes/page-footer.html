@@ -2,3 +2,4 @@
 <script src="{{site.baseUrl}}assets/site.js"></script>
 {% include statcounter.html %}
 {% for s in page.scripts %}<script src="{{site.baseUrl}}assets/{{s}}.js"></script>{% endfor %}
+{% if page.hasCSharpCode %}<script src="{{site.baseUrl}}assets/csharp-colorizer.js"></script>{% endif %}
