@@ -2,8 +2,8 @@
   
   "use strict";
   
-  var d = document, w = window, inits = [];
-  w.initializers = inits;
+  var d = document, inits = [];
+  window.initializers = inits;
   
   // initializer to manipulate all hyperlinks
   inits.push(function(){
