@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Copying an HTML-fragment to the clipboard"
+hasCSharpCode: true
 ---
 
 <p>Applications like Word and Excel let you copy some text or tabular data to the clipboard in HTML-format, so that the formatting and visual style doesn’t change when pasted. At work, I had to do something similar: our application uses a lot of grid-controls to display data, and we wanted the users to be able to select data from a grid, and copy it to the clipboard, in a format that would keep the tabular structure of the data. After some research, I found out that you can copy data to the clipboard in HTML-format, and I thought: this is it. Piece of cake. But it wasn’t. Apparently, you have to pass a bit more information than just the HTML-code. Googling around gave me some hints how it should be done, but nothing really specific. So I started experimenting, until it worked correctly.

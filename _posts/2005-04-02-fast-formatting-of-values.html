@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Fast formatting of values in .NET"
+hasCSharpCode: true
 ---
 
 <p>I see people use <code>string.Format(formatProvider, "{0}", value)</code> or <code>string.Format(formatProvider, "{0:formatSpecifier}", value)</code>, just to format a single value (int, double, …). I used to do this too, until I looked at how <var>string.Format</var> works (using <a href="http://www.red-gate.com/products/dotnet-development/reflector/">Reflector</a>). Apparently, a <var>StringBuilder</var>-object is created, and the <code>"{0:…}"</code> is parsed, a lot of appending happens and finally the <code>stringBuilder.ToString()</code> is returned. Here’s a function that does the same. Basically, it just does the same as inside <var>StringBuilder.AppendFormat</var>, but without all the parsing, creating and appending. It’s faster, and creates less temporary objects.
