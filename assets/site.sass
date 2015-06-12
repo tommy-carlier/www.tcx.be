@@ -230,13 +230,17 @@ article
     > main
       h1, h2, &> nav
         text-shadow: $content-text-shadow
+      
+      > nav
+        &::before
+          content: ''
+          display: block
+          margin: 0 0 0.8em
+          border-top: $separator-top-border
+          border-bottom: $separator-bottom-border
         
-      &> nav::before
-        content: ''
-        display: block
-        margin: 0 0 0.8em
-        border-top: $separator-top-border
-        border-bottom: $separator-bottom-border
+        > br
+          display: none
 
     > footer
       text-shadow: $content-text-shadow
@@ -315,6 +319,9 @@ article
       font-size: 12pt
       line-height: 18pt
       padding: 1.6em 1em 1.6em 1.6em
+      
+      > nav > br
+        display: inline
     
     > footer
       font-size: 100%
