@@ -1,1 +1,1 @@
-<a href="https://en.wikipedia.org/wiki/{{include.term | replace:' ','_' | replace:'’','\'' | uri_escape}}">{% if include.label %}{{include.label}}{% else %}{{include.term}}{% endif %}</a>
+<a href="https://en.wikipedia.org/wiki/{{include.term | replace:' ','_' | replace:'’',"'" | uri_escape}}">{% if include.label %}{{include.label}}{% else %}{{include.term}}{% endif %}</a>
