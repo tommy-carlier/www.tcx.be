@@ -7,6 +7,6 @@ title: "Projects"
 <p>Here you can find some of my projects.</p>
 
 {% for project in site.data.projects %}
-<h2 id={{project.id}}><a href="{{site.baseUrl}}projects/{{project.id}}/">{{project.title}}{% if project.version %} {{project.version}}{% endif %}</a></h1>
+<h2 id={{project.id}}><a href="{{site.baseUrl}}projects/{{project.id}}/">{{project.title}}{% if project.version %} {{project.version}}{% endif %}</a></h2>
 <p>{{project.description}}</p>
 {% endfor %}
