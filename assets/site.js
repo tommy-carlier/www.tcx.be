@@ -23,6 +23,21 @@
       }
     }
   });
+  
+  // initializer to set active tab in page header
+  inits.push(function(){
+    if (d.querySelectorAll){
+      var xs = d.querySelectorAll('body>header>nav>a'), href = location.href;
+      for(var i = 1, n = xs.length; i < n; i++){
+        var x = xs[i];
+        if (href.startsWith(x.href)){
+          x.classList.add('active');
+        } else {
+          x.classList.remove('active');
+        }
+      }
+    }
+  });
 
   // initializer to set current year in copyright footer
   inits.push(function(){
@@ -33,7 +48,6 @@
       }
     }
   });
-  
   
   function initPage(){
     // call all initializers
