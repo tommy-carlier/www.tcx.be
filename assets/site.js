@@ -2,6 +2,13 @@
   
   "use strict";
   
+  // add startsWith method to String, if it does not already exist
+  if (!String.prototype.startsWith){
+    String.prototype.startsWith = function(s){
+      return this.slice(0, s.length) == s;
+    }
+  }
+  
   var d = document, inits = [];
   window.initializers = inits;
   
