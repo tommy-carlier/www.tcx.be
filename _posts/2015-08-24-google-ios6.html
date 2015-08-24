@@ -1,0 +1,37 @@
+---
+layout: post
+title: "Synchronizing Google Calendar and Contacts with iOS 6"
+---
+
+<p>I still use a 4th generation iPod Touch. Although I’m stuck with iOS 6, it still works fine for doing the things I use it for:
+e-mail, contacts, calendar, alarm clock, reading RSS-feeds (Reeder, reading from Feedly), Twitter, and Pocket.</p>
+
+<p>For e-mail, I use the GMail application. For contacts and calendar, I use Apple’s native Contacts and Calendars apps,
+synchronized with my Google account via the Exchange protocol. Until recently, this worked fine. I had offline access to
+my contacts and calendar events, and it synchronized when I was online.
+
+<p>About a month ago, synchronization stopped working. I don’t get any error message, it just doesn’t synchronize anymore.
+Today, I solved the problem by removing the Exchange account, and performing the following steps.</p>
+
+<h2>Synchronized calendars: add a Google account</h2>
+<ol>
+<li>Go to “Settings › Mail, Contacts, Calendar › Add Account › GMail”</li>
+<li>Enter the following information:<dl>
+  <dt>Name<dd>your full name
+  <dt>Email<dd>your e-mail address
+  <dt>Password<dd>your Google account password
+  <dt>Description<dd>a description of the account
+</dl></li>
+<li>Select which services you want to synchronize: E-mail, Calendars, Notes (I only synchronize calendars)</li>
+</ol>
+
+<h2>Synchronized contacts: add a {% include wikipedia-link.html term="CardDAV" %} account</h2>
+<ol>
+<li>Go to “Settings › Mail, Contacts, Calendar › Add Account › Other › Add CardDAV Account”</li>
+<li>Enter the following information:<dl>
+  <dt>Server<dd>google.com
+  <dt>User Name<dd>your e-mail address
+  <dt>Password<dd>your Google account password
+  <dt>Description<dd>a description of the account
+</dl></li>
+</ol>
