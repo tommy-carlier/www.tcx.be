@@ -1,7 +1,7 @@
 ---
 ---
 <?xml version="1.0"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:webfeeds="http://webfeeds.org/rss/1.0">
   <channel>
     <title>{{site.title | xml_escape}}: Blog</title>
     <description>Tommy Carlier’s blog</description>
@@ -9,6 +9,8 @@
     <language>en-US</language>
     <copyright>© 2004–{{site.time | date:'%Y'}} Tommy Carlier</copyright>
     <atom:link href="{{site.url}}/feed.xml" rel="self" type="application/rss+xml" />
+    <webfeeds:accentColor>#4A79AB</webfeeds:accentColor>
+    <webfeeds:logo>http://www.tcx.be/assets/tommy.jpg</webfeeds:logo>
     {% for post in site.posts limit:30 %}
     <item>
       <title>{{post.title | xml_escape}}</title>
