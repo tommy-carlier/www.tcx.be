@@ -16,7 +16,7 @@ function numberToWords(number)
     number = floor(number / 1000)
     
     if hundreds > 0
-	  -- 3 digits to text
+      -- 3 digits to text
       hundredsText = getHundredsText(hundreds)
       if iteration > 1
         -- thousand, million, …
@@ -47,23 +47,23 @@ function getHundredsText(number)
   
   if number > 0
     if hundreds > 0
-	  -- space after "hundred"
+      -- space after "hundred"
       result = concatenate(result, " ")
     end
     
     if number < 20
-	  -- < 20 ⇒ look up
+      -- < 20 ⇒ look up
       result = concatenate(result, getLessThanTwentyText(number))
     else
-	  -- e.g. 42 ⇒ tens = 4; number = 2
+      -- e.g. 42 ⇒ tens = 4; number = 2
       tens = floor(number / 10)
       number = number modulo 10
-	  
-	  -- thirty, forty, …
+      
+      -- thirty, forty, …
       result = concatenate(result, getTensText(tens))
       
       if number > 0
-	    -- one, two, three, …
+        -- one, two, three, …
         result = concatenate(result, "-", getLessThanTwentyText(number))
       end
     end
