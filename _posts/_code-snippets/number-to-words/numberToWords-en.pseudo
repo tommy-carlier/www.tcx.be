@@ -1,0 +1,126 @@
+-- spell out an integer number in words
+function numberToWords(number)
+  var result, iteration, iterationText, hundreds, hundredsText
+
+  if number == 0
+    return "zero"
+  end
+  
+  result = ""
+  iteration = 1
+  
+  -- iterate per 3 digits (starting with last)
+  while number > 0
+    -- e.g. 23456 ⇒ hundreds = 456; number = 23
+    hundreds = number modulo 1000
+    number = floor(number / 1000)
+    
+    if hundreds > 0
+	  -- 3 digits to text
+      hundredsText = getHundredsText(hundreds)
+      if iteration > 1
+        -- thousand, million, …
+        iterationText = getIterationText(iteration)
+        hundredsText = concatenate(hundredsText, iterationText)
+      end
+      
+      result = concatenate(hundredsText, result)
+    end
+    
+    iteration = iteration + 1
+  end
+  
+  return trim(result)
+end
+
+function getHundredsText(number)
+  var result, hundreds, tens
+  
+  result = ""
+  
+  -- e.g. 456 ⇒ hundreds = 4; number = 56 
+  hundreds = floor(number / 100)
+  if hundreds > 0
+    number = number modulo 100
+    result = concatenate(result, getLessThanTwentyText(hundreds), " hundred")
+  end
+  
+  if number > 0
+    if hundreds > 0
+	  -- space after "hundred"
+      result = concatenate(result, " ")
+    end
+    
+    if number < 20
+	  -- < 20 ⇒ look up
+      result = concatenate(result, getLessThanTwentyText(number))
+    else
+	  -- e.g. 42 ⇒ tens = 4; number = 2
+      tens = floor(number / 10)
+      number = number modulo 10
+	  
+	  -- thirty, forty, …
+      result = concatenate(result, getTensText(tens))
+      
+      if number > 0
+	    -- one, two, three, …
+        result = concatenate(result, "-", getLessThanTwentyText(number))
+      end
+    end
+  end
+  
+  return result
+end
+
+function getLessThanTwentyText(number)
+  case number
+    when 1 return "one"
+    when 2 return "two"
+    when 3 return "three"
+    when 4 return "four"
+    when 5 return "five"
+    when 6 return "six"
+    when 7 return "seven"
+    when 8 return "eight"
+    when 9 return "nine"
+    when 10 return "ten"
+    when 11 return "eleven"
+    when 12 return "twelve"
+    when 13 return "thirteen"
+    when 14 return "fourteen"
+    when 15 return "fifteen"
+    when 16 return "sixteen"
+    when 17 return "seventeen"
+    when 18 return "eighteen"
+    when 19 return "nineteen"
+    otherwise error
+  end
+end
+
+function getTensText(tens)
+  case tens
+    when 2 return "twenty"
+    when 3 return "thirty"
+    when 4 return "forty"
+    when 5 return "fifty"
+    when 6 return "sixty"
+    when 7 return "seventy"
+    when 8 return "eighty"
+    when 9 return "ninety"
+    otherwise error
+  end
+end
+
+function getIterationText(iteration)
+  case iteration
+    when 1 return ""
+    when 2 return " thousand "
+    when 3 return " million "
+    when 4 return " billion "
+    when 5 return " trillion "
+    when 6 return " quadrillion "
+    when 7 return " quintillion "
+    when 8 return " sextillion "
+    otherwise return " ??? "
+  end
+end
