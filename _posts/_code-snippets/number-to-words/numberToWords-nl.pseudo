@@ -1,0 +1,136 @@
+-- spell out an integer number in words (Dutch)
+function numberToWords(number)
+  var result, iteration, iterationText, hundreds, hundredsText
+
+  if number == 0
+    return "nul"
+  end
+  
+  result = ""
+  iteration = 1
+  
+  -- iterate per 3 digits (starting with last)
+  while number > 0
+    -- e.g. 23456 ⇒ hundreds = 456; number = 23
+    hundreds = number modulo 1000
+    number = floor(number / 1000)
+    
+    if hundreds > 0
+      -- 3 digits to text
+      hundredsText = getHundredsText(hundreds)
+      if iteration > 1
+        -- thousand, million, …
+        iterationText = getIterationText(iteration)
+        hundredsText = concatenate(hundredsText, iterationText)
+        if hundredsText == "eenduizend "
+          hundredsText = "duizend "
+        end
+      end
+      
+      result = concatenate(hundredsText, result)
+    end
+    
+    iteration = iteration + 1
+  end
+  
+  return trim(result)
+end
+
+function getHundredsText(number)
+  var result, hundreds, tens
+  
+  result = ""
+  
+  -- e.g. 456 ⇒ hundreds = 4; number = 56 
+  hundreds = floor(number / 100)
+  if hundreds > 0
+    number = number modulo 100
+    if hundreds > 1
+      result = concatenate(result, getLessThanTwentyText(hundreds))
+    end
+    result = concatenate(result, "honderd")
+  end
+  
+  if number > 0
+    if hundreds > 0 and number <= 12
+      result = concatenate(result, "en")
+    end
+    
+    if number < 20
+      -- < 20 ⇒ look up
+      result = concatenate(result, getLessThanTwentyText(number))
+    else
+      -- e.g. 42 ⇒ tens = 4; number = 2
+      tens = floor(number / 10)
+      number = number modulo 10
+      
+      if number > 0
+        -- een, twee, drie, …
+        result = concatenate(result, getLessThanTwentyText(number))
+        if number == 2 or number == 3
+          result = concatenate(result, "ën")
+        else
+          result = concatenate(result, "en")
+        end
+      end
+      
+      -- dertig, veertig, …
+      result = concatenate(result, getTensText(tens))
+    end
+  end
+  
+  return result
+end
+
+function getLessThanTwentyText(number)
+  case number
+    when 1 return "een"
+    when 2 return "twee"
+    when 3 return "drie"
+    when 4 return "vier"
+    when 5 return "vijf"
+    when 6 return "zes"
+    when 7 return "zeven"
+    when 8 return "acht"
+    when 9 return "negen"
+    when 10 return "tien"
+    when 11 return "elf"
+    when 12 return "twaalf"
+    when 13 return "dertien"
+    when 14 return "veertien"
+    when 15 return "vijftien"
+    when 16 return "zestien"
+    when 17 return "zeventien"
+    when 18 return "achttien"
+    when 19 return "negentien"
+    otherwise error
+  end
+end
+
+function getTensText(tens)
+  case tens
+    when 2 return "twintig"
+    when 3 return "dertig"
+    when 4 return "veertig"
+    when 5 return "vijftig"
+    when 6 return "zestig"
+    when 7 return "zeventig"
+    when 8 return "tachtig"
+    when 9 return "negentig"
+    otherwise error
+  end
+end
+
+function getIterationText(iteration)
+  case iteration
+    when 1 return ""
+    when 2 return "duizend "
+    when 3 return " miljoen "
+    when 4 return " miljard "
+    when 5 return " biljoen "
+    when 6 return " biljard "
+    when 7 return " triljoen "
+    when 8 return " triljard "
+    otherwise return " ??? "
+  end
+end

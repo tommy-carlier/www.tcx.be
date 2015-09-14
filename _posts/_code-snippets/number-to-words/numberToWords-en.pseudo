@@ -1,4 +1,4 @@
--- spell out an integer number in words
+-- spell out an integer number in words (English)
 function numberToWords(number)
   var result, iteration, iterationText, hundreds, hundredsText
 
