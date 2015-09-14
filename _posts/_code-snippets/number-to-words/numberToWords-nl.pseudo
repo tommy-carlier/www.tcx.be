@@ -19,7 +19,7 @@ function numberToWords(number)
       -- 3 digits to text
       hundredsText = getHundredsText(hundreds)
       if iteration > 1
-        -- thousand, million, …
+        -- duizend, miljoen, …
         iterationText = getIterationText(iteration)
         hundredsText = concatenate(hundredsText, iterationText)
         if hundredsText == "eenduizend "
