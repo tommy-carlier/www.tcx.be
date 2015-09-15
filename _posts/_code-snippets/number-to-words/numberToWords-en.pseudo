@@ -11,9 +11,8 @@ function numberToWords(number)
   
   -- iterate per 3 digits (starting with last)
   while number > 0
-    -- e.g. 23456 ⇒ hundreds ← 456; number ← 23
-    hundreds ← number modulo 1000
-    number ← floor(number / 1000)
+    hundreds ← number modulo 1000 -- e.g. 23456 → 456
+    number ← floor(number / 1000) -- e.g. 23456 → 23
     
     if hundreds > 0
       -- 3 digits to text
@@ -38,10 +37,9 @@ function getHundredsText(number)
   
   result ← ""
   
-  -- e.g. 456 ⇒ hundreds ← 4; number ← 56 
-  hundreds ← floor(number / 100)
+  hundreds ← floor(number / 100) -- e.g. 456 → 4
   if hundreds > 0
-    number ← number modulo 100
+    number ← number modulo 100 -- e.g. 456 → 56
     result ← concatenate(result, getLessThanTwentyText(hundreds), " hundred")
   end
   
@@ -55,9 +53,8 @@ function getHundredsText(number)
       -- < 20 ⇒ look up
       result ← concatenate(result, getLessThanTwentyText(number))
     else
-      -- e.g. 42 ⇒ tens ← 4; number ← 2
-      tens ← floor(number / 10)
-      number ← number modulo 10
+      tens ← floor(number / 10) -- e.g. 42 → 4
+      number ← number modulo 10 -- e.g. 42 → 2
       
       -- thirty, forty, …
       result ← concatenate(result, getTensText(tens))
