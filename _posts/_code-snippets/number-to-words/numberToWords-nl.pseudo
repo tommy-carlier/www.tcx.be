@@ -20,13 +20,13 @@ function numberToWords(number)
       if iteration > 1
         -- duizend, miljoen, …
         iterationText ← getIterationText(iteration)
-        hundredsText ← concatenate(hundredsText, iterationText)
+        hundredsText ← hundredsText + iterationText
         if hundredsText = "eenduizend "
           hundredsText ← "duizend "
         end
       end
       
-      result ← concatenate(hundredsText, result)
+      result ← hundredsText + result
     end
     
     iteration ← iteration + 1
@@ -44,35 +44,35 @@ function getHundredsText(number)
   if hundreds > 0
     number ← number modulo 100 -- e.g. 456 → 56
     if hundreds > 1
-      result ← concatenate(result, getLessThanTwentyText(hundreds))
+      result ← result + getLessThanTwentyText(hundreds)
     end
-    result ← concatenate(result, "honderd")
+    result ← result + "honderd"
   end
   
   if number > 0
     if hundreds > 0 and number ≤ 12
-      result ← concatenate(result, "en")
+      result ← result + "en"
     end
     
     if number < 20
       -- < 20 ⇒ look up
-      result ← concatenate(result, getLessThanTwentyText(number))
+      result ← result + getLessThanTwentyText(number)
     else
       tens ← floor(number / 10) -- e.g. 42 → 4
       number ← number modulo 10 -- e.g. 42 → 2
       
       if number > 0
         -- een, twee, drie, …
-        result ← concatenate(result, getLessThanTwentyText(number))
+        result ← result + getLessThanTwentyText(number)
         if number = 2 or number = 3
-          result ← concatenate(result, "ën")
+          result ← result + "ën"
         else
-          result ← concatenate(result, "en")
+          result ← result + "en"
         end
       end
       
       -- dertig, veertig, …
-      result ← concatenate(result, getTensText(tens))
+      result ← result + getTensText(tens)
     end
   end
   

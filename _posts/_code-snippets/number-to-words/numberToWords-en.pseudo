@@ -20,10 +20,10 @@ function numberToWords(number)
       if iteration > 1
         -- thousand, million, …
         iterationText ← getIterationText(iteration)
-        hundredsText ← concatenate(hundredsText, iterationText)
+        hundredsText ← hundredsText + iterationText
       end
       
-      result ← concatenate(hundredsText, result)
+      result ← hundredsText + result
     end
     
     iteration ← iteration + 1
@@ -40,28 +40,28 @@ function getHundredsText(number)
   hundreds ← floor(number / 100) -- e.g. 456 → 4
   if hundreds > 0
     number ← number modulo 100 -- e.g. 456 → 56
-    result ← concatenate(result, getLessThanTwentyText(hundreds), " hundred")
+    result ← result + getLessThanTwentyText(hundreds) + " hundred"
   end
   
   if number > 0
     if hundreds > 0
       -- space after "hundred"
-      result ← concatenate(result, " ")
+      result ← result + " "
     end
     
     if number < 20
       -- < 20 ⇒ look up
-      result ← concatenate(result, getLessThanTwentyText(number))
+      result ← result + getLessThanTwentyText(number)
     else
       tens ← floor(number / 10) -- e.g. 42 → 4
       number ← number modulo 10 -- e.g. 42 → 2
       
       -- thirty, forty, …
-      result ← concatenate(result, getTensText(tens))
+      result ← result + getTensText(tens)
       
       if number > 0
         -- one, two, three, …
-        result ← concatenate(result, "-", getLessThanTwentyText(number))
+        result ← result + "-" + getLessThanTwentyText(number)
       end
     end
   end
