@@ -1,0 +1,148 @@
+-- spell out an integer number in words (French)
+function numberToWordsFrench(number)
+  var result, iteration, iterationText, hundreds, hundredsText
+
+  if number = 0
+    return "zero"
+  end
+  
+  result ← ""
+  iteration ← 1
+  
+  -- iterate per 3 digits (starting with last)
+  while number > 0
+    hundreds ← number modulo 1000 -- e.g. 23456 → 456
+    number ← floor(number / 1000) -- e.g. 23456 → 23
+    
+    if hundreds > 0
+      -- 3 digits to text
+      hundredsText ← getHundredsText(hundreds)
+      if iteration > 1
+        -- mille, million, …
+        iterationText ← getIterationText(iteration)
+        hundredsText ← hundredsText + iterationText
+        if hundredsText = "un mille "
+          hundredsText ← " mille "
+        end
+      end
+      
+      result ← hundredsText + result
+    end
+    
+    iteration ← iteration + 1
+  end
+  
+  return trim(result)
+end
+
+function getHundredsText(number)
+  var result, hundreds, tens
+  
+  result ← ""
+  
+  hundreds ← floor(number / 100) -- e.g. 456 → 4
+  if hundreds > 0
+    number ← number modulo 100 -- e.g. 456 → 56
+    if hundreds > 1
+      -- deux cents, trois cents, …
+      result ← result + getLessThanTwentyText(hundreds) + " cents"
+    else
+      result ← result + "cent"
+    end
+  end
+  
+  if number > 0
+    if hundreds > 0
+      -- space after "cent(s)"
+      result ← result + " "
+    end
+    
+    if number < 20
+      -- < 20 ⇒ look up
+      result ← result + getLessThanTwentyText(number)
+    else
+      tens ← floor(number / 10) -- e.g. 42 → 4
+      number ← number modulo 10 -- e.g. 42 → 2
+      
+      case tens
+        when 7
+          -- soixante dix, soixante onze, …
+          result ← result + "soixante"
+          number ← number + 10
+        when 8
+          if number > 0
+            result ← result + "quatre-vingt"
+          else
+            result ← result + "quatre-vingts"
+          end
+        when 9
+          -- quatre-vingt dix, quatre-vingt onze, …
+          result ← result + "quatre-vingt"
+          number ← number + 10
+        otherwise
+          -- vingt, trente, quarante, …
+          result ← result + getTensText(tens)
+      end
+      
+      if number > 0
+        if number = 1 and tens ≠ 8
+          result ← result + " et un"
+        else
+          result ← result + "-" + getLessThanTwentyText(number)
+        end
+      end
+    end
+  end
+  
+  return result
+end
+
+function getLessThanTwentyText(number)
+  case number
+    when 1 return "un"
+    when 2 return "deux"
+    when 3 return "trois"
+    when 4 return "quatre"
+    when 5 return "cinq"
+    when 6 return "six"
+    when 7 return "sept"
+    when 8 return "huit"
+    when 9 return "neuf"
+    when 10 return "dix"
+    when 11 return "onze"
+    when 12 return "douze"
+    when 13 return "treize"
+    when 14 return "quatorze"
+    when 15 return "quinze"
+    when 16 return "seize"
+    when 17 return "dix-sept"
+    when 18 return "dix-huit"
+    when 19 return "dix-neuf"
+    otherwise error
+  end
+end
+
+function getTensText(tens)
+  case tens
+    when 2 return "vingt"
+    when 3 return "trente"
+    when 4 return "quarante"
+    when 5 return "cinquante"
+    when 6 return "soixante"
+    otherwise error
+  end
+end
+
+function getIterationText(iteration)
+  case iteration
+    when 1 return ""
+    when 2 return " mille "
+    when 3 return " million "
+    when 4 return " milliard "
+    when 5 return " billion "
+    when 6 return " billiard "
+    when 7 return " trillion "
+    when 8 return " trilliard "
+    otherwise return " ??? "
+  end
+end

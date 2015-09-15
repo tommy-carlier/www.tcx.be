@@ -1,5 +1,5 @@
 -- spell out an integer number in words (Dutch)
-function numberToWords(number)
+function numberToWordsDutch(number)
   var result, iteration, iterationText, hundreds, hundredsText
 
   if number = 0
