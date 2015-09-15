@@ -2,32 +2,32 @@
 function numberToWords(number)
   var result, iteration, iterationText, hundreds, hundredsText
 
-  if number == 0
+  if number = 0
     return "zero"
   end
   
-  result = ""
-  iteration = 1
+  result ← ""
+  iteration ← 1
   
   -- iterate per 3 digits (starting with last)
   while number > 0
-    -- e.g. 23456 ⇒ hundreds = 456; number = 23
-    hundreds = number modulo 1000
-    number = floor(number / 1000)
+    -- e.g. 23456 ⇒ hundreds ← 456; number ← 23
+    hundreds ← number modulo 1000
+    number ← floor(number / 1000)
     
     if hundreds > 0
       -- 3 digits to text
-      hundredsText = getHundredsText(hundreds)
+      hundredsText ← getHundredsText(hundreds)
       if iteration > 1
         -- thousand, million, …
-        iterationText = getIterationText(iteration)
-        hundredsText = concatenate(hundredsText, iterationText)
+        iterationText ← getIterationText(iteration)
+        hundredsText ← concatenate(hundredsText, iterationText)
       end
       
-      result = concatenate(hundredsText, result)
+      result ← concatenate(hundredsText, result)
     end
     
-    iteration = iteration + 1
+    iteration ← iteration + 1
   end
   
   return trim(result)
@@ -36,35 +36,35 @@ end
 function getHundredsText(number)
   var result, hundreds, tens
   
-  result = ""
+  result ← ""
   
-  -- e.g. 456 ⇒ hundreds = 4; number = 56 
-  hundreds = floor(number / 100)
+  -- e.g. 456 ⇒ hundreds ← 4; number ← 56 
+  hundreds ← floor(number / 100)
   if hundreds > 0
-    number = number modulo 100
-    result = concatenate(result, getLessThanTwentyText(hundreds), " hundred")
+    number ← number modulo 100
+    result ← concatenate(result, getLessThanTwentyText(hundreds), " hundred")
   end
   
   if number > 0
     if hundreds > 0
       -- space after "hundred"
-      result = concatenate(result, " ")
+      result ← concatenate(result, " ")
     end
     
     if number < 20
       -- < 20 ⇒ look up
-      result = concatenate(result, getLessThanTwentyText(number))
+      result ← concatenate(result, getLessThanTwentyText(number))
     else
-      -- e.g. 42 ⇒ tens = 4; number = 2
-      tens = floor(number / 10)
-      number = number modulo 10
+      -- e.g. 42 ⇒ tens ← 4; number ← 2
+      tens ← floor(number / 10)
+      number ← number modulo 10
       
       -- thirty, forty, …
-      result = concatenate(result, getTensText(tens))
+      result ← concatenate(result, getTensText(tens))
       
       if number > 0
         -- one, two, three, …
-        result = concatenate(result, "-", getLessThanTwentyText(number))
+        result ← concatenate(result, "-", getLessThanTwentyText(number))
       end
     end
   end
