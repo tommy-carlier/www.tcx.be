@@ -14,15 +14,15 @@
   
   // initializer to manipulate all hyperlinks
   inits.push(function(){
-    var x, h = location.host;
+    var h = location.host, t;
     for (var xs = d.links, i = xs.length; i--; ){
       var x = xs[i], m = x.getAttribute('data-m');
       if (m) {
         // de-obfuscate e-mail hyperlink
         m = m.replace(/[\/]/g, '@').replace(/,/g, '.');
         x.href = 'mailto:' + m;
-        if ((x = x.firstChild) && x.nodeType == 3){
-          x.data = m;
+        if ((t = x.firstChild) && x.nodeType == 3){
+          t.data = m;
         }
       } else if (x.host != h){
         // set target to _blank for all external hyperlinks
