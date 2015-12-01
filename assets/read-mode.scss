@@ -16,11 +16,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 nav, form, body > header, footer, aside,
+#header, #footer,
 [aria-hidden=true], [role=navigation],
 [role=contentinfo], [role=banner],
-[id*=nav], [class*=nav], #header,
+[id*=nav], [class*=nav],
 [id*=masthead], [class*=logo],
-[id*=footer], [class*=footer],
 [id*=sidebar], [class*=sidebar],
 [class*=more], [class*=share],
 [class*=social], [class*=comment],
