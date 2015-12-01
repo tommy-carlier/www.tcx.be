@@ -1,0 +1,45 @@
+$content-font-face: Georgia, serif;
+$heading-font-face: "Segoe UI", Avenir, Tahoma, sans-serif;
+$ui-font-face: "Segoe UI", Avenir, Tahoma, sans-serif;
+$code-font-face: "Source Code Pro", Consolas, monospace;
+
+$ui-font: normal 11pt/200% $ui-font-face;
+$content-font: normal 13pt/22pt $content-font-face;
+$heading-font: normal 200% $heading-font-face;
+$byline-font: normal 85% $heading-font-face;
+$code-font: normal 88% $code-font-face;
+$code-comment-font: italic 110% $code-font-face;
+$content-nav-font: normal 10pt/160% $ui-font-face;
+$download-font: normal 12pt $ui-font-face;
+
+$nav-background: #085078;
+$nav-text-color: #C4D0E0;
+$nav-highlight-color: #F2F7FC;
+$nav-highlight-background: #3E90BD;
+  
+$page-background: #FCFEFF;
+$page-text-color: #07203B;
+$selection-background: #CBE1E8;
+
+$content-text-shadow: 0 1px 3px #FFF;
+  
+$hyperlink-color: #4A79AB;
+$hyperlink-highlight-color: #5F96D1;
+$hyperlink-visited-color: #9953A8;
+
+$code-comment-color: #A0AAB5;
+$code-delimiter-color: #CED7DC;
+  
+$download-background-color: #F7F7F7;
+$download-background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+$download-box-shadow: 0 1px 0 #AAA, inset 0 2px 1px #FFF;
+$download-active-background-color: #EAEAEA;
+$download-active-box-shadow: inset 0 1px 1px #AAA;
+$download-border-color: #DFDFDF;
+$download-text-color: #082E57;
+$download-text-shadow: 0 2px 2px #FFF;
+  
+$abbr-bottom-border: dashed 1px rgba(138, 179, 223, 0.75);
+
+$separator-top-border: dashed 1px #C4D2E0;
+$separator-bottom-border: dashed 1px #FFF;
