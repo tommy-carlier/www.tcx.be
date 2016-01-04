@@ -21,7 +21,7 @@
         // de-obfuscate e-mail hyperlink
         m = m.replace(/[\/]/g, '@').replace(/,/g, '.');
         x.href = 'mailto:' + m;
-        if ((t = x.firstChild) && x.nodeType == 3){
+        if ((t = x.firstChild) && t.nodeType == 3){
           t.data = m;
         }
       } else if (x.host != h){
