@@ -236,15 +236,8 @@ article {
           &:visited { color: $hyperlink-visited-color; }
         }
         
-        > .next::before {
-          content: '«';
-          margin-right: 0.3em;
-        }
-        
-        > .previous::after {
-          content: '»';
-          margin-left: 0.3em;
-        }
+        > .next::before { content: '« '; }        
+        > .previous::after { content: ' »'; }
       }
     }
     
@@ -337,10 +330,7 @@ article {
       > nav {
         > br { display: inline; }
         > .previous {
-          &::before {
-            content: '»';
-            margin-right: 0.3em;
-          }
+          &::before { content: '» '; }
           &::after { content: none; }
         }
       }
