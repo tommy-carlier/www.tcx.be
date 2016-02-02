@@ -339,7 +339,7 @@ article {
         > .previous {
           &::before {
             content: '»';
-            margin-left: 0.3em;
+            margin-right: 0.3em;
           }
           &::after { content: none; }
         }
