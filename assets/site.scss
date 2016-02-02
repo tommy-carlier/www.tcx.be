@@ -71,32 +71,6 @@ body {
   > main {
     display: block;
     padding: 2em;
-    
-    a:visited { color: $hyperlink-visited-color; }
-
-    > nav {
-      font: $content-nav-font;
-      @include prefixed(user-select, none);
-
-      > a {
-        display: inline-block;
-        margin-right: 1.2em;
-        white-space: nowrap;
-        max-width: 99%;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      
-      > .next::before {
-        content: '«';
-        margin-right: 1em;
-      }
-      
-      > .previous::after {
-        content: '»';
-        margin-left: 1em;
-      }
-    }
   }
 }
 
@@ -238,6 +212,9 @@ article {
       h1, h2, > nav { text-shadow: $content-text-shadow; }
       
       > nav {
+        font: $content-nav-font;
+        @include prefixed(user-select, none);
+
         &::before {
           content: '';
           display: block;
@@ -247,6 +224,27 @@ article {
         }
         
         > br { display: none; }
+
+        > a {
+          display: inline-block;
+          margin-right: 1.2em;
+          white-space: nowrap;
+          max-width: 99%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          
+          &:visited { color: $hyperlink-visited-color; }
+        }
+        
+        > .next::before {
+          content: '«';
+          margin-right: 0.3em;
+        }
+        
+        > .previous::after {
+          content: '»';
+          margin-left: 0.3em;
+        }
       }
     }
     
@@ -341,7 +339,7 @@ article {
         > .previous {
           &::before {
             content: '»';
-            margin-left: 1em;
+            margin-left: 0.3em;
           }
           &::after { content: none; }
         }
