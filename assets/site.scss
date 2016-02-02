@@ -86,6 +86,16 @@ body {
         overflow: hidden;
         text-overflow: ellipsis;
       }
+      
+      > .next::before {
+        content: '«';
+        margin-right: 1em;
+      }
+      
+      > .previous::after {
+        content: '»';
+        margin-left: 1em;
+      }
     }
   }
 }
@@ -326,7 +336,16 @@ article {
       line-height: 18pt;
       padding: 1.6em 1em 1.6em 1.6em;
       
-      > nav > br { display: inline; }
+      > nav {
+        > br { display: inline; }
+        > .previous {
+          &::before {
+            content: '»';
+            margin-left: 1em;
+          }
+          &::after { content: none; }
+        }
+      }
     }
     
     > footer { font-size: 100%; }
