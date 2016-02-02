@@ -228,7 +228,6 @@ article {
 
         > a {
           display: inline-block;
-          margin-right: 1.2em;
           white-space: nowrap;
           max-width: 99%;
           overflow: hidden;
@@ -238,6 +237,7 @@ article {
         > .next::before { content: '« '; }        
         > .previous {
           float: right;
+          margin-left: 1.2em;
           &::after { content: ' »'; }
         }
       }
@@ -333,6 +333,7 @@ article {
         > br { display: inline; }
         > .previous {
           float: none;
+          margin-left: 0;
           &::before { content: '» '; }
           &::after { content: none; }
         }
