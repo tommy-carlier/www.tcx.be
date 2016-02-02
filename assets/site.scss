@@ -234,11 +234,11 @@ article {
           text-overflow: ellipsis;
         }
         
-        > .next::before { content: '◂ '; }        
+        > .next::before { content: '◀ '; }        
         > .previous {
           float: right;
           margin-left: 1.2em;
-          &::after { content: ' ▸'; }
+          &::after { content: ' ▶'; }
         }
       }
     }
@@ -334,7 +334,7 @@ article {
         > .previous {
           float: none;
           margin-left: 0;
-          &::before { content: '▸ '; }
+          &::before { content: '▶ '; }
           &::after { content: none; }
         }
       }
