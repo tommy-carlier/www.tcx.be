@@ -232,13 +232,24 @@ article {
           max-width: 99%;
           overflow: hidden;
           text-overflow: ellipsis;
+          
+          &::before {
+            display: inline-block;
+            text-decoration: none;
+            margin-right: 0.4em;
+          }
+          &::after {
+            display: inline-block;
+            text-decoration: none;
+            margin-left: 0.4em;
+          }
         }
         
-        > .next::before { content: '◀ '; }        
+        > .next::before { content: '◀'; }
         > .previous {
           float: right;
           margin-left: 1.2em;
-          &::after { content: ' ▶'; }
+          &::after { content: '▶'; }
         }
       }
     }
@@ -334,7 +345,7 @@ article {
         > .previous {
           float: none;
           margin-left: 0;
-          &::before { content: '▶ '; }
+          &::before { content: '▶'; }
           &::after { content: none; }
         }
       }
