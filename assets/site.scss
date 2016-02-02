@@ -237,7 +237,10 @@ article {
         }
         
         > .next::before { content: '« '; }        
-        > .previous::after { content: ' »'; }
+        > .previous {
+          float: right;
+          &::after { content: ' »'; }
+        }
       }
     }
     
@@ -330,6 +333,7 @@ article {
       > nav {
         > br { display: inline; }
         > .previous {
+          float: none;
           &::before { content: '» '; }
           &::after { content: none; }
         }
