@@ -236,20 +236,22 @@ article {
           &::before {
             display: inline-block;
             text-decoration: none;
-            margin-right: 0.4em;
+            margin-right: 0.2em;
+            font-size: 150%;
           }
           &::after {
             display: inline-block;
             text-decoration: none;
-            margin-left: 0.4em;
+            margin-left: 0.2em;
+            font-size: 150%;
           }
         }
         
-        > .next::before { content: '◀'; }
+        > .next::before { content: '←'; }
         > .previous {
           float: right;
           margin-left: 1.2em;
-          &::after { content: '▶'; }
+          &::after { content: '→'; }
         }
       }
     }
@@ -345,7 +347,7 @@ article {
         > .previous {
           float: none;
           margin-left: 0;
-          &::before { content: '▶'; }
+          &::before { content: '→'; }
           &::after { content: none; }
         }
       }
