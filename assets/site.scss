@@ -20,6 +20,10 @@ a {
   }
 }
 
+p {
+  hyphens: auto;
+}
+
 body {
   margin: 0 auto;
   max-width: 50em;
@@ -92,6 +96,7 @@ pre {
 }
 
 code, kbd, var {
+  hyphens: manual;
   font: $code-font;
   font-weight: inherit;
 }
