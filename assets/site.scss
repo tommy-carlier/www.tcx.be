@@ -96,8 +96,9 @@ code, kbd, var {
 kbd, var { word-wrap: nowrap; }
 
 h1, h2 {
-  font: $heading-font;
   margin-bottom: 0;
+  font: $heading-font;
+  letter-spacing: -0.04em;
   &:first-child { margin-top: 0 }
 }
 
