@@ -6,7 +6,6 @@
 html {
   height: 100%;
   font: $content-font;
-  letter-spacing: -0.02em;
 }
       
 a {
@@ -72,6 +71,7 @@ body {
   > main {
     display: block;
     padding: 2em;
+    letter-spacing: -0.02em;
   }
 }
 
