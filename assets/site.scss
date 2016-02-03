@@ -6,6 +6,7 @@
 html {
   height: 100%;
   font: $content-font;
+  text-rendering: optimizeLegibility;
 }
       
 a {
@@ -71,7 +72,7 @@ body {
   > main {
     display: block;
     padding: 2em;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
   }
 }
 
@@ -100,7 +101,7 @@ kbd, var { word-wrap: nowrap; }
 h1, h2 {
   margin-bottom: 0;
   font: $heading-font;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
   &:first-child { margin-top: 0 }
 }
 
