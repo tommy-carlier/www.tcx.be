@@ -20,9 +20,8 @@ a {
   }
 }
 
-p {
-  hyphens: auto;
-}
+p { hyphens: auto; }
+abbr { font-size: 95%; } 
 
 body {
   margin: 0 auto;
@@ -268,7 +267,7 @@ article {
     > footer { text-shadow: $content-text-shadow; }
   }
   
-  abbr { border-bottom: $abbr-bottom-border; }
+  abbr[title] { border-bottom: $abbr-bottom-border; }
 
   .byline {
     opacity: 0.8;
