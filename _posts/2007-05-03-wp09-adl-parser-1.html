@@ -77,7 +77,7 @@ namespace TC.Adl
   ReadNextToken();
 }</code></pre>
 
-<p>Now that we’ve written the private helper methods, we can write the only public method: the <var>ReadNextStatement</var> method. This methods reads a statement and returns it. If we reach the end of the source, we return <var>null</var>, else we check the first token to determine the <a href="{% post_url 2007-04-28-wp08-adl-parser-node-types %}">type of statement</a>: 
+<p>Now that we’ve written the private helper methods, we can write the only public method: the <var>ReadNextStatement</var> method. This methods reads a statement and returns it. If we reach the end of the source, we return <var>null</var>, else we check the first token to determine the <a href="{% post_url 2007-04-28-wp08-adl-parser-node-types %}">type of statement</a>:
 <ul>
 <li>If the current token is the word <var>if</var>, it’s an if-statement. 
 </li><li>If the current token is the word <var>while</var>, it’s a while-statement. 
