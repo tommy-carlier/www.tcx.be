@@ -285,6 +285,7 @@ article {
     border-radius: 2em;
     color: $download-text-color;
     text-shadow: $download-text-shadow;
+    will-change: transform;
     transition: transform 0.1s ease, background-color 0.1s ease;
   
     &:active {
