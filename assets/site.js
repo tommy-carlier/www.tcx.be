@@ -24,9 +24,6 @@
         if ((t = x.firstChild) && t.nodeType == 3){
           t.data = m;
         }
-      } else if (x.host != h){
-        // set target to _blank for all external hyperlinks
-        x.target = '_blank';
       }
     }
   });
