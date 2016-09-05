@@ -1,0 +1,9 @@
+---
+layout: post
+title: "Update SysInternals Suite via PowerShell"
+description: "PowerShell-script to upgrade SysInternals Suite to the latest version"
+---
+
+<p><a href="https://technet.microsoft.com/en-us/sysinternals/bb842062.aspx">SysInternals Suite</a> is a collection of troubleshooting tools for Windows, developed by Microsoft. You can download the tools as a ZIP-file, that you can extract into a directory, and run the individual applications without having to install them.
+<p>When I find out there’s a new version of the SysInternals Suite, I have to click the link to the website, click the download link, save the ZIP-file, open the ZIP-file and select the destination folder to extract to. After having done this for the umpteenth time, I wrote the following PowerShell-script to automate the process: {% include code-snippet.html file="UpdateSysInternals.ps1" %}
+<p>The above script installs the SysInternals Suite in the directory <code>d:\dev\tools\sys-internals</code>. Please change the variables for your specific installation, before running the script. 
