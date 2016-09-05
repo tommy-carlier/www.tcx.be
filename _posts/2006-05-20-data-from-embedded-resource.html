@@ -1,11 +1,10 @@
 ---
 layout: post
 title: "Reading data from an embedded resource"
-hasCSharpCode: true
 ---
 
 <p>Here’s some code to read data from an embedded resource:
-{% include code-snippet-csharp.html file="embedded-resources/EmbeddedResourceReader.cs" %}
+{% include code-snippet.html file="embedded-resources/EmbeddedResourceReader.cs" %}
 
 <p>Basically, you can read any kind of data from an embedded resource, using the method <var>GetManifestResourceStream</var>. The resource name you have to pass as an argument should be the default namespace of the assembly, appended with the filename. Here’s an example how to use it:
-{% include code-snippet-csharp.html file="embedded-resources/Example.cs" %}
+{% include code-snippet.html file="embedded-resources/Example.cs" %}

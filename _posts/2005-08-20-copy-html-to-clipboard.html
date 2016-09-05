@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Copying an HTML-fragment to the clipboard"
-hasCSharpCode: true
 ---
 
 <p>Applications like Word and Excel let you copy some text or tabular data to the clipboard in <nobr><abbr title="Hypertext Markup language">HTML</abbr>-format</nobr>, so that the formatting and visual style doesn’t change when pasted. At work, I had to do something similar: our application uses a lot of grid-controls to display data, and we wanted the users to be able to select data from a grid, and copy it to the clipboard, in a format that would keep the tabular structure of the data. After some research, I found out that you can copy data to the clipboard in <nobr><abbr>HTML</abbr>-format</nobr>, and I thought: this is it. Piece of cake. But it wasn’t. Apparently, you have to pass a bit more information than just the <nobr><abbr>HTML</abbr>-code</nobr>. Googling around gave me some hints how it should be done, but nothing really specific. So I started experimenting, until it worked correctly.
@@ -17,7 +16,7 @@ hasCSharpCode: true
 </ul>
 
 <h2>The Code</h2>
-{% include code-snippet-csharp.html file="copy-html-clipboard/CopyHtmlToClipboard.cs" %}
+{% include code-snippet.html file="copy-html-clipboard/CopyHtmlToClipboard.cs" %}
 
 <h2>Example: copying a DataTable</h2>
-{% include code-snippet-csharp.html file="copy-html-clipboard/Example.cs" %}
+{% include code-snippet.html file="copy-html-clipboard/Example.cs" %}

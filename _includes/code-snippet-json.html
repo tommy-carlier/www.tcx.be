@@ -1,3 +1,0 @@
-{% capture filePath %}_code-snippets/{{include.file}}{% endcapture %}
-{% capture snippet %}{% include_relative {{filePath}} %}{% endcapture %}
-<pre class="code json"><code>{{ snippet | xml_escape }}</code></pre>

@@ -1,11 +1,10 @@
 ---
 layout: post
 title: "Reading an image from a file without locking it (GDI+)"
-hasCSharpCode: true
 ---
 
 <p>When you use <var>System.Drawing.Image.FromFile</var> to read an image from a file, the file is locked. The following method reads an image from a file without locking it:
-{% include code-snippet-csharp.html file="image-from-file/ImageFromFile.cs" %}
+{% include code-snippet.html file="image-from-file/ImageFromFile.cs" %}
   
 <p>Here’s an example how to use it:
-{% include code-snippet-csharp.html file="image-from-file/Example.cs" %}
+{% include code-snippet.html file="image-from-file/Example.cs" %}

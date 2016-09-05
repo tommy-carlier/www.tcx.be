@@ -1,13 +1,12 @@
 ---
 layout: post
 title: "if-read-do-while-read – part 2"
-hasCSharpCode: true
 ---
 
 <p>I just received a comment on <a href="{% post_url 2009-12-29-if-read-do-while-read %}">my previous post about the <i>if-read-do-while-read</i> construction</a>. Tanton suggests that I could create a method that encapsulates this construction, using delegates for the <i>before</i>, <i>during</i> and <i>after</i> steps. Here’s a quick version of an extension method on <var>IDataReader</var> that does this:
-{% include code-snippet-csharp.html file="if-read-do-while-read/Fragment05.cs" %}
+{% include code-snippet.html file="if-read-do-while-read/Fragment05.cs" %}
 
 <p>And here’s a rewrite of the HTML-example, using this extension method:
-{% include code-snippet-csharp.html file="if-read-do-while-read/Fragment06.cs" %}
+{% include code-snippet.html file="if-read-do-while-read/Fragment06.cs" %}
 
 <p>It’s surely shorter, but I’m not entirely convinced it’s cleaner.

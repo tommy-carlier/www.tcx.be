@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Writing a parser: ADL Tokenizer: correction"
-hasCSharpCode: true
 ---
 
 <p><a href="https://www.blogger.com/profile/11160553154275818207">Sushovan</a> made a great remark on <a href="{% post_url 2007-04-24-wp06-adl-tokenizer %}">my previous post</a>. He asked me why I didn’t use the method <a href="http://msdn.microsoft.com/en-us/library/t809ektx.aspx"><var>char.IsWhiteSpace</var></a> to test for white-space. The reason I didn’t, was ignorance: I was not aware that method existed. So it’s probably a good idea to change the method <var>SkipWhitespace</var> to this:

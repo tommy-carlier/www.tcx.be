@@ -1,7 +1,6 @@
 ---
 layout: post
 title: ".NET BCL proposal: read‑only collection interfaces"
-hasCSharpCode: true
 ---
 
 <p>As a result of this thread on Channel 9, here’s a proposition for a simple enhancement of the .NET <abbr title="Base Class Library">BCL</abbr>, related to collections.
@@ -11,4 +10,4 @@ hasCSharpCode: true
 <p>My proposal is to add 2 additional interfaces <code>IReadableCollection&lt;T&gt;</code> and <code>IReadableList&lt;T&gt;</code> that contain a subset of the members of <code>ICollection&lt;T&gt;</code> and <code>IList&lt;T&gt;</code> that can be performed on read-only collections. <code>ICollection&lt;T&gt;</code> could then implement <code>IReadableCollection&lt;T&gt;</code> and <code>IList&lt;T&gt;</code> could implement <code>IReadableList&lt;T&gt;</code> (and also <code>ICollection&lt;T&gt;</code>, like it does now). Adding these interfaces would not break existing code, they would be fully backward compatible and would not even require changes to the classes that implement <code>ICollection&lt;T&gt;</code> and <code>IList&lt;T&gt;</code>: they would automatically also implement the new interfaces (because <code>ICollection&lt;T&gt;</code> and <code>IList&lt;T&gt;</code> implement <code>IReadableCollection&lt;T&gt;</code> and <code>IReadableList&lt;T&gt;</code>).
 
 <p>Here’s what the interface hierarchy would look like:
-{% include code-snippet-csharp.html file="ReadOnlyCollectionContracts.cs" %}
+{% include code-snippet.html file="ReadOnlyCollectionContracts.cs" %}

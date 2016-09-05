@@ -1,19 +1,18 @@
 ---
 layout: post
 title: "if-read-do-while-read"
-hasCSharpCode: true
 ---
 
 <p>Here’s a construction I occasionally need when reading items from a <a href="http://msdn.microsoft.com/en-us/library/system.data.idatareader.aspx"><var>IDataReader</var></a>: to execute some code before and after reading through the <var>IDataReader</var>, but only if there are rows in the <var>IDataReader</var>.
 
 <p>One option is to use a boolean variable that determines whether the collection has items, like this:
-{% include code-snippet-csharp.html file="if-read-do-while-read/Fragment01.cs" %}
+{% include code-snippet.html file="if-read-do-while-read/Fragment01.cs" %}
 
 <p>But the following construction (which I call the <i>if-read-do-while-read</i> construction) does not need the boolean variable and is cleaner:
-{% include code-snippet-csharp.html file="if-read-do-while-read/Fragment02.cs" %}
+{% include code-snippet.html file="if-read-do-while-read/Fragment02.cs" %}
 
 <p>Here’s a practical example: creating <abbr title="Hypertext Markup Language">HTML</abbr>-code with a UL-list for the data, but only if there are items:
-{% include code-snippet-csharp.html file="if-read-do-while-read/Fragment03.cs" %}
+{% include code-snippet.html file="if-read-do-while-read/Fragment03.cs" %}
 
 <p>You could use the same technique on an <var>IEnumerable&lt;T&gt;</var>, but you wouldn’t be able to use <var>foreach</var> anymore:
-{% include code-snippet-csharp.html file="if-read-do-while-read/Fragment04.cs" %}
+{% include code-snippet.html file="if-read-do-while-read/Fragment04.cs" %}
