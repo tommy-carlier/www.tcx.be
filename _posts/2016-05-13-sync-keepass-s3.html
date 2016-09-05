@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Synchronize KeePass via Amazon S3"
-hasJsonCode: true
 ---
 
 <p>I use <a href="http://keepass.info/">KeePass</a> to manage my passwords, but I need to access these passwords from my PC at home, and my PC at work. To keep these databases synchronized, I put a copy on Amazon’s cloud storage service <a href="https://aws.amazon.com/s3/">S3</a>. Until recently, I synchronized manually: whenever I add a new password entry on 1 PC, I upload it to S3 (using <a href="https://cyberduck.io/">Cyberduck</a>), and when I’m on the other PC I download it from S3 (unless I forget).
@@ -26,7 +25,7 @@ hasJsonCode: true
 <li>Navigate to the created user, to the <i>Permissions</i>-tab</li>
 <li>Open the <i>Inline Policies</i>-view, and press <i>Create User Policy</i></li>
 <li>Select <i>Custom Policy</i>, and press <i>Select</i></li>
-<li>Give the policy a name, and enter the following <i>Policy Document</i>: {% include code-snippet-json.html file="sync-keepass-s3/policy-document.json" %}</li> 
+<li>Give the policy a name, and enter the following <i>Policy Document</i>: {% include code-snippet.html file="sync-keepass-s3/policy-document.json" %}</li> 
 </ol>
 
 <h2>Install and configure KeeCloud</h2>
