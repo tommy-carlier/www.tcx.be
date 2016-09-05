@@ -255,8 +255,8 @@ article {
           }
         }
         
-        > .next::before { content: '←'; }
-        > .previous {
+        > a[rel=next]::before { content: '←'; }
+        > a[rel=prev] {
           float: right;
           margin-left: 1.2em;
           &::after { content: '→'; }
@@ -353,7 +353,7 @@ article {
       
       > nav {
         > br { display: inline; }
-        > .previous {
+        > a[rel=prev] {
           float: none;
           margin-left: 0;
           &::before { content: '→'; }
