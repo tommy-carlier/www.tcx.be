@@ -12,7 +12,7 @@
     {% for post in site.posts limit:30 %}
     <item>
       <title>{{post.title | xml_escape}}</title>
-      <description>{{post.content | xml_escape}}&lt;img src=&quot;http://c.statcounter.com/{{site.statcounter_project}}/0/{{site.statcounter_security}}/1/&quot; alt=&quot;&quot;&gt;</description>
+      <description>{{post.content | xml_escape}}&lt;img src=&quot;//c.statcounter.com/{{site.statcounter_project}}/0/{{site.statcounter_security}}/1/&quot; alt=&quot;&quot;&gt;</description>
       <pubDate>{{post.date | date:"%a, %d %b %Y %H:%M:%S %z"}}</pubDate>
       <link>{{site.url}}{{post.url}}</link>
       <guid isPermaLink="true">{{site.url}}{{post.url}}</guid>
