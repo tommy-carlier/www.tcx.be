@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang={% if page.language %}{{page.language}}{% else %}en-US{% endif %}>
-<meta charset=utf-8>
-<title>{% if page.isStandalonePage %}{{page.title}}{% else %}{% if page.title %}{{page.title}} • {% endif %}{{site.title}}{% endif %}</title>
-{% if page.description %}<meta name=description content="{{page.description | xml_escape}}">{% endif %}
-{% include page-meta.html %}
+<meta charset=utf-8>{% if page.title %}<title>{{page.title}}</title>{% endif %}{% if page.description %}<meta name=description content="{{page.description | xml_escape}}">{% endif %}{% include page-meta.html %}
 <link rel=canonical href="{{site.url}}{{page.url | replace:'index.html',''}}">
 <link rel="shortcut icon" href="{{site.baseUrl}}favicon.ico">
 {% if page.isStandalonePage %}{% else %}{% include page-header.html %}{% endif %}
