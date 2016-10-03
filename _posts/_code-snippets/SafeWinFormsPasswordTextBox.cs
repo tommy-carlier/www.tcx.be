@@ -14,7 +14,7 @@ namespace TC.WinForms
       WM_GETTEXTLENGTH = 0x000E,
       EM_SETPASSWORDCHAR = 0x00CC;
     
-    private bool _accessText;
+    private bool _isAccessingText;
     
     /// <summary>Initializes a new instance of the <see cref="T:PasswordTextBox" /> class.</summary>
     public PasswordTextBox()
@@ -28,15 +28,15 @@ namespace TC.WinForms
     {
       get
       {
-        _accessText = true;
+        _isAccessingText = true;
         try { return base.Text; }
-        finally { _accessText = false; }
+        finally { _isAccessingText = false; }
       }
       set
       {
-        _accessText = true;
+        _isAccessingText = true;
         try { base.Text = value; }
-        finally { _accessText = false; }
+        finally { _isAccessingText = false; }
       }
     }
  
@@ -46,9 +46,9 @@ namespace TC.WinForms
     {
       get
       {
-        _accessText = true;
+        _isAccessingText = true;
         try { return base.TextLength; }
-        finally { _accessText = false; }
+        finally { _isAccessingText = false; }
       }
     }
  
@@ -60,13 +60,15 @@ namespace TC.WinForms
       {
         case WM_GETTEXT:
         case WM_GETTEXTLENGTH:
-          if (!_accessText)
+          if (!_isAccessingText)
           {
             m.Result = IntPtr.Zero;
             return;
           }
-          else break;
-        case EM_SETPASSWORDCHAR: return;
+          break;
+        
+        case EM_SETPASSWORDCHAR:
+          return;
       }
  
       base.WndProc(ref m);
