@@ -1,44 +1,47 @@
 using System;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
 internal static class Utilities
 {
-  public static void CopyHtmlToClipBoard(string html)
+  public static void CopyHtmlToClipBoard(string htmlFragment)
   {
-    Encoding enc = Encoding.UTF8;
-
-    string begin = "Version:0.9\r\nStartHTML:{0:000000}\r\nEndHTML:{1:000000}"
+    string headerFormat
+      = "Version:0.9\r\nStartHTML:{0:000000}\r\nEndHTML:{1:000000}"
       + "\r\nStartFragment:{2:000000}\r\nEndFragment:{3:000000}\r\n";
 
-    string html_begin = "<html>\r\n<head>\r\n"
+    string htmlHeader
+      = "<html>\r\n<head>\r\n"
       + "<meta http-equiv=\"Content-Type\""
-      + " content=\"text/html; charset=" + enc.WebName + "\">\r\n"
+      + " content=\"text/html; charset=utf-8\">\r\n"
       + "<title>HTML clipboard</title>\r\n</head>\r\n<body>\r\n"
       + "<!--StartFragment-->";
 
-    string html_end = "<!--EndFragment-->\r\n</body>\r\n</html>\r\n";
+    string htmlFooter = "<!--EndFragment-->\r\n</body>\r\n</html>\r\n";
+    string headerSample = String.Format(headerFormat, 0, 0, 0, 0);
 
-    string begin_sample = String.Format(begin, 0, 0, 0, 0);
+    Encoding encoding = Encoding.UTF8;
+    int headerSize = encoding.GetByteCount(headerSample);
+    int htmlHeaderSize = encoding.GetByteCount(htmlHeader);
+    int htmlFragmentSize = encoding.GetByteCount(htmlFragment);
+    int htmlFooterSize = encoding.GetByteCount(htmlFooter);
 
-    int count_begin = enc.GetByteCount(begin_sample);
-    int count_html_begin = enc.GetByteCount(html_begin);
-    int count_html = enc.GetByteCount(html);
-    int count_html_end = enc.GetByteCount(html_end);
-
-    string html_total = String.Format(
-      begin
-      , count_begin
-      , count_begin + count_html_begin + count_html + count_html_end
-      , count_begin + count_html_begin
-      , count_begin + count_html_begin + count_html
-      ) + html_begin + html + html_end;
+    string htmlResult
+      = String.Format(
+          CultureInfo.InvariantCulture,
+          headerFormat,
+          /* StartHTML     */ headerSize,
+          /* EndHTML       */ headerSize + htmlHeaderSize + htmlFragmentSize + htmlFooterSize,
+          /* StartFragment */ headerSize + htmlHeaderSize,
+          /* EndFragment   */ headerSize + htmlHeaderSize + htmlFragmentSize)
+      + htmlHeader
+      + htmlFragment
+      + htmlFooter;
 
     DataObject obj = new DataObject();
-    obj.SetData(DataFormats.Html, new MemoryStream(
-      enc.GetBytes(html_total)));
-      
+    obj.SetData(DataFormats.Html, new MemoryStream(encoding.GetBytes(htmlResult)));
     Clipboard.SetDataObject(obj, true);
   }
 }
