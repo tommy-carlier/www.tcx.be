@@ -17,7 +17,13 @@ a {
   &:hover, &:focus {
     color: $hyperlink-highlight-color;
     text-decoration: underline;
+    animation: pulseLinkOpacity 0.7s ease-in-out infinite alternate;
   }
+}
+
+@keyframes pulseLinkOpacity {
+  from { opacity: 0.99; }
+  to { opacity: 0.7; }
 }
 
 p { hyphens: auto; }
