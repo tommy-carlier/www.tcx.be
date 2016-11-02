@@ -3,4 +3,4 @@ layout: default
 title: "Blog"
 ---
 
-<table class=print-href>{% for post in site.posts %}{% capture currentYear %}{{post.date | date:'%Y'}}{% endcapture %}<tr><th class=b>{% if currentYear != prevYear %}{{currentYear}}{% capture prevYear %}{{currentYear}}{% endcapture %}{% endif %}<th class=r>{{post.date | date:'%b %-d'}}<td><a href="{{post.url}}">{{post.title}}</a>{% endfor %}</table>
+<table class=print-href>{% for post in site.posts %}{% capture currentYear %}{{post.date | date:'%Y'}}{% endcapture %}<tr>{% if currentYear != prevYear %}<th class=b>{{currentYear}}{% capture prevYear %}{{currentYear}}{% endcapture %}<th class=r>{% else %}<th colspan=2 class=r>{% endif %}<time datetime="{{post.date | date:'%F'}}">{{post.date | date:'%b %-d'}}</time><td><a href="{{post.url}}">{{post.title}}</a>{% endfor %}</table>
