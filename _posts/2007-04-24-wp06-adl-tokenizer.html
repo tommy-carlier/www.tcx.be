@@ -288,7 +288,7 @@ namespace TC.Adl
   {
     using (StringReader source = new StringReader(TextBoxSource.Text))
     {
-      Tokenizer tokenizer = new Tokenizer(lSource);
+      Tokenizer tokenizer = new Tokenizer(source);
 
       Token token = tokenizer.ReadNextToken();
       while (token != null)
