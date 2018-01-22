@@ -1,0 +1,11 @@
+---
+layout: post
+title: "Remove all children of an element in JavaScript"
+description: "How to remove all children of a DOM-element in JavaScript"
+---
+
+<p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model"><abbr title="Document Object Model">DOM</abbr> <abbr title="Application Programming Interface">API</abbr></a> does not provide a function to remove all children of an element. A straightforward way to do this is to remove each child element: {% include code-snippet.html file="remove-children-js/Naive.js" %}
+
+<p>This works, but there is a faster alternative: select all children using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Range">DOM Range API</a> and delete the contents of the range. This is <a href="https://caniuse.com/#feat=dom-range">supported in all modern browsers</a> (in Internet Explorer since version 9). {% include code-snippet.html file="remove-children-js/Range.js" %}
+
+<p>If you need {% include wikipedia-link.html term="Backward compatibility" label="backward compatibility" %} with older browsers, you can check whether the range API is supported and use the old method otherwise: {% include code-snippet.html file="remove-children-js/BackwardCompat.js" %}</p>
