@@ -273,7 +273,14 @@ article {
     > footer { text-shadow: $content-text-shadow; }
   }
   
-  abbr[title] { border-bottom: $abbr-bottom-border; }
+  abbr[title] {
+    text-decoration: none;
+    border-bottom: $abbr-bottom-border;
+
+    a > & {
+      border-color: inherit;
+    }
+  }
 
   .byline {
     opacity: 0.8;
