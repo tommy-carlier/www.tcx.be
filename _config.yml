@@ -1,5 +1,5 @@
 title: Tommy’s stuff
-url: http://www.tcx.be
+url: https://www.tcx.be
 baseUrl: /
 permalink: /blog/:year/:title/
 paginate: 5
