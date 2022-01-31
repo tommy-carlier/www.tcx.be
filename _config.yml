@@ -3,9 +3,6 @@ url: https://www.tcx.be
 baseUrl: /
 permalink: /blog/:year/:title/
 
-statcounter_project: 10140999
-statcounter_security: c0a61708
-
 sass:
   sass_dir: assets/_sass
   style: :compressed
